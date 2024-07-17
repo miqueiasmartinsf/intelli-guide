@@ -1,11 +1,12 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
-import { FcGoogle } from 'react-icons/fc'
-import { FaGithub } from 'react-icons/fa'
 import { useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+import { FaGithub } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
 
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes'
+
 import { BottomGradient } from './bottom-gradient'
 
 export const SocialLoginButton = () => {
@@ -22,12 +23,12 @@ export const SocialLoginButton = () => {
     <>
       <div>
         <button
-          className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+          className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
           type="button"
           onClick={() => onClick('github')}
         >
           <FaGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-          <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+          <span className="text-sm text-neutral-700 dark:text-neutral-300">
             GitHub
           </span>
           <BottomGradient />
@@ -35,12 +36,12 @@ export const SocialLoginButton = () => {
       </div>
       <div>
         <button
-          className="relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
+          className="group/btn relative flex h-10 w-full items-center justify-start space-x-2 rounded-md bg-gray-50 px-4 font-medium text-black shadow-input dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
           type="button"
           onClick={() => onClick('google')}
         >
           <FcGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-          <span className="text-neutral-700 dark:text-neutral-300 text-sm">
+          <span className="text-sm text-neutral-700 dark:text-neutral-300">
             Google
           </span>
           <BottomGradient />

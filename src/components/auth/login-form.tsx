@@ -1,25 +1,24 @@
 'use client'
 
-import {
-  BottomGradient,
-  InputWithLabel,
-  SocialLoginButton,
-  Header,
-} from '@/components/auth'
-import { Button } from '../ui/button'
+import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-
-import * as z from 'zod'
 import { useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
 
-import { LoginSchema } from '@/schemas/auth'
-
+import { loginActions } from '@/app/auth/login/actions'
+import {
+  BottomGradient,
+  Header,
+  InputWithLabel,
+  SocialLoginButton,
+} from '@/components/auth'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
-import { loginActions } from '@/app/auth/login/actions'
+import { LoginSchema } from '@/schemas/auth'
+
+import { Button } from '../ui/button'
 
 export const LoginForm = () => {
   const searchParams = useSearchParams()
@@ -74,13 +73,13 @@ export const LoginForm = () => {
   }
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
       <Header
         title="Welcome back to OBC-Gamified"
         subtitle="Log in to continue your gamified learning experience."
       />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="mb-4 mt-8">
         {showTwoFactor && (
           <>
             <InputWithLabel
@@ -120,7 +119,7 @@ export const LoginForm = () => {
               size="sm"
               variant="link"
               asChild
-              className="px-0 font-normal flex justify-end mb-3"
+              className="mb-3 flex justify-end px-0 font-semibold"
             >
               <Link href="/auth/reset">Forgot password?</Link>
             </Button>
@@ -131,7 +130,7 @@ export const LoginForm = () => {
         <FormSuccess message={success} />
 
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="group/btn relative block h-10 w-full rounded-md bg-primary to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
           disabled={isPending}
         >
@@ -139,7 +138,7 @@ export const LoginForm = () => {
           <BottomGradient />
         </button>
 
-        <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+        <div className="my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
       </form>
 
       <div className="flex flex-col space-y-4">
@@ -150,7 +149,7 @@ export const LoginForm = () => {
         size="sm"
         variant="link"
         asChild
-        className="font-normal flex justify-center mt-4"
+        className="mt-4 flex justify-center font-semibold"
       >
         <Link href="/auth/register">Don&apos;t have an account ?</Link>
       </Button>

@@ -1,16 +1,18 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { resetActions } from '@/app/auth/reset/actions'
+import { ResetSchema } from '@/schemas/auth'
+
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
 import { Button } from '../ui/button'
 import { Header } from './header'
 import { InputWithLabel } from './input-with-label'
-import { resetActions } from '@/app/auth/reset/actions'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { ResetSchema } from '@/schemas/auth'
-import { z } from 'zod'
 
 export const ResetForm = () => {
   const [error, setError] = useState<string | undefined>('')
@@ -40,13 +42,13 @@ export const ResetForm = () => {
     })
   }
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
       <Header
         title="Forgot your password?"
         subtitle="Enter your email to receive reset instructions."
       />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="mb-4 mt-8">
         <div className="mb-4">
           <InputWithLabel
             id="email"
