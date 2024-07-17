@@ -59,11 +59,16 @@
     }
 }
 
-@layer base {
-    * {
-        @apply border-border;
+@layer utilities {
+    .nav-link {
+        @apply relative cursor-pointer;
     }
-    body {
-        @apply bg-background text-foreground;
+
+    .nav-link::after {
+        @apply content-[''] absolute bg-[#149D52] h-[3px] w-[0%] left-0 -bottom-[5px] rounded-xl duration-300;
+    }
+
+    .nav-link:hover::after {
+        @apply w-[100%];
     }
 }
