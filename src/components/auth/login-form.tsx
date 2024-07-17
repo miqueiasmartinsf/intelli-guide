@@ -7,7 +7,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
-import { loginActions } from '@/app/auth/login/actions'
+import { loginActions } from '@/app/auth/(credentials)/login/actions'
 import {
   BottomGradient,
   Header,

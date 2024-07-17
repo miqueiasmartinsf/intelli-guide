@@ -1,15 +1,28 @@
-import { LoginForm } from '@/components/auth/login-form'
+import Image from 'next/image'
+import { redirect } from 'next/navigation'
 
-const LoginPage = () => {
+import { currentUser } from '@/lib/auth'
+
+async function AuthLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  const user = await currentUser()
+
+  if (user) {
+    redirect('/settings')
+  }
+
   return (
     <div className="flex h-screen">
       <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
-        <img src="/intelli-guide-2.png" alt="" className="w-80" />
-        <LoginForm />
+        <Image src="/intelli-guide-2.png" alt="" width={320} height={56} />
+        {children}
       </div>
       <div className="h-full w-1/2">
         <div className="flex h-full w-full flex-col items-center justify-center gap-16 bg-primary px-8">
-          <img src="/Questions-bro.svg" alt="" className="w-1/2" />
+          <Image src="/Questions-bro.svg" alt="" width={328} height={328} />
           <div className="flex flex-col items-center">
             <h2 className="w-11/12 text-center text-3xl text-white">
               Desafie sua mente, aprenda e divirta-se!
@@ -27,4 +40,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default AuthLayout

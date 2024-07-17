@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Button } from '@/components/ui/button'
 
 export default function Home() {
@@ -51,7 +53,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="flex h-full w-1/2 flex-col items-end justify-center">
-              <img src="/Questions-bro.svg" alt="" className="w-2/3" />
+              <Image src="/Questions-bro.svg" alt="" width={320} height={320} />
             </div>
           </div>
         </section>
