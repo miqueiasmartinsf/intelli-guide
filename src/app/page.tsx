@@ -4,8 +4,8 @@ export default function Home() {
     return (
         <div>
             <div className="px-60">
-                <section className="h-screen">
-                    <header className="flex justify-between py-6 items-center">
+                <section className="min-h-screen">
+                    <header className="flex justify-between items-center py-6">
                         <h1 className="text-3xl">IntelliGuide</h1>
                         <nav>
                             <ul className="flex gap-4 items-center">
@@ -35,9 +35,9 @@ export default function Home() {
                             </ul>
                         </nav>
                     </header>
-                    <div className="flex h-full">
+                    <div className="flex h-full py-36 items-center">
                         <div className="w-1/2 h-full flex flex-col items-start justify-center">
-                            <h2 className="text-3xl w-11/12">
+                            <h2 className="text-6xl w-11/12">
                                 Desafie sua mente, aprenda e divirta-se!
                             </h2>
                             <p className="mt-8 w-11/12">
@@ -47,27 +47,18 @@ export default function Home() {
                                 veja quem se sai melhor. Boa sorte e aproveite a
                                 jornada de aprendizado!
                             </p>
+                            <Button className="mt-8" size={"lg"}>
+                                Começar agora!
+                            </Button>
                         </div>
                         <div className="w-1/2 h-full flex flex-col items-end justify-center">
                             <img
                                 src="/Questions-bro.svg"
                                 alt=""
-                                className="w-1/2"
+                                className="w-2/3"
                             />
                         </div>
                     </div>
-                </section>
-                <section>
-                    <header></header>
-                    <div></div>
-                </section>
-                <section>
-                    <header></header>
-                    <div></div>
-                </section>
-                <section>
-                    <header></header>
-                    <div></div>
                 </section>
             </div>
         </div>
