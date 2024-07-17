@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
-import { LabelInputContainer } from './label-input-container'
-import { Label } from '../aceternity-UI/label'
+
 import { Input } from '../aceternity-UI/input'
+import { Label } from '../aceternity-UI/label'
+import { LabelInputContainer } from './label-input-container'
 
 type InputWithLabelProps = {
   id: string
@@ -27,7 +28,7 @@ export const InputWithLabel = ({
     <LabelInputContainer className={className}>
       <Label htmlFor={id}>{label}</Label>
       <Input id={id} placeholder={placeholder} type={type} {...register(id)} />
-      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
     </LabelInputContainer>
   )
 }

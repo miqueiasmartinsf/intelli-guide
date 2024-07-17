@@ -1,12 +1,14 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Header } from './header'
+import { useCallback, useEffect, useState } from 'react'
+import { BeatLoader } from 'react-spinners'
+
+import { newVerificationActions } from '@/app/auth/new-verification/actions'
+
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
-import { BeatLoader } from 'react-spinners'
-import { newVerificationActions } from '@/app/auth/new-verification/actions'
+import { Header } from './header'
 
 export const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>('')
@@ -40,13 +42,13 @@ export const NewVerificationForm = () => {
   }, [onSubmit])
 
   return (
-    <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+    <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
       <Header
         title="Verify Your Email"
         subtitle="Please confirm your email to continue."
       />
 
-      <div className="w-full flex items-center justify-center mt-8">
+      <div className="mt-8 flex w-full items-center justify-center">
         {!success && !error && <BeatLoader />}
         <FormSuccess message={success} />
         {!success && <FormError message={error} />}

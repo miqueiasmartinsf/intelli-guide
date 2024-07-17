@@ -1,11 +1,11 @@
 'use server'
 
-import * as z from 'zod'
 import bcrypt from 'bcryptjs'
+import * as z from 'zod'
 
-import { NewPasswordSchema } from '@/schemas/auth'
 import { getPasswordResetTokenByToken } from '@/data/password-reset-token'
 import { getUserByEmail } from '@/data/user'
+import { NewPasswordSchema } from '@/schemas/auth'
 import { db } from '@/services/database'
 
 export const newPasswordActions = async (

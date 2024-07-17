@@ -1,12 +1,13 @@
 'use server'
 
-import * as z from 'zod'
 import bcrypt from 'bcryptjs'
-import { RegisterSchema } from '@/schemas/auth'
+import * as z from 'zod'
+
 import { getUserByEmail } from '@/data/user'
-import { generateVerificationToken } from '@/services/token'
-import { sendVerificationEmail } from '@/services/mail'
+import { RegisterSchema } from '@/schemas/auth'
 import { db } from '@/services/database'
+import { sendVerificationEmail } from '@/services/mail'
+import { generateVerificationToken } from '@/services/token'
 
 export const registerAction = async (
   values: z.infer<typeof RegisterSchema>,

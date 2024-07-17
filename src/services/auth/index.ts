@@ -1,14 +1,15 @@
 /* eslint-disable camelcase */
-import NextAuth from 'next-auth'
-import { UserRole } from '@prisma/client'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { UserRole } from '@prisma/client'
+import NextAuth from 'next-auth'
 
-import { db } from '@/services/database'
 import {
+  getAccountByUserId,
   getTwoFactorConfirmationByUserId,
   getUserById,
-  getAccountByUserId,
 } from '@/data'
+import { db } from '@/services/database'
+
 import authConfig from './auth.config'
 
 export const {

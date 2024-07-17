@@ -2,8 +2,8 @@
 
 import * as z from 'zod'
 
-import { ResetSchema } from '@/schemas/auth'
 import { getUserByEmail } from '@/data/user'
+import { ResetSchema } from '@/schemas/auth'
 import { sendPasswordResetEmail } from '@/services/mail'
 import { generatePasswordResetToken } from '@/services/token'
 

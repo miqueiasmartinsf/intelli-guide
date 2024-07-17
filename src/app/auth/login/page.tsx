@@ -1,31 +1,30 @@
-import { LoginForm } from "@/components/auth/login-form";
+import { LoginForm } from '@/components/auth/login-form'
 
 const LoginPage = () => {
-    return (
-        <div className="flex h-screen">
-            <div className="w-1/2 h-full flex items-center justify-center flex-col gap-16">
-                <img src="/intelli-guide-2.png" alt="" className="w-80" />
-                <LoginForm />
-            </div>
-            <div className="w-1/2 h-full">
-                <div className="w-full h-full bg-primary flex justify-center flex-col items-center gap-16 px-8">
-                    <img src="/Questions-bro.svg" alt="" className="w-1/2" />
-                    <div className="flex items-center flex-col">
-                        <h2 className="text-3xl text-white text-center w-11/12">
-                            Desafie sua mente, aprenda e divirta-se!
-                        </h2>
-                        <p className="text-center mt-8 text-white w-11/12">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
-                        </p>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="flex h-screen">
+      <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
+        <img src="/intelli-guide-2.png" alt="" className="w-80" />
+        <LoginForm />
+      </div>
+      <div className="h-full w-1/2">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-16 bg-primary px-8">
+          <img src="/Questions-bro.svg" alt="" className="w-1/2" />
+          <div className="flex flex-col items-center">
+            <h2 className="w-11/12 text-center text-3xl text-white">
+              Desafie sua mente, aprenda e divirta-se!
+            </h2>
+            <p className="mt-8 w-11/12 text-center text-white">
+              Escolha entre uma variedade de temas e teste seus conhecimentos
+              com nossos quizzes divertidos e desafiadores. Compartilhe com seus
+              amigos e veja quem se sai melhor. Boa sorte e aproveite a jornada
+              de aprendizado!
+            </p>
+          </div>
         </div>
-    );
-};
+      </div>
+    </div>
+  )
+}
 
-export default LoginPage;
+export default LoginPage

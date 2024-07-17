@@ -1,17 +1,17 @@
 /* eslint-disable camelcase */
 'use server'
 
-import * as z from 'zod'
 import bcrypt from 'bcryptjs'
+import * as z from 'zod'
+
+import { getUserByEmail, getUserById } from '@/data/user'
+import { currentUser } from '@/lib/auth'
+import { SettingsSchema } from '@/schemas/auth'
+import { db } from '@/services/database'
+import { sendVerificationEmail } from '@/services/mail'
+import { generateVerificationToken } from '@/services/token'
 
 import { unstable_update } from '../services/auth'
-import { db } from '@/services/database'
-import { SettingsSchema } from '@/schemas/auth'
-import { getUserByEmail, getUserById } from '@/data/user'
-
-import { generateVerificationToken } from '@/services/token'
-import { sendVerificationEmail } from '@/services/mail'
-import { currentUser } from '@/lib/auth'
 
 export const settings = async (values: z.infer<typeof SettingsSchema>) => {
   const user = await currentUser()
