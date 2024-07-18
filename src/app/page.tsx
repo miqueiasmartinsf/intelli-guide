@@ -96,7 +96,7 @@ export default function Home() {
                 <div className="flex h-full items-center py-36">
                     <div className="flex h-full w-7/12 flex-col items-start justify-center">
                         <h2 className="w-11/12 text-5xl">
-                            Desafie sua mente, aprenda e divirta-se!
+                            Desafie sua mente, aprenda e divirta-seit z
                         </h2>
                         <p className="mt-8 w-11/12">
                             Escolha entre uma variedade de temas e teste seus
