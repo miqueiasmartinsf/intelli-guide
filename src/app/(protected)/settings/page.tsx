@@ -7,7 +7,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
-import { settings } from '@/actions/settings'
+import { settings } from './settings'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 import { Button } from '@/components/ui/button'

@@ -3,7 +3,7 @@
 import bcrypt from 'bcryptjs'
 import * as z from 'zod'
 
-import { getUserByEmail } from '@/data/user'
+import { getUserByEmail } from '@/data/auth/user'
 import { RegisterSchema } from '@/schemas/auth'
 import { db } from '@/services/database'
 import { sendVerificationEmail } from '@/services/mail'
