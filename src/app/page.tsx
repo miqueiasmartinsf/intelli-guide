@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import Link from "next/link";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
     const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
@@ -100,8 +101,8 @@ export default function Home() {
                 </div>
             </section>
             <section className="flex min-h-screen items-center bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
-                <div className="flex h-full items-center py-36">
-                    <div className="flex h-full w-5/12 flex-col items-start justify-center">
+                <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
+                    <div className="flex h-full w-5/12 flex-col items-start justify-center max-lg:w-full">
                         <Image
                             src="/Questions-bro.svg"
                             alt=""
@@ -109,7 +110,7 @@ export default function Home() {
                             height={320}
                         />
                     </div>
-                    <div className="flex h-full w-7/12 flex-col items-start justify-center">
+                    <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-5xl text-white">
                             Desafie sua mente, aprenda e divirta-se!
                         </h2>
@@ -130,8 +131,8 @@ export default function Home() {
                 </div>
             </section>
             <section className="min-h-screen px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
-                <div className="flex h-full items-center py-36">
-                    <div className="flex h-full w-7/12 flex-col items-start justify-center">
+                <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
+                    <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-5xl">
                             Desafie sua mente, aprenda e divirta-seit
                         </h2>
@@ -146,7 +147,7 @@ export default function Home() {
                             Começar agora!
                         </Button>
                     </div>
-                    <div className="flex h-full w-5/12 flex-col items-end justify-center">
+                    <div className="flex h-full w-5/12 flex-col items-end justify-center max-lg:w-full">
                         <Image
                             src="/Questions-bro.svg"
                             alt=""
@@ -156,6 +157,7 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     );
 }
