@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-5/12 flex-col items-start justify-center max-lg:w-full">
                         <img
-                            src="/Questions-bro.svg"
+                            src="/interrogation.svg"
                             className="max-w-[500px] max-2xl:w-96"
                             alt=""
                         />
@@ -170,7 +170,7 @@ export default function Home() {
                     </div>
                     <div className="flex h-full w-5/12 flex-col items-end justify-center max-lg:w-full">
                         <img
-                            src="/Questions-bro.svg"
+                            src="/problem-solving.svg"
                             className="max-w-[500px] max-2xl:w-96"
                             alt=""
                         />
