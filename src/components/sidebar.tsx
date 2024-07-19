@@ -7,11 +7,11 @@ import { UserButton } from "./auth/user-button";
 import { SidebarItem } from "./sidebar-item";
 import {
     House,
-    AlarmClockOffIcon,
     ShoppingBagIcon,
-    AlertOctagon,
     HelpCircle,
     User,
+    Award,
+    Dices,
 } from "lucide-react";
 
 type Props = {
@@ -19,24 +19,30 @@ type Props = {
 };
 
 const navigation = [
-    { href: "/", key: "example-1", label: "Início", icon: House },
+    { href: "/dashboard", key: "example-1", label: "Início", icon: House },
+    {
+        href: "/dashboard/courses",
+        label: "Quiz",
+        icon: Dices,
+    },
+    {
+        href: "/",
+        label: "Leaderboard",
+        icon: Award,
+    },
     {
         href: "/",
         label: "Loja",
         icon: ShoppingBagIcon,
     },
-    {
-        href: "/",
-        label: "Quiz",
-        icon: AlertOctagon,
-    },
+
     {
         href: "/",
         label: "Suporte",
         icon: HelpCircle,
     },
     {
-        href: "/",
+        href: "/dashboard/profile",
         label: "Perfil",
         icon: User,
     },
@@ -60,7 +66,7 @@ export const Sidebar = ({ className }: Props) => {
                     />
                 </div>
             </Link>
-            <div className="flex flex-1 flex-col gap-y-2">
+            <div className="mt-14 flex flex-1 flex-col gap-y-2 max-2xl:mt-6">
                 {navigation.map((item, index) => {
                     return (
                         <SidebarItem
