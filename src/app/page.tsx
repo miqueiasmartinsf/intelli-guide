@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Nav } from "@/components/Nav";
 
 export default function Home() {
     const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
@@ -11,33 +12,38 @@ export default function Home() {
             <section className="min-h-screen px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
                 <header className="flex items-center justify-between py-6">
                     <h1 className="text-3xl">IntelliGuide</h1>
-                    <nav className="max-lg:hidden">
-                        <ul className="flex items-center gap-4">
-                            <li>
-                                <a href="" className="nav-link">
-                                    Início
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="nav-link">
-                                    Contato
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="nav-link">
-                                    Sobre
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" className="nav-link">
-                                    Entrar
-                                </a>
-                            </li>
-                            <li>
+                    <Nav.Root>
+                        <Nav.Item>
+                            <Nav.Link>
+                                Início
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link>
+                                Contato
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link>
+                                Sobre
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link href="auth/login">
+                                Entrar
+                            </Nav.Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Nav.Link href="auth/register" isDefaultStyle={false}>
                                 <Button>Cadastrar</Button>
-                            </li>
-                        </ul>
-                    </nav>
+                            </Nav.Link>
+                        </Nav.Item>
+                    </Nav.Root>
+
                     <div
                         className="z-10 hidden flex-col items-end gap-2 max-lg:flex"
                         onClick={() => SetMenuAppearence(!menuAppearence)}
