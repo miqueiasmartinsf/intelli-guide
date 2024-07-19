@@ -34,7 +34,7 @@ export default function Home() {
                                 </a>
                             </li>
                             <li>
-                                <Button>Cadastrar</Button>
+                                <Button >Cadastrar</Button>
                             </li>
                         </ul>
                     </nav>
