@@ -10,6 +10,8 @@ import {
     AlarmClockOffIcon,
     ShoppingBagIcon,
     AlertOctagon,
+    HelpCircle,
+    User,
 } from "lucide-react";
 
 type Props = {
@@ -20,18 +22,23 @@ const navigation = [
     { href: "/", key: "example-1", label: "Início", icon: House },
     {
         href: "/",
-        label: "Início",
-        icon: AlarmClockOffIcon,
-    },
-    {
-        href: "/",
-        label: "Quiz",
+        label: "Loja",
         icon: ShoppingBagIcon,
     },
     {
         href: "/",
-        label: "Loja",
+        label: "Quiz",
         icon: AlertOctagon,
+    },
+    {
+        href: "/",
+        label: "Suporte",
+        icon: HelpCircle,
+    },
+    {
+        href: "/",
+        label: "Perfil",
+        icon: User,
     },
 ];
 

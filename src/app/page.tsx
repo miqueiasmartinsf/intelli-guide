@@ -23,27 +23,29 @@ export default function Home() {
                     <nav className="max-lg:hidden">
                         <ul className="flex items-center gap-4">
                             <li>
-                                <a href="" className="nav-link">
+                                <Link href={"/#"} className="nav-link">
                                     Início
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="" className="nav-link">
+                                <Link href={"/#"} className="nav-link">
                                     Contato
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="" className="nav-link">
+                                <Link href={"/#"} className="nav-link">
                                     Sobre
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="" className="nav-link">
+                                <Link href={"/auth/login"} className="nav-link">
                                     Entrar
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <Button>Cadastrar</Button>
+                                <Link href={"/auth/register"}>
+                                    <Button>Cadastrar</Button>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
