@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export function Footer() {
     return (
-        <footer className="bg-primary">
-            <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+        <footer className="w-full bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
+            <div className="m pb-6 pt-16 max-lg:mx-auto lg:pt-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
                         <div className="flex justify-center text-teal-300 sm:justify-start">
