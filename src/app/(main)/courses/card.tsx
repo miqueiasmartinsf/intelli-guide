@@ -30,7 +30,6 @@ export const Card = ({
                 {active && (
                     <div className="rounded-md bg-green-600 flex items-center justify-center p-1.5">
                         <Check className="text-white stroke-[4] h-4 w-4" />
-
                     </div>
                 )}
             </div>
