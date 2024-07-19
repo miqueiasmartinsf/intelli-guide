@@ -128,17 +128,18 @@ export default function Home() {
                     </div>
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-7xl text-white max-2xl:text-5xl">
-                            Desafie sua mente, aprenda e divirta-se!
+                            Descubra Quanto Você Sabe sobre Diversos Temas!{" "}
                         </h2>
                         <p className="mt-8 w-11/12 text-xl text-white max-2xl:text-base">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
+                            Descubra Quanto Você Sabe sobre Diversos Temas!
+                            Explore uma variedade de quizzes desafiadores em
+                            história, ciência, esportes e muito mais. Teste seus
+                            conhecimentos, descubra fatos interessantes e
+                            divirta-se enquanto aprende!
                         </p>
                         <Button
-                            className="mt-8 bg-white px-14 py-6 text-2xl text-black max-2xl:p-4 max-2xl:text-base"
+                            variant={"outline"}
+                            className="mt-8 px-14 py-6 text-2xl max-2xl:p-4 max-2xl:text-base"
                             size={"lg"}
                         >
                             Começar agora!
@@ -150,14 +151,15 @@ export default function Home() {
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-7xl max-2xl:text-5xl">
-                            Desafie sua mente, aprenda e divirta-seit
+                            Explore Nossos Quizzes em Diversos Temas!
                         </h2>
                         <p className="mt-8 w-11/12 text-xl max-2xl:text-base">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
+                            Em nosso site, cada quiz é uma oportunidade de
+                            diversão e aprendizado. Com uma coleção
+                            diversificada de quizzes em temas como história,
+                            ciência e cultura pop, garantimos atualizações
+                            frequentes e uma experiência de usuário intuitiva
+                            para expandir seu repertório de conhecimentos.
                         </p>
                         <Button
                             className="mt-8 px-14 py-6 text-2xl max-2xl:p-4 max-2xl:text-base"

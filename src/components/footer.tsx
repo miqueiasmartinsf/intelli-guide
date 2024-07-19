@@ -16,9 +16,7 @@ export function Footer() {
                         </div>
 
                         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-white sm:mx-0 sm:max-w-xs sm:text-left">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Incidunt consequuntur amet culpa cum itaque
-                            neque.
+                            Explore, aprenda e desafie seus conhecimentos agora!
                         </p>
 
                         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
