@@ -136,7 +136,7 @@ export function Footer() {
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-white">
-                                About Us
+                                Sobre Nós
                             </p>
 
                             <nav className="mt-8">
@@ -146,7 +146,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Company History
+                                            História da Empresa
                                         </a>
                                     </li>
 
@@ -155,7 +155,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Meet the Team
+                                            Conheça a Equipe
                                         </a>
                                     </li>
 
@@ -164,7 +164,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Employee Handbook
+                                            Manual do Funcionário
                                         </a>
                                     </li>
 
@@ -173,7 +173,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Careers
+                                            Carreiras
                                         </a>
                                     </li>
                                 </ul>
@@ -182,7 +182,7 @@ export function Footer() {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-white">
-                                Our Services
+                                Nossos Serviços
                             </p>
 
                             <nav className="mt-8">
@@ -192,7 +192,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Web Development
+                                            Desenvolvimento Web
                                         </a>
                                     </li>
 
@@ -201,7 +201,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Web Design
+                                            Design Web
                                         </a>
                                     </li>
 
@@ -228,7 +228,7 @@ export function Footer() {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-white">
-                                Helpful Links
+                                Links Úteis
                             </p>
 
                             <nav className="mt-8">
@@ -238,7 +238,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            FAQs
+                                            Perguntas Frequentes (FAQ)
                                         </a>
                                     </li>
 
@@ -247,23 +247,7 @@ export function Footer() {
                                             className="text-white transition hover:text-white/75"
                                             href="/"
                                         >
-                                            Support
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            className="group flex justify-center gap-1.5 sm:justify-start"
-                                            href="/"
-                                        >
-                                            <span className="text-white transition group-hover:text-white/75">
-                                                Live Chat
-                                            </span>
-
-                                            <span className="relative -mr-2 flex h-2 w-2">
-                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
-                                                <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-500"></span>
-                                            </span>
+                                            Suporte
                                         </a>
                                     </li>
                                 </ul>
@@ -272,7 +256,7 @@ export function Footer() {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-white">
-                                Contact Us
+                                Entre em Contato
                             </p>
 
                             <ul className="mt-8 space-y-4 text-sm">
