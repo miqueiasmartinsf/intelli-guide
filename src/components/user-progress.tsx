@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { InfinityIcon } from "lucide-react";
-// import { courses } from "@/db/schema";
+import { Courses } from "@prisma/client";
 
 type Props = {
-    activeCourse: any // typeof courses.$inferSelect; TODO: Replace with DB types 
+    activeCourse: Courses
     hearts: number;
     points: number;
     hasActiveSubscription: boolean;
