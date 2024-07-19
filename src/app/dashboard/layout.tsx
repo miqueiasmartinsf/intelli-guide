@@ -1,29 +1,21 @@
-import { AsideButton } from "@/components/aside-button";
-import { Home, AArrowDown, WorkflowIcon, Activity } from "lucide-react";
+import { MobileHeader } from "@/components/mobile-header";
+import { Sidebar } from "@/components/sidebar";
 
-type DashboardLayoutProps = {
+type Props = {
     children: React.ReactNode;
 };
 
-function DashboardLayout({ children }: DashboardLayoutProps) {
+const MainLayout = ({ children }: Props) => {
     return (
-        <div className="flex h-screen">
-            <div className="h-screen w-3/12 border-r-2 py-6">
-                <div className="w-full px-12">
-                    <h1 className="text-2xl font-bold text-primary">
-                        IntelliGuide
-                    </h1>
+        <>
+            <MobileHeader />
+            <Sidebar className="hidden lg:flex" />
+            <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
+                <div className="mx-auto h-full max-w-[1056px] pt-6">
+                    {children}
                 </div>
-                <div className="mt-10">
-                    <AsideButton Icon={Home} text="Home" />
-                    <AsideButton Icon={AArrowDown} text="AArrowDown" />
-                    <AsideButton Icon={WorkflowIcon} text="AArrowDown" />
-                    <AsideButton Icon={Activity} text="AArrowDown" />
-                </div>
-            </div>{" "}
-            <div className="w-9/12">{children}</div>
-        </div>
+            </main>
+        </>
     );
-}
-
-export default DashboardLayout;
+};
+export default MainLayout;

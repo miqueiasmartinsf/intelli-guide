@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
     const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
@@ -10,7 +11,14 @@ export default function Home() {
         <div>
             <section className="min-h-screen px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
                 <header className="flex items-center justify-between py-6">
-                    <h1 className="text-3xl">IntelliGuide</h1>
+                    <Link href={"/"}>
+                        <Image
+                            src="/intelli-guide.png"
+                            alt=""
+                            width={250}
+                            height={40}
+                        />
+                    </Link>
                     <nav className="max-lg:hidden">
                         <ul className="flex items-center gap-4">
                             <li>
