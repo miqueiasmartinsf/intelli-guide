@@ -13,7 +13,7 @@ function LeaderboardPage() {
         <div className="h-full w-full px-3">
             <h1 className="text-2xl font-bold text-neutral-700">Leaderboard</h1>
 
-            <div className="mt-8 flex flex-col justify-center gap-2">
+            <div className="0 mt-8 flex flex-col justify-center">
                 {LEADER_BOARD_MOCK.map((user, index) => {
                     return (
                         <LeaderBoardCard
