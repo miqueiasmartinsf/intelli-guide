@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 export function AsideMenu() {
     return (
-        <div className="flex h-screen flex-col gap-5 border-l-2 px-6 py-4">
+        <div className="flex h-screen max-w-[450px] flex-col gap-5 border-l-2 px-6 py-4">
             <div className="flex flex-col gap-4 border-b-2 py-4">
                 <h1 className="font-bold">Melhores Questionários</h1>
                 <div className="flex items-center justify-between rounded-md border px-2 py-2">
