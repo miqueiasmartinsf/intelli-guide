@@ -6,7 +6,7 @@ async function main() {
   // Limpar os dados existentes
   await db.challengeOption.deleteMany({})
   await db.challenge.deleteMany({})
-  await db.lesson.deleteMany({})
+  await db.lessons.deleteMany({})
   await db.unit.deleteMany({})
   await db.courses.deleteMany({})
   await db.userProgress.deleteMany({})
@@ -26,7 +26,7 @@ async function main() {
   await db.unit.create({
     data: {
       id: 1,
-      courseId: 1, // Spanish
+      coursesId: 1,
       title: 'unit 1',
       description: 'Learn the fundamentals of spanish',
       order: 1,
@@ -34,7 +34,7 @@ async function main() {
   })
 
   // Inserir lições
-  await db.lesson.createMany({
+  await db.lessons.createMany({
     data: [
       { id: 1, unitId: 1, order: 1, title: 'Nouns' },
       { id: 2, unitId: 1, order: 2, title: 'Verbs' },

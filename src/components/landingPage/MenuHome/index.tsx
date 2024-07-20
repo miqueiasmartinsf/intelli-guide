@@ -1,5 +1,5 @@
-import { useState } from "react";
-import MenuIcon from "./MenuIcon";
+import { useState } from 'react'
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -7,11 +7,13 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Button } from "../ui/button";
+} from '@/components/ui/dropdown-menu'
+
+import { Button } from '../ui/button'
+import MenuIcon from './MenuIcon'
 
 export default function MenuHome() {
-    const [menuAppearance, SetMenuAppearance] = useState<boolean>(false);
+    const [menuAppearance, SetMenuAppearance] = useState<boolean>(false)
     console.log(menuAppearance)
 
     return (
@@ -22,9 +24,7 @@ export default function MenuHome() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="hidden max-lg:flex max-lg:flex-col">
                     <DropdownMenuItem className="bg-primary text-white">
-                        <a href="/auth/register">
-                            Cadastrar
-                        </a>
+                        <a href="/auth/register">Cadastrar</a>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
 
@@ -46,7 +46,6 @@ export default function MenuHome() {
                     <DropdownMenuItem>
                         <a href="/auth/login">Entrar</a>
                     </DropdownMenuItem>
-
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
