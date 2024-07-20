@@ -1,22 +1,35 @@
-import { AsideButton } from "@/components/aside-button";
-import { Home, AArrowDown, WorkflowIcon, Activity } from "lucide-react";
-
 function DashboardPage() {
-    return (
-        <div>
-            <div className="h-screen w-2/12 border-r-2 py-4">
-                <div className="w-full">
-                    <h1 className="text-center">IntelliGuide</h1>
-                </div>
-                <div className="mt-14">
-                    <AsideButton Icon={Home} text="Home" />
-                    <AsideButton Icon={AArrowDown} text="AArrowDown" />
-                    <AsideButton Icon={WorkflowIcon} text="AArrowDown" />
-                    <AsideButton Icon={Activity} text="AArrowDown" />
-                </div>
-            </div>
+  return (
+    <div className="h-full w-full px-3">
+      <h1 className="text-2xl font-bold">Dashboard</h1>
+      <div className="mt-14 flex gap-5">
+        <div className="flex h-full min-h-[200px] min-w-[200px] cursor-pointer flex-col gap-4 rounded-xl border-2 border-b-4 p-4 pb-6 hover:bg-black/5 active:border-b-2">
+          <div>
+            <h3 className="text-xl font-bold">Sua pontuação</h3>
+            <p className="text-base">
+              Toda a sua pontuação acumulada em desafios.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-4xl font-bold text-primary">1420.3</h2>
+          </div>
         </div>
-    );
+        <div className="flex h-full min-h-[200px] min-w-[200px] cursor-pointer flex-col gap-4 rounded-xl border-2 border-b-4 p-4 pb-6 hover:bg-black/5 active:border-b-2">
+          <div>
+            <h3 className="text-xl font-bold">Acertos</h3>
+            <p className="text-base">
+              Total de acertos acumulados em desafios.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-4xl font-bold text-primary">34</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
-export default DashboardPage;
+export default DashboardPage

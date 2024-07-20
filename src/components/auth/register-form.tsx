@@ -51,14 +51,14 @@ export const RegisterForm = () => {
   }
 
   return (
-    <div className="mx-auto w-full max-w-md rounded-none bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8">
+    <div className="mx-auto w-full max-w-md rounded-none bg-white p-2 shadow-input dark:bg-black md:rounded-2xl md:p-8">
       <Header
         title="Welcome to OBC-Gamified"
         subtitle="Sign up to explore the gamified learning experience."
       />
 
       <form onSubmit={handleSubmit(onSubmit)} className="mb-4 mt-8">
-        <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-x-2 md:space-y-0">
+        <div className="mb-4 flex flex-col space-y-1 md:flex-row md:space-x-2 md:space-y-0">
           <InputWithLabel
             id="name"
             label="Full Name"

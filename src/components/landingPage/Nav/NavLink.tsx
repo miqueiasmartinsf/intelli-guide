@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ReactNode } from "react";
+import { AnchorHTMLAttributes, ReactNode } from 'react'
 
 interface NavLink extends AnchorHTMLAttributes<HTMLAnchorElement> {
     href?: string
@@ -7,14 +7,20 @@ interface NavLink extends AnchorHTMLAttributes<HTMLAnchorElement> {
     isDefaultStyle?: boolean
 }
 
-export default function NavLink({ href, className, children, isDefaultStyle = true, ...rest }: NavLink) {
+export default function NavLink({
+    href,
+    className,
+    children,
+    isDefaultStyle = true,
+    ...rest
+}: NavLink) {
     return (
         <a
-            href={href ? href : '#'}
+            href={href || '#'}
             className={`${isDefaultStyle && 'nav-link'} ${className}`}
             {...rest}
         >
-            { children }
+            {children}
         </a>
     )
 }

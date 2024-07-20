@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react"
+import { CSSProperties, ReactNode } from 'react'
 
 interface NavRootProps {
     children?: ReactNode
@@ -6,11 +6,15 @@ interface NavRootProps {
     navDirection?: 'row' | 'col'
 }
 
-export default function NavRoot({ children, style, navDirection = 'row' }: NavRootProps) {
+export default function NavRoot({
+    children,
+    style,
+    navDirection = 'row',
+}: NavRootProps) {
     return (
         <nav className={`max-lg:hidden`} style={style}>
             <ul className={`flex flex-${navDirection} items-center gap-4`}>
-                { children }
+                {children}
             </ul>
         </nav>
     )

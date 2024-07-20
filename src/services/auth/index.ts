@@ -8,9 +8,8 @@ import {
   getTwoFactorConfirmationByUserId,
   getUserById,
 } from '@/data'
+import authConfig from '@/services/auth/auth.config'
 import { db } from '@/services/database'
-
-import authConfig from './auth.config'
 
 export const {
   handlers: { GET, POST },

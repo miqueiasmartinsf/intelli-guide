@@ -1,7 +1,17 @@
+import {
+  Award,
+  Dices,
+  HelpCircle,
+  House,
+  ShoppingBagIcon,
+  User,
+} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
 import { cn } from '@/lib/utils'
+import ImgIntelliGuide from '@/public/intelli-guide.png'
 
 import { UserButton } from './auth/user-button'
 import { SidebarItem } from './sidebar-item'
@@ -9,6 +19,36 @@ import { SidebarItem } from './sidebar-item'
 type Props = {
   className?: string
 }
+
+const navigation = [
+  { href: '/dashboard', key: 'example-1', label: 'Início', icon: House },
+  {
+    href: '/dashboard/courses',
+    label: 'Quiz',
+    icon: Dices,
+  },
+  {
+    href: '/dashboard/leaderboard',
+    label: 'Leaderboard',
+    icon: Award,
+  },
+  {
+    href: '/',
+    label: 'Loja',
+    icon: ShoppingBagIcon,
+  },
+
+  {
+    href: '/',
+    label: 'Suporte',
+    icon: HelpCircle,
+  },
+  {
+    href: '/dashboard/profile',
+    label: 'Perfil',
+    icon: User,
+  },
+]
 
 export const Sidebar = ({ className }: Props) => {
   return (
@@ -20,21 +60,17 @@ export const Sidebar = ({ className }: Props) => {
     >
       <Link href="/learn">
         <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
-          <Image src="/mascot.svg" height={40} width={40} alt="Mascot" />
-          <h1 className="text-2xl font-extrabold tracking-wide text-green-600">
-            Learn Guide
-          </h1>
+          <Image src={ImgIntelliGuide} height={250} width={250} alt="Mascot" />
         </div>
       </Link>
-      <div className="flex flex-1 flex-col gap-y-2">
-        <SidebarItem label="learn" href="/learn" iconSrc="/learn.svg" />
-        <SidebarItem
-          label="leaderboard"
-          href="/leaderboard"
-          iconSrc="/leaderboard.svg"
-        />
-        <SidebarItem label="quests" href="/quests" iconSrc="/quests.svg" />
-        <SidebarItem label="shop" href="/shop" iconSrc="/shop.svg" />
+      <div className="mt-14 flex flex-1 flex-col gap-y-2 max-2xl:mt-6">
+        {navigation.map((item, index) => {
+          return (
+            <SidebarItem href={item.href} label={item.label} key={index}>
+              {React.createElement(item.icon)}
+            </SidebarItem>
+          )
+        })}
       </div>
       <div className="p-4">
         <UserButton />

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
 import { currentUser } from '@/lib/auth'
+import ImgLogoForm from '@/public/intelli-guide-2.png'
+import ImgLayoutForm from '@/public/Questions-bro.svg'
 
 async function AuthLayout({
   children,
@@ -17,12 +19,12 @@ async function AuthLayout({
   return (
     <div className="flex h-screen">
       <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
-        <Image src="/intelli-guide-2.png" alt="" width={320} height={56} />
+        <Image src={ImgLogoForm} alt="" width={320} height={56} />
         {children}
       </div>
       <div className="h-full w-1/2">
         <div className="flex h-full w-full flex-col items-center justify-center gap-16 bg-primary px-8">
-          <Image src="/Questions-bro.svg" alt="" width={328} height={328} />
+          <Image src={ImgLayoutForm} alt="" width={328} height={328} />
           <div className="flex flex-col items-center">
             <h2 className="w-11/12 text-center text-3xl text-white">
               Desafie sua mente, aprenda e divirta-se!

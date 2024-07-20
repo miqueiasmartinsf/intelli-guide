@@ -1,4 +1,4 @@
-import { Button } from "../ui/button"
+import { Button } from "../../ui/button"
 
 interface SectionHomeButtonProps {
     text: string
@@ -8,7 +8,7 @@ interface SectionHomeButtonProps {
 export default function SectionHomeButton({ text, variant = "default" }: SectionHomeButtonProps) {
     return (
         <Button className="mt-8" size={"lg"} variant={variant}>
-            { text }
+            {text}
         </Button>
     )
 }

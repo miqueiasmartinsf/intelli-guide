@@ -1,12 +1,12 @@
-import { useCurrentUser } from "@/hooks/use-current-user";
-import { db } from "@/services/database";
+import { useCurrentUser } from '@/hooks/use-current-user'
+import { db } from '@/services/database'
 
 export const getUserProgress = async () => {
   try {
-    const user = await useCurrentUser();
+    const user = await useCurrentUser()
 
     if (!user?.id) {
-      return null;
+      return null
     }
 
     const data = await db.userProgress.findFirst({
@@ -14,10 +14,10 @@ export const getUserProgress = async () => {
       include: {
         activeCourse: true,
       },
-    });
+    })
 
-    return data;
+    return data
   } catch {
-    return null;
+    return null
   }
-};
+}

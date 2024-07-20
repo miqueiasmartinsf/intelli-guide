@@ -3,7 +3,6 @@ import type { NextAuthConfig } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import Github from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
-import EmailProvider from 'next-auth/providers/nodemailer'
 
 import { getUserByEmail } from '@/data/auth/user'
 import { LoginSchema } from '@/schemas/auth'
@@ -17,17 +16,6 @@ export default {
     Github({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    }),
-    EmailProvider({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: Number(process.env.EMAIL_SERVER_PORT),
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.EMAIL_APP_PASSWORD,
-        },
-      },
-      from: process.env.EMAIL_USERNAME,
     }),
     Credentials({
       async authorize(credentials) {
@@ -48,5 +36,4 @@ export default {
       },
     }),
   ],
-  secret: process.env.AUTH_SECRET,
 } satisfies NextAuthConfig

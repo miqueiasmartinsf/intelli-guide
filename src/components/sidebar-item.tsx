@@ -1,18 +1,18 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import React from 'react'
 
 import { Button } from './ui/button'
 
 type Props = {
   label: string
-  iconSrc: string
+  children: React.ReactNode
   href: string
 }
 
-export const SidebarItem = ({ label, iconSrc, href }: Props) => {
+export const SidebarItem = ({ label, children, href }: Props) => {
   const pathname = usePathname()
   const active = pathname === href
 
@@ -22,14 +22,8 @@ export const SidebarItem = ({ label, iconSrc, href }: Props) => {
       className="h-[52px] justify-start"
       asChild
     >
-      <Link href={href}>
-        <Image
-          src={iconSrc}
-          alt={label}
-          className="mr-5"
-          height={32}
-          width={32}
-        />
+      <Link href={href} className="flex gap-5">
+        {children}
         {label}
       </Link>
     </Button>

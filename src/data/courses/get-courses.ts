@@ -1,4 +1,4 @@
-import { db } from "@/services/database"
+import { db } from '@/services/database'
 
 export const getCourses = async () => {
   try {
