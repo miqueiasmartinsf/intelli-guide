@@ -21,7 +21,7 @@ function ProfilePage() {
         handleSubmit,
         formState: { errors },
         reset,
-    } = useForm<z.infer<typeof LoginSchema>>({
+    } = useForm<z.infer<typeof updateUserSchema>>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
             email: "",
@@ -111,7 +111,7 @@ function ProfilePage() {
                             error={errors.email?.message}
                         />
                         <InputWithLabel
-                            id="new-password"
+                            id="newPassword"
                             label="Nova senha"
                             type="password"
                             className="mb-4"
@@ -121,7 +121,7 @@ function ProfilePage() {
                         />
 
                         <InputWithLabel
-                            id="password"
+                            id="confirmPassword"
                             label="Confirme a senha"
                             placeholder="••••••••"
                             type="password"
