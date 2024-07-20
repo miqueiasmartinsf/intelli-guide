@@ -26,7 +26,7 @@ const navigation = [
         icon: Dices,
     },
     {
-        href: "/",
+        href: "/dashboard/leaderboard",
         label: "Leaderboard",
         icon: Award,
     },
