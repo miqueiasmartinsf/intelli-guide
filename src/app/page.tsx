@@ -1,11 +1,10 @@
 "use client";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { Nav } from "@/components/Nav";
+import { SectionHome } from "@/components/SectionHome";
+import MenuHome from "@/components/MenuHome";
 
 export default function Home() {
-    const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
 
     return (
         <div>
@@ -18,25 +17,21 @@ export default function Home() {
                                 Início
                             </Nav.Link>
                         </Nav.Item>
-
                         <Nav.Item>
                             <Nav.Link>
                                 Contato
                             </Nav.Link>
                         </Nav.Item>
-
                         <Nav.Item>
                             <Nav.Link>
                                 Sobre
                             </Nav.Link>
                         </Nav.Item>
-
                         <Nav.Item>
                             <Nav.Link href="auth/login">
                                 Entrar
                             </Nav.Link>
                         </Nav.Item>
-
                         <Nav.Item>
                             <Nav.Link href="auth/register" isDefaultStyle={false}>
                                 <Button>Cadastrar</Button>
@@ -44,115 +39,49 @@ export default function Home() {
                         </Nav.Item>
                     </Nav.Root>
 
-                    <div
-                        className="z-10 hidden flex-col items-end gap-2 max-lg:flex"
-                        onClick={() => SetMenuAppearence(!menuAppearence)}
-                    >
-                        <div
-                            className={
-                                menuAppearence
-                                    ? "h-1 w-10 translate-y-3 rotate-[-225deg] rounded-sm bg-black transition-all duration-300 ease-in-out"
-                                    : "h-1 w-10 rounded-sm bg-black transition-all duration-300 ease-in-out"
-                            }
-                        ></div>
-                        <div
-                            className={
-                                menuAppearence
-                                    ? "hidden transition-all duration-300 ease-in-out"
-                                    : "h-1 w-9 rounded-sm bg-black transition-all duration-300 ease-in-out"
-                            }
-                        ></div>
-                        <div
-                            className={
-                                menuAppearence
-                                    ? "h-1 w-10 rotate-[225deg] rounded-sm bg-black transition-all duration-300 ease-in-out"
-                                    : "h-1 w-7 rounded-sm bg-black transition-all duration-300 ease-in-out"
-                            }
-                        ></div>
-                    </div>
+                    <MenuHome/>
                 </header>
-                <div className="flex h-full items-center py-36">
-                    <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
-                        <h2 className="w-11/12 text-5xl">
-                            Desafie sua mente, aprenda e divirta-se!
-                        </h2>
-                        <p className="mt-8 w-11/12">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
-                        </p>
-                        <Button className="mt-8" size={"lg"}>
-                            Começar agora!
-                        </Button>
-                    </div>
-                    <div className="max-lg flex h-full w-5/12 flex-col items-end justify-center max-lg:hidden">
-                        <Image
-                            src="/Questions-bro.svg"
-                            alt=""
-                            width={320}
-                            height={320}
-                        />
-                    </div>
-                </div>
+
+                <SectionHome.Root imageUrl="/Questions-bro.svg" /* default: imagePosition="right" */ >
+                    <SectionHome.Title>Desafie sua mente, aprenda e divirta-se!</SectionHome.Title>
+                    <SectionHome.Paragraph>
+                        Escolha entre uma variedade de temas e teste seus
+                        conhecimentos com nossos quizzes divertidos e
+                        desafiadores. Compartilhe com seus amigos e veja
+                        quem se sai melhor. Boa sorte e aproveite a jornada
+                        de aprendizado!
+                    </SectionHome.Paragraph>
+                    <SectionHome.Button text="Começar agora!" />
+                </SectionHome.Root>
+
             </section>
+
             <section className="flex min-h-screen items-center bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
-                <div className="flex h-full items-center py-36">
-                    <div className="flex h-full w-5/12 flex-col items-start justify-center">
-                        <Image
-                            src="/Questions-bro.svg"
-                            alt=""
-                            width={320}
-                            height={320}
-                        />
-                    </div>
-                    <div className="flex h-full w-7/12 flex-col items-start justify-center">
-                        <h2 className="w-11/12 text-5xl text-white">
-                            Desafie sua mente, aprenda e divirta-se!
-                        </h2>
-                        <p className="mt-8 w-11/12 text-white">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
-                        </p>
-                        <Button
-                            className="mt-8 bg-white text-black"
-                            size={"lg"}
-                        >
-                            Começar agora!
-                        </Button>
-                    </div>
-                </div>
+                <SectionHome.Root imageUrl="/Questions-bro.svg" imagePosition="left">
+                    <SectionHome.Title>Desafie sua mente, aprenda e divirta-se!</SectionHome.Title>
+                    <SectionHome.Paragraph>
+                        Escolha entre uma variedade de temas e teste seus
+                        conhecimentos com nossos quizzes divertidos e
+                        desafiadores. Compartilhe com seus amigos e veja
+                        quem se sai melhor. Boa sorte e aproveite a jornada
+                        de aprendizado!
+                    </SectionHome.Paragraph>
+                    <SectionHome.Button text="Começar agora!" variant="secondary"/>
+                </SectionHome.Root>
             </section>
+
             <section className="min-h-screen px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
-                <div className="flex h-full items-center py-36">
-                    <div className="flex h-full w-7/12 flex-col items-start justify-center">
-                        <h2 className="w-11/12 text-5xl">
-                            Desafie sua mente, aprenda e divirta-seit
-                        </h2>
-                        <p className="mt-8 w-11/12">
-                            Escolha entre uma variedade de temas e teste seus
-                            conhecimentos com nossos quizzes divertidos e
-                            desafiadores. Compartilhe com seus amigos e veja
-                            quem se sai melhor. Boa sorte e aproveite a jornada
-                            de aprendizado!
-                        </p>
-                        <Button className="mt-8" size={"lg"}>
-                            Começar agora!
-                        </Button>
-                    </div>
-                    <div className="flex h-full w-5/12 flex-col items-end justify-center">
-                        <Image
-                            src="/Questions-bro.svg"
-                            alt=""
-                            width={320}
-                            height={320}
-                        />
-                    </div>
-                </div>
+                <SectionHome.Root imageUrl="/Questions-bro.svg" /* default: imagePosition="right" */ >
+                    <SectionHome.Title>Desafie sua mente, aprenda e divirta-se!</SectionHome.Title>
+                    <SectionHome.Paragraph>
+                        Escolha entre uma variedade de temas e teste seus
+                        conhecimentos com nossos quizzes divertidos e
+                        desafiadores. Compartilhe com seus amigos e veja
+                        quem se sai melhor. Boa sorte e aproveite a jornada
+                        de aprendizado!
+                    </SectionHome.Paragraph>
+                    <SectionHome.Button text="Começar agora!" />
+                </SectionHome.Root>
             </section>
         </div>
     );
