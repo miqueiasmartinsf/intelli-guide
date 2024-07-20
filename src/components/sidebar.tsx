@@ -33,7 +33,7 @@ const navigation = [
     icon: Award,
   },
   {
-    href: '/',
+    href: '/learn',
     label: 'Loja',
     icon: ShoppingBagIcon,
   },

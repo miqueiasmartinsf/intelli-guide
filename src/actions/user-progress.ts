@@ -4,12 +4,17 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { getCourseById, getUserProgress, getUserSubscription } from '@/data'
-import { useCurrentUser } from '@/hooks/use-current-user'
+// import { useCurrentUser } from '@/hooks/use-current-user'
+import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 import { POINTS_TO_REFILL } from '@/utils/constants'
 
-export const upsertUserProgress = async (courseId: number, user: any) => {
-  if (!user || !user?.id) {
+export const upsertUserProgress = async (courseId: number) => {
+  const session = await auth()
+  const user = session?.user
+  const userId = user?.id
+
+  if (!user || !userId) {
     console.error('Unauthorized user')
 
     throw new Error('Unauthorized user')
@@ -22,7 +27,7 @@ export const upsertUserProgress = async (courseId: number, user: any) => {
     throw new Error('Course not found')
   }
 
-  if (!course.units.length || !course.units[0].lessons.length) {
+  if (!course.Unit.length || !course.Unit[0].Lessons.length) {
     console.error('Course is empty')
     throw new Error('Course is empty')
   }
@@ -31,33 +36,39 @@ export const upsertUserProgress = async (courseId: number, user: any) => {
 
   if (existingUserProgress) {
     await db.userProgress.update({
-      where: { userId: user.id },
+      where: { userId },
       data: {
         activeCourseId: courseId,
         userName: user?.name || 'user',
         userImageSrc: user?.image || '/mascot.svg',
       },
     })
+
+    revalidatePath('/courses')
+    revalidatePath('/learn')
+    redirect('/learn')
   } else {
     await db.userProgress.create({
       data: {
-        userId: user.id,
+        userId,
         activeCourseId: courseId,
         userName: user?.name || 'user',
         userImageSrc: user?.image || '/mascot.svg',
       },
     })
-  }
 
-  revalidatePath('/courses')
-  revalidatePath('/learn')
-  redirect('/learn')
+    revalidatePath('/courses')
+    revalidatePath('/learn')
+    redirect('/learn')
+  }
 }
 
 export const reduceHearts = async (challengeId: number) => {
-  const user = useCurrentUser()
+  const session = await auth()
+  const user = session?.user
+  const userId = user?.id
 
-  if (!user || !user?.id) {
+  if (userId) {
     throw new Error('Unauthorized')
   }
 
@@ -76,7 +87,7 @@ export const reduceHearts = async (challengeId: number) => {
 
   const existingChallengeProgress = await db.challengeProgress.findFirst({
     where: {
-      userId: user.id,
+      userId,
       challengeId,
     },
   })
@@ -100,7 +111,7 @@ export const reduceHearts = async (challengeId: number) => {
   }
 
   await db.userProgress.update({
-    where: { userId: user.id },
+    where: { userId },
     data: {
       hearts: Math.max(currentUserProgress.hearts - 1, 0),
     },

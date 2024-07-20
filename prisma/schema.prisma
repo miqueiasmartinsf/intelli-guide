@@ -98,8 +98,8 @@ model Courses {
   title    String
   imageSrc String
 
-  units        Unit[]
-  userProgress UserProgress[]
+  Unit         Unit[]
+  UserProgress UserProgress[]
 
   @@map("courses")
 }
@@ -108,25 +108,26 @@ model Unit {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  courseId    Int
-  order       Int
+  coursesId   Int?
 
-  course  Courses  @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  lessons Lesson[]
+  order Int
+
+  Courses Courses?  @relation(fields: [coursesId], references: [id])
+  Lessons Lessons[]
 
   @@map("unit")
 }
 
-model Lesson {
+model Lessons {
   id     Int    @id @default(autoincrement())
   title  String
   unitId Int
   order  Int
 
-  unit       Unit        @relation(fields: [unitId], references: [id], onDelete: Cascade)
-  challenges Challenge[]
+  Unit      Unit        @relation(fields: [unitId], references: [id])
+  Challenge Challenge[]
 
-  @@map("lesson")
+  @@map("lessons")
 }
 
 enum ChallengeType {
@@ -135,15 +136,16 @@ enum ChallengeType {
 }
 
 model Challenge {
-  id       Int           @id @default(autoincrement())
-  lessonId Int
-  type     ChallengeType
-  question String
-  order    Int
+  id        Int           @id @default(autoincrement())
+  lessonId  Int
+  type      ChallengeType
+  question  String
+  order     Int
+  lessonsId Int?
 
-  lesson            Lesson              @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-  challengeOptions  ChallengeOption[]
-  challengeProgress ChallengeProgress[]
+  Lessons           Lessons?            @relation(fields: [lessonsId], references: [id])
+  ChallengeOption   ChallengeOption[]
+  ChallengeProgress ChallengeProgress[]
 
   @@map("challenge")
 }
@@ -156,7 +158,7 @@ model ChallengeOption {
   imageSrc    String?
   audioSrc    String?
 
-  challenge Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  Challenge Challenge @relation(fields: [challengeId], references: [id])
 
   @@map("challenge_option")
 }
@@ -167,7 +169,7 @@ model ChallengeProgress {
   challengeId Int
   completed   Boolean @default(false)
 
-  challenge Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  Challenge Challenge @relation(fields: [challengeId], references: [id])
 
   @@map("challenge_progress")
 }

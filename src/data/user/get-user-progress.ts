@@ -1,16 +1,18 @@
-import { useCurrentUser } from '@/hooks/use-current-user'
+import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
 export const getUserProgress = async () => {
   try {
-    const user = await useCurrentUser()
+    const session = await auth()
+    const user = session?.user
+    const userId = user?.id
 
-    if (!user?.id) {
+    if (!userId) {
       return null
     }
 
     const data = await db.userProgress.findFirst({
-      where: { userId: user.id },
+      where: { userId },
       include: {
         activeCourse: true,
       },

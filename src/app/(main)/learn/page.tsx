@@ -1,18 +1,26 @@
 import { redirect } from 'next/navigation'
 
 import { FeedWrapper } from '@/components/feed-wrapper'
+import { Quests } from '@/components/quests'
 import { StickyWrapper } from '@/components/sticky-wrapper'
 import { UserProgress } from '@/components/user-progress'
-import { getUserProgress, getUserSubscription } from '@/data'
+import {
+  getCourseProgress,
+  getLessonPercentage,
+  getUnits,
+  getUserProgress,
+  getUserSubscription,
+} from '@/data'
 
 import { Header } from './header'
+import { ExtendedLessonWithUnit, Unit } from './unint'
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress()
-  // const courseProgressData = getCourseProgress();
-  // const lessonPercentageData = getLessonPercentage();
-  //
-  // const unitsData = getUnits()
+  const courseProgressData = getCourseProgress()
+  const lessonPercentageData = getLessonPercentage()
+
+  const unitsData = getUnits()
 
   const userSubscriptionData = getUserSubscription()
 
@@ -49,10 +57,27 @@ const LearnPage = async () => {
           points={userProgress.points}
           hasActiveSubscription={isPro}
         />
+        {/* !isPro && <Promo /> */}
+        <Quests points={userProgress.points} />
       </StickyWrapper>
 
       <FeedWrapper>
-        <Header title="Learn" />
+        <Header title={userProgress.activeCourse.title} />
+        {units.map((unit) => (
+          <div key={unit.id} className="mb-10">
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={
+                courseProgress.activeLesson as unknown as ExtendedLessonWithUnit
+              }
+              activeLessonPercentage={lessonPercentage}
+            />
+          </div>
+        ))}
       </FeedWrapper>
     </div>
   )
