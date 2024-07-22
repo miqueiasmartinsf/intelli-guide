@@ -8,17 +8,17 @@ type Props = {
 }
 
 const MainLayout = ({ children }: Props) => {
-  return (
-    <>
-      <MobileHeader />
-      <Sidebar className="hidden lg:flex" />
-      <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
-        <div className="flex h-full px-10 pt-6">
-          {children}
-          <AsideMenu />
-        </div>
-      </main>
-    </>
-  )
-}
-export default MainLayout
+    return (
+        <>
+            <MobileHeader />
+            <Sidebar className="hidden lg:flex" />
+            <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
+                <div className="flex h-full px-10 pt-6">
+                    <div className="w-[85%]">{children}</div>
+                    <AsideMenu />
+                </div>
+            </main>
+        </>
+    );
+};
+export default MainLayout;
