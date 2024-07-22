@@ -1,5 +1,8 @@
-import Image from "next/image";
-import { Button } from "./ui/button";
+import Image from 'next/image'
+
+import ImgLeaderboard from '@/public/leaderboard.svg'
+
+import { Button } from './ui/button'
 
 export function AsideMenu() {
     return (
@@ -71,5 +74,7 @@ export function AsideMenu() {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  )
 }

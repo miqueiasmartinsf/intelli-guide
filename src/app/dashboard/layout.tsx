@@ -1,10 +1,11 @@
-import { AsideMenu } from "@/components/aside-menu";
-import { MobileHeader } from "@/components/mobile-header";
-import { Sidebar } from "@/components/sidebar";
+import { AsideMenu } from '@/components/aside-menu'
+import { MobileHeader } from '@/components/mobile-header'
+import { Sidebar } from '@/components/sidebar'
+import { Button } from '@/components/ui/button'
 
 type Props = {
-    children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 const MainLayout = ({ children }: Props) => {
     return (

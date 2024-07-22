@@ -4,14 +4,12 @@ import { UserRole } from "@prisma/client";
 import NextAuth from "next-auth";
 
 import {
-    getAccountByUserId,
-    getTwoFactorConfirmationByUserId,
-    getUserById,
-} from "@/data";
-import { db } from "@/services/database";
-
-import authConfig from "./auth.config";
-
+  getAccountByUserId,
+  getTwoFactorConfirmationByUserId,
+  getUserById,
+} from '@/data'
+import authConfig from '@/services/auth/auth.config'
+import { db } from '@/services/database'
 export const {
     handlers: { GET, POST },
     auth,

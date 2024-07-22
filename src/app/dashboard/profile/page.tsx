@@ -1,3 +1,4 @@
+
 "use client";
 import { InputWithLabel } from "@/components/auth";
 import { Button } from "@/components/ui/button";
@@ -138,7 +139,9 @@ function ProfilePage() {
                 </div>
             </div>
         </div>
-    );
+      </div>
+    </div>
+  )
 }
 
-export default ProfilePage;
+export default ProfilePage
