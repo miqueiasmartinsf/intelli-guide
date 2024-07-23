@@ -1,21 +1,29 @@
-import { useCurrentUser } from "@/hooks/use-current-user";
-import { db } from "@/services/database";
-import { DAY_IN_MS } from "@/utils/constants";
+'use server'
+import { cache } from 'react'
 
-export const getUserSubscription = async () => {
+import { auth } from '@/services/auth'
+import { db } from '@/services/database'
+import { DAY_IN_MS } from '@/utils/constants'
+
+export const getUserSubscription = cache(async () => {
   try {
-    const user = await useCurrentUser(); 
+    const session = await auth()
+    const user = session?.user
+    const userId = user?.id
 
-    if (!user?.id) return null;
+    if (userId) return null
 
     const data = await db.userSubscription.findFirst({
-      where: { userId: user.id },
-    });
+      where: { userId },
+    })
 
-    if (!data) return null;
+    console.log('getUserSubscription data', data)
+
+    if (!data) return null
 
     const isActive = data.stripePriceId && new Date(data.stripeCurrentPeriodEnd).getTime() + DAY_IN_MS > Date.now();
 
+    console.log('isActive', isActive)
     return {
       ...data,
       isActive: !!isActive,
@@ -23,4 +31,4 @@ export const getUserSubscription = async () => {
   } catch {
     return null;
   }
-};
+})

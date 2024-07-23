@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
 import { currentUser } from '@/lib/auth'
+import Link from 'next/link'
 
 async function AuthLayout({
   children,
@@ -17,7 +18,9 @@ async function AuthLayout({
   return (
     <div className="flex h-screen">
       <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
-        <Image src="/intelli-guide.png" alt="" width={320} height={56} />
+        <Link href={"/"}>
+          <Image src="/intelli-guide.png" alt="" width={320} height={56} />
+        </Link>
         {children}
       </div>
       <div className="h-full w-1/2">
