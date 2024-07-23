@@ -140,9 +140,8 @@ model Challenges {
   type      ChallengeType
   question  String
   order     Int
-  lessonsId Int?
 
-  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonId], references: [id])
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 

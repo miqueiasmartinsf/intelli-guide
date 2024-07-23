@@ -5,6 +5,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 
+import ImgIntelliGuide from "@/public/intelli-guide.png";
+import ImgInterrogation from "@/public/interrogation.svg";
+import ImgQuestionsBro from "@/public/Questions-bro.svg";
+import ImgProblemSolving from "@/public/problem-solving.svg";
+
 export default function Home() {
     const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
 
@@ -13,11 +18,9 @@ export default function Home() {
             <section className="px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
                 <header className="flex items-center justify-between py-8 max-2xl:py-6">
                     <Link href={"/"}>
-                        <img
-                            src="/intelli-guide.png"
-                            className="max-w-[300px] max-2xl:w-[250px] max-sm:w-[150px]"
-                            alt=""
-                        />
+                        <div className="relative max-w-[300px] max-2xl:w-[250px] max-sm:w-[150px]">
+                            <Image src={ImgIntelliGuide} alt="" />
+                        </div>
                     </Link>
                     <nav className="max-lg:hidden">
                         <ul className="flex items-center gap-4">
@@ -149,6 +152,9 @@ export default function Home() {
                         </Button>
                     </div>
                     <div className="max-lg flex h-full w-5/12 flex-col items-end justify-center max-lg:hidden max-lg:items-start">
+                        <div className="relative max-w-[500px] max-2xl:w-80">
+                            <Image src={ImgQuestionsBro} alt="" />
+                        </div>
                         <img
                             src="/Questions-bro.svg"
                             className="max-w-[500px] max-2xl:w-80"
@@ -160,11 +166,9 @@ export default function Home() {
             <section className="flex items-center bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-5/12 flex-col items-start justify-center max-lg:w-full">
-                        <img
-                            src="/interrogation.svg"
-                            className="max-w-[500px] max-2xl:w-96 max-lg:w-72"
-                            alt=""
-                        />
+                        <div className="max-w-[500px] max-2xl:w-96 max-lg:w-72">
+                            <Image src={ImgInterrogation} alt="" />
+                        </div>
                     </div>
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-6xl text-white max-2xl:text-5xl">
@@ -209,6 +213,9 @@ export default function Home() {
                         </Button>
                     </div>
                     <div className="flex h-full w-5/12 flex-col items-end justify-center max-lg:w-full max-lg:items-start">
+                        <div className="relative max-w-[500px] max-2xl:w-96 max-lg:w-72">
+                            <Image src={ImgProblemSolving} alt="" />
+                        </div>
                         <img
                             src="/problem-solving.svg"
                             className="max-w-[500px] max-2xl:w-96 max-lg:w-72"

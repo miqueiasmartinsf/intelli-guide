@@ -3,10 +3,13 @@ import nodemailer from 'nodemailer'
 // Configuração do transporter do Nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
+  host: process.env.EMAIL_SERVER_HOST,
+  port: Number(process.env.EMAIL_SERVER_PORT),
   auth: {
     user: process.env.EMAIL_USERNAME, // Seu endereço de e-mail
     pass: process.env.EMAIL_APP_PASSWORD, // Sua senha de e-mail
   },
+  from: process.env.EMAIL_USERNAME,
 })
 
 const domain = process.env.NEXT_PUBLIC_APP_URL
