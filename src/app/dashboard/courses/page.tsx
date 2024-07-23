@@ -1,5 +1,6 @@
 import { List } from "./list";
 import { getUserProgress, getCourses } from "@/data";
+import { AsideWrapper } from "@/components/aside-wrapper";
 
 const CoursePage = async () => {
     const coursesData = getCourses();

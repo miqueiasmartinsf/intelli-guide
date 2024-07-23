@@ -19,7 +19,9 @@ export function Quiz({ levels }: QuizProps) {
 
             <div className="px-4 py-8">
                 <div className="">
-                    <img src="/formula.jpg" alt="" className="max-w-[700px]" />
+                    <div className="relative max-w-[700px]">
+                        <img src="/formula.jpg" alt="" />
+                    </div>
                     <p className="mt-4 text-xl text-black">
                         1. Lorem ipsum dolor sit amet consectetur adipisicing
                         elit. Eum quos maxime hic aliquam repellat?
