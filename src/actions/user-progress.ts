@@ -4,7 +4,6 @@ import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 import { getCourseById, getUserProgress, getUserSubscription } from '@/data'
-// import { useCurrentUser } from '@/hooks/use-current-user'
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 import { POINTS_TO_REFILL } from '@/utils/constants'
@@ -27,7 +26,7 @@ export const upsertUserProgress = async (courseId: number) => {
     throw new Error('Course not found')
   }
 
-  if (!course.Unit.length || !course.Unit[0].Lessons.length) {
+  if (!course.units.length || !course.units[0].lessons.length) {
     console.error('Course is empty')
     throw new Error('Course is empty')
   }
@@ -75,7 +74,7 @@ export const reduceHearts = async (challengeId: number) => {
   const currentUserProgress = await getUserProgress()
   const userSubscription = await getUserSubscription()
 
-  const challenge = await db.challenge.findFirst({
+  const challenge = await db.challenges.findFirst({
     where: { id: challengeId },
   })
 

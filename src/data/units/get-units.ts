@@ -15,25 +15,25 @@ export const getUnits = async () => {
       return []
     }
 
-    const data = await db.unit.findMany({
+    const data = await db.units.findMany({
       orderBy: {
         order: 'asc',
       },
       where: {
-        coursesId: userProgress.activeCourseId,
+        courseId: userProgress.activeCourseId,
       },
       include: {
-        Lessons: {
+        lessons: {
           orderBy: {
             order: 'asc',
           },
           include: {
-            Challenge: {
+            challenges: {
               orderBy: {
                 order: 'asc',
               },
               include: {
-                ChallengeProgress: {
+                challenge_progress: {
                   where: {
                     userId,
                   },
@@ -46,15 +46,15 @@ export const getUnits = async () => {
     })
 
     const normalizedData = data.map((unit) => {
-      const lessonsWithCompletedStatus = unit.Lessons.map((lesson) => {
-        if (lesson.Challenge.length === 0) {
+      const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
+        if (lesson.challenges.length === 0) {
           return { ...lesson, completed: false }
         }
-        const allCompletedChallenges = lesson.Challenge.every((challenge) => {
+        const allCompletedChallenges = lesson.challenges.every((challenge) => {
           return (
-            challenge.ChallengeProgress &&
-            challenge.ChallengeProgress.length > 0 &&
-            challenge.ChallengeProgress.every((progress) => progress.completed)
+            challenge.challenge_progress &&
+            challenge.challenge_progress.length > 0 &&
+            challenge.challenge_progress.every((progress) => progress.completed)
           )
         })
 

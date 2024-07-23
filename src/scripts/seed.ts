@@ -5,9 +5,9 @@ async function main() {
 
   // Limpar os dados existentes
   await db.challengeOption.deleteMany({})
-  await db.challenge.deleteMany({})
+  await db.challenges.deleteMany({})
   await db.lessons.deleteMany({})
-  await db.unit.deleteMany({})
+  await db.units.deleteMany({})
   await db.courses.deleteMany({})
   await db.userProgress.deleteMany({})
   await db.userSubscription.deleteMany({})
@@ -15,18 +15,18 @@ async function main() {
   // Inserir cursos
   await db.courses.createMany({
     data: [
-      { id: 1, title: 'Spanish', imageSrc: '/es.svg' },
-      { id: 2, title: 'Italian', imageSrc: '/it.svg' },
-      { id: 3, title: 'French', imageSrc: '/fr.svg' },
-      { id: 4, title: 'Croatian', imageSrc: '/hr.svg' },
+      { id: 1, title: 'Spanish', imageSrc: '_next/static/media/es.svg' },
+      { id: 2, title: 'Italian', imageSrc: '_next/static/media/it.svg' },
+      { id: 3, title: 'French', imageSrc: '_next/static/media/fr.svg' },
+      { id: 4, title: 'Croatian', imageSrc: '_next/static/media/hr.svg' },
     ],
   })
 
   // Inserir unidades
-  await db.unit.create({
+  await db.units.create({
     data: {
       id: 1,
-      coursesId: 1,
+      courseId: 1,
       title: 'unit 1',
       description: 'Learn the fundamentals of spanish',
       order: 1,
@@ -45,7 +45,7 @@ async function main() {
   })
 
   // Inserir desafios
-  await db.challenge.createMany({
+  await db.challenges.createMany({
     data: [
       {
         id: 1,
