@@ -14,8 +14,10 @@ export const getLesson = async (id?: number) => {
     }
 
     const courseProgress = await getCourseProgress()
+    console.log('getLesson courseProgress:', courseProgress)
 
     const lessonId = id || courseProgress?.activeLessonId
+    console.log('getLesson lessonId:', lessonId)
 
     if (!lessonId) {
       return null
@@ -26,13 +28,13 @@ export const getLesson = async (id?: number) => {
         id: lessonId,
       },
       include: {
-        Challenge: {
+        challenges: {
           orderBy: {
             order: 'asc',
           },
           include: {
-            ChallengeOption: true,
-            ChallengeProgress: {
+            challenge_options: true,
+            challenge_progress: {
               where: {
                 userId,
               },
@@ -42,18 +44,22 @@ export const getLesson = async (id?: number) => {
       },
     })
 
-    if (!data || !data.Challenge) {
+    console.log('getLesson data:', data)
+
+    if (!data || !data.challenges) {
       return null
     }
 
-    const normalizeChallenges = data.Challenge.map((challenge) => {
+    const normalizeChallenges = data.challenges.map((challenge) => {
+      console.log('getLesson normalizeChallenges challenge:', challenge)
       const completed =
-        challenge.ChallengeProgress &&
-        challenge.ChallengeProgress.length > 0 &&
-        challenge.ChallengeProgress.every((progress) => progress.completed)
-
+        challenge.challenge_progress &&
+        challenge.challenge_progress.length > 0 &&
+        challenge.challenge_progress.every((progress) => progress.completed)
+      console.log('getLesson normalizeChallenges completed:', completed)
       return { ...challenge, completed }
     })
+    console.log('getLesson normalizeChallenges:', normalizeChallenges)
 
     return { ...data, challenges: normalizeChallenges }
   } catch (error) {

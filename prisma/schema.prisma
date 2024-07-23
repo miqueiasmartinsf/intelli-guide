@@ -98,24 +98,23 @@ model Courses {
   title    String
   imageSrc String
 
-  Unit         Unit[]
-  UserProgress UserProgress[]
+  units         Units[]
+  user_progress UserProgress[]
 
   @@map("courses")
 }
 
-model Unit {
+model Units {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  coursesId   Int?
+  courseId    Int
+  order       Int
 
-  order Int
+  courses Courses?  @relation(fields: [courseId], references: [id])
+  lessons Lessons[]
 
-  Courses Courses?  @relation(fields: [coursesId], references: [id])
-  Lessons Lessons[]
-
-  @@map("unit")
+  @@map("units")
 }
 
 model Lessons {
@@ -124,8 +123,8 @@ model Lessons {
   unitId Int
   order  Int
 
-  Unit      Unit        @relation(fields: [unitId], references: [id])
-  Challenge Challenge[]
+  challenges Challenges[]
+  units      Units        @relation(fields: [unitId], references: [id])
 
   @@map("lessons")
 }
@@ -135,7 +134,7 @@ enum ChallengeType {
   ASSIST
 }
 
-model Challenge {
+model Challenges {
   id        Int           @id @default(autoincrement())
   lessonId  Int
   type      ChallengeType
@@ -143,11 +142,11 @@ model Challenge {
   order     Int
   lessonsId Int?
 
-  Lessons           Lessons?            @relation(fields: [lessonsId], references: [id])
-  ChallengeOption   ChallengeOption[]
-  ChallengeProgress ChallengeProgress[]
+  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
+  challenge_options  ChallengeOption[]
+  challenge_progress ChallengeProgress[]
 
-  @@map("challenge")
+  @@map("challenges")
 }
 
 model ChallengeOption {
@@ -158,7 +157,7 @@ model ChallengeOption {
   imageSrc    String?
   audioSrc    String?
 
-  Challenge Challenge @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id])
 
   @@map("challenge_option")
 }
@@ -169,7 +168,7 @@ model ChallengeProgress {
   challengeId Int
   completed   Boolean @default(false)
 
-  Challenge Challenge @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id])
 
   @@map("challenge_progress")
 }
