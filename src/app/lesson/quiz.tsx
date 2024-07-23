@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import Confetti from 'react-confetti'
-import { useAudio, useMount, useWindowSize } from 'react-use'
+import { useMount, useWindowSize } from 'react-use'
 import { toast } from 'sonner'
 
 import { upsertChallengeProgress } from '@/actions/challenge-progress'
@@ -57,12 +57,6 @@ export const Quiz = ({
   const { width, height } = useWindowSize()
 
   const router = useRouter()
-  const [finishAudio] = useAudio({ src: './finish.mp3', autoPlay: true })
-
-  const [correctAudio, _c, correctControl] = useAudio({ src: '/correct.wav' })
-  const [incorrectAudio, _i, incorrectControl] = useAudio({
-    src: '/incorrect.wav',
-  })
 
   const [pending, startTransition] = useTransition()
 
@@ -164,7 +158,6 @@ export const Quiz = ({
   if (!challenge) {
     return (
       <>
-        {finishAudio}
         <Confetti
           width={width}
           height={height}
@@ -207,8 +200,6 @@ export const Quiz = ({
 
   return (
     <>
-      {incorrectAudio}
-      {correctAudio}
       <Header
         hearts={hearts}
         percentage={percentage}
