@@ -93,83 +93,51 @@ model TwoFactorConfirmation {
   @@map("two_factor_confirmation")
 }
 
-model Courses {
+model Category {
   id       Int    @id @default(autoincrement())
   title    String
   imageSrc String
-
-  units        Unit[]
+  quizzes        Quiz[]
   userProgress UserProgress[]
 
-  @@map("courses")
+  @@map("categories")
 }
 
-model Unit {
+model Quiz {
   id          Int    @id @default(autoincrement())
   title       String
   description String
   courseId    Int
   order       Int
 
-  course  Courses  @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  lessons Lesson[]
+  category  Category  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  questions Question[]
 
-  @@map("unit")
+  @@map("quiz")
 }
 
-model Lesson {
-  id     Int    @id @default(autoincrement())
-  title  String
-  unitId Int
-  order  Int
-
-  unit       Unit        @relation(fields: [unitId], references: [id], onDelete: Cascade)
-  challenges Challenge[]
-
-  @@map("lesson")
-}
-
-enum ChallengeType {
-  SELECT
-  ASSIST
-}
-
-model Challenge {
+model Question {
   id       Int           @id @default(autoincrement())
-  lessonId Int
-  type     ChallengeType
+  quizId   Int
   question String
   order    Int
+  quiz  Quiz  @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  questionOptions  QuestionOption[]
 
-  lesson            Lesson              @relation(fields: [lessonId], references: [id], onDelete: Cascade)
-  challengeOptions  ChallengeOption[]
-  challengeProgress ChallengeProgress[]
-
-  @@map("challenge")
+  @@map("question")
 }
 
-model ChallengeOption {
+model QuestionOption {
   id          Int     @id @default(autoincrement())
-  challengeId Int
+  questionId  Int
   text        String
   correct     Boolean
   imageSrc    String?
   audioSrc    String?
 
-  challenge Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
-  @@map("challenge_option")
-}
-
-model ChallengeProgress {
-  id          Int     @id @default(autoincrement())
-  userId      String
-  challengeId Int
-  completed   Boolean @default(false)
-
-  challenge Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
-
-  @@map("challenge_progress")
+  @@map("question_option")
 }
 
 model UserProgress {
@@ -180,18 +148,7 @@ model UserProgress {
   hearts         Int    @default(5)
   points         Int    @default(0)
 
-  activeCourse Courses? @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
+  activeCourse Category? @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
-}
-
-model UserSubscription {
-  id                     Int      @id @default(autoincrement())
-  userId                 String   @unique
-  stripeCustomerId       String   @unique
-  stripeSubscriptionId   String   @unique
-  stripePriceId          String
-  stripeCurrentPeriodEnd DateTime
-
-  @@map("user_subscription")
 }
