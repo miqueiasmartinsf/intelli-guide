@@ -17,7 +17,7 @@ async function AuthLayout({
   return (
     <div className="flex h-screen">
       <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
-        <Image src="/intelli-guide-2.png" alt="" width={320} height={56} />
+        <Image src="/intelli-guide.png" alt="" width={320} height={56} />
         {children}
       </div>
       <div className="h-full w-1/2">
