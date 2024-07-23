@@ -1,9 +1,11 @@
+import { cache } from 'react'
+
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
 import { getCourseProgress } from '../courses'
 
-export const getLesson = async (id?: number) => {
+export const getLesson = cache(async (id?: number) => {
   try {
     const session = await auth()
     const user = session?.user
@@ -14,10 +16,8 @@ export const getLesson = async (id?: number) => {
     }
 
     const courseProgress = await getCourseProgress()
-    console.log('getLesson courseProgress:', courseProgress)
 
     const lessonId = id || courseProgress?.activeLessonId
-    console.log('getLesson lessonId:', lessonId)
 
     if (!lessonId) {
       return null
@@ -25,7 +25,7 @@ export const getLesson = async (id?: number) => {
 
     const data = await db.lessons.findFirst({
       where: {
-        id: lessonId,
+        id: Number(lessonId),
       },
       include: {
         challenges: {
@@ -44,26 +44,21 @@ export const getLesson = async (id?: number) => {
       },
     })
 
-    console.log('getLesson data:', data)
-
     if (!data || !data.challenges) {
       return null
     }
 
     const normalizeChallenges = data.challenges.map((challenge) => {
-      console.log('getLesson normalizeChallenges challenge:', challenge)
       const completed =
         challenge.challenge_progress &&
         challenge.challenge_progress.length > 0 &&
         challenge.challenge_progress.every((progress) => progress.completed)
-      console.log('getLesson normalizeChallenges completed:', completed)
       return { ...challenge, completed }
     })
-    console.log('getLesson normalizeChallenges:', normalizeChallenges)
 
     return { ...data, challenges: normalizeChallenges }
   } catch (error) {
     console.error(error)
     return null
   }
-}
+})

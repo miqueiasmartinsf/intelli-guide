@@ -1,24 +1,20 @@
 'use server'
+import { cache } from 'react'
+
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
 import { getUserProgress } from '../user'
 
-export const getCourseProgress = async () => {
+export const getCourseProgress = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
     const userId = user?.id
 
-    if (!userId) {
-      return null
-    }
-
     const userProgress = await getUserProgress()
 
-    console.log('getCourseProgress userProgress:', userProgress)
-
-    if (!userProgress?.activeCourseId) {
+    if (!userId || !userProgress?.activeCourseId) {
       return null
     }
 
@@ -50,24 +46,19 @@ export const getCourseProgress = async () => {
       },
     })
 
-    console.log('getCourseProgress unitsInActiveCourse:', unitsInActiveCourse)
-
     const firstUncompletedLesson = unitsInActiveCourse
-      .flatMap((unit) => unit.lessons.map((lesson) => ({ ...lesson, unit })))
-      .find((lesson) =>
-        lesson.challenges.some(
-          (challenge) =>
+      .flatMap((unit) => unit.lessons)
+      .find((lesson) => {
+        return lesson.challenges.some((challenge) => {
+          return (
             !challenge.challenge_progress ||
             challenge.challenge_progress.length === 0 ||
             challenge.challenge_progress.some(
               (progress) => progress.completed === false,
-            ),
-        ),
-      )
-    console.log(
-      'getCourseProgress firstUncompletedLesson:',
-      firstUncompletedLesson,
-    )
+            )
+          )
+        })
+      })
 
     return {
       activeLesson: firstUncompletedLesson,
@@ -77,4 +68,4 @@ export const getCourseProgress = async () => {
     console.error(error)
     return null
   }
-}
+})

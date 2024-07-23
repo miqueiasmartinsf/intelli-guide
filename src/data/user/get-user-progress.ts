@@ -1,7 +1,9 @@
+import { cache } from 'react'
+
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
-export const getUserProgress = async () => {
+export const getUserProgress = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
@@ -22,4 +24,4 @@ export const getUserProgress = async () => {
   } catch {
     return null
   }
-}
+})

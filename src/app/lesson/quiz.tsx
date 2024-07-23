@@ -22,7 +22,7 @@ import { ResultCard } from './result-card'
 
 type InitialLessonChallengeProps = Challenges & {
   completed: boolean
-  challengeOptions: ChallengeOption[]
+  challenge_options: ChallengeOption[]
 }
 
 type UserSubscriptionProps = UserSubscription & {
@@ -44,7 +44,6 @@ export const Quiz = ({
   initialLessonChallenges,
   userSubscription,
 }: Props) => {
-  console.log('Quiz initialLessonId', initialLessonId)
   const { open: openHeartsModal } = useHeartsModal()
   const { open: openPracticeModal } = usePracticeModal()
 
@@ -80,7 +79,7 @@ export const Quiz = ({
   const [status, setStatus] = useState<'correct' | 'wrong' | 'none'>('none')
 
   const challenge = challenges[activeIndex]
-  const options = challenge?.challengeOptions ?? []
+  const options = challenge?.challenge_options ?? []
 
   const onNext = () => {
     setActiveIndex((current) => current + 1)
@@ -122,8 +121,6 @@ export const Quiz = ({
               openHeartsModal()
               return
             }
-
-            correctControl.play()
             setStatus('correct')
             setPercentage((prev) => prev + 100 / challenges.length)
 
@@ -141,8 +138,6 @@ export const Quiz = ({
               openHeartsModal()
               return
             }
-
-            incorrectControl.play()
             setStatus('wrong')
 
             if (!response?.error) {

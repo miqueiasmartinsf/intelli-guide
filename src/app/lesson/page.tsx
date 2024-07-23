@@ -6,7 +6,6 @@ import { Quiz } from './quiz'
 
 const LessonPage = async () => {
   const lessonData = getLesson()
-  console.log('LessonPage lessonData', lessonData)
   const userProgressData = getUserProgress()
   const userSubscriptionData = getUserSubscription()
 
@@ -15,8 +14,6 @@ const LessonPage = async () => {
     userProgressData,
     userSubscriptionData,
   ])
-
-  console.log('LessonPage lesson', lesson)
 
   if (!lesson || !userProgress) {
     redirect('/learn')

@@ -1,9 +1,11 @@
+import { cache } from 'react'
+
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
 import { getUserProgress } from '../user'
 
-export const getUnits = async () => {
+export const getUnits = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
@@ -68,4 +70,4 @@ export const getUnits = async () => {
     console.error(error)
     return []
   }
-}
+})

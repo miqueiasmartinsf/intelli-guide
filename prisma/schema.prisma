@@ -135,14 +135,13 @@ enum ChallengeType {
 }
 
 model Challenges {
-  id        Int           @id @default(autoincrement())
-  lessonId  Int
-  type      ChallengeType
-  question  String
-  order     Int
-  lessonsId Int?
+  id       Int           @id @default(autoincrement())
+  lessonId Int
+  type     ChallengeType
+  question String
+  order    Int
 
-  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonId], references: [id])
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 
@@ -176,11 +175,11 @@ model UserProgress {
   userId         String @id
   userName       String @default("user")
   userImageSrc   String @default("/mascot.svg")
-  activeCourseId Int?
+  activeCourseId Int
   hearts         Int    @default(5)
   points         Int    @default(0)
 
-  activeCourse Courses? @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
+  activeCourse Courses @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
 }

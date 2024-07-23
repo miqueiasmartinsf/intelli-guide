@@ -1,6 +1,8 @@
+import { cache } from 'react'
+
 import { db } from '@/services/database'
 
-export const getCourseById = async (courseId: number) => {
+export const getCourseById = cache(async (courseId: number) => {
   const data = await db.courses.findFirst({
     where: {
       id: courseId,
@@ -22,4 +24,4 @@ export const getCourseById = async (courseId: number) => {
   })
 
   return data
-}
+})

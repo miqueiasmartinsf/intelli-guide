@@ -31,7 +31,5 @@ export const POST = async (req: Request) => {
     data: body,
   })
 
-  console.log('POST:', data)
-
   return NextResponse.json(data)
 }

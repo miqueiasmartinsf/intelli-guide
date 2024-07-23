@@ -1,3 +1,5 @@
+'use server'
+
 import { revalidatePath } from 'next/cache'
 
 import { getUserProgress, getUserSubscription } from '@/data'
@@ -8,6 +10,7 @@ export const upsertChallengeProgress = async (challengeId: number) => {
   const session = await auth()
   const user = session?.user
   const userId = user?.id
+
   if (!userId) {
     throw new Error('Unauthorized')
   }

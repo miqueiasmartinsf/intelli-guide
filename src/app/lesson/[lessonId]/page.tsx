@@ -12,7 +12,6 @@ type Props = {
 
 const LessonIdPage = async ({ params }: Props) => {
   const lessonData = getLesson(params.lessonId)
-  console.log('LessonIdPage lessonData', lessonData)
   const userProgressData = getUserProgress()
   const userSubscriptionData = getUserSubscription()
 
@@ -21,8 +20,6 @@ const LessonIdPage = async ({ params }: Props) => {
     userProgressData,
     userSubscriptionData,
   ])
-
-  console.log('LessonIdPage lesson', lesson)
 
   if (!lesson || !userProgress) {
     redirect('/learn')

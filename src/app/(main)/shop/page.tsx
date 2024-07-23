@@ -19,15 +19,12 @@ const shopPage = async () => {
     userProgressData,
     userSubscriptionData,
   ])
-  console.log('userProgress', userProgress)
-  console.log('userSubscription', userSubscriptionData)
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect('/courses')
   }
 
   const isPro = !!userSubscription?.isActive
-  console.log('isPro', isPro)
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">

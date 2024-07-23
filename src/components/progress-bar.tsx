@@ -1,23 +1,24 @@
-"use client";
+'use client'
 
-import { Progress } from "./ui/progress";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react'
+
+import { Progress } from './ui/progress'
 
 type ProgressBarProps = {
-    levels: number;
-};
+  levels: number
+}
 
 export function ProgressBar({ levels }: ProgressBarProps) {
-    const [progress, setProgress] = useState(13);
+  const [progress, setProgress] = useState(13)
 
-    useEffect(() => {
-        const timer = setTimeout(() => setProgress(66), 500);
-        return () => clearTimeout(timer);
-    }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(66), 500)
+    return () => clearTimeout(timer)
+  }, [])
 
-    return (
-        <div className="flex justify-center">
-            <Progress value={progress} className="h-2 w-full" />
-        </div>
-    );
+  return (
+    <div className="flex justify-center">
+      <Progress value={progress} className="h-2 w-full" />
+    </div>
+  )
 }

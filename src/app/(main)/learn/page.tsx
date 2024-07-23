@@ -37,7 +37,6 @@ const LearnPage = async () => {
     userSubscriptionData,
   ])
 
-  console.log('LearnPage CourseProgress:', courseProgress)
   if (!userProgress || !userProgress.activeCourse) {
     redirect('/courses')
   }
@@ -47,11 +46,6 @@ const LearnPage = async () => {
   }
 
   const isPro = !!userSubscription?.isActive
-
-  console.log(
-    'LearnPage units.map((unit):',
-    units.map((unit) => unit),
-  )
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
@@ -73,8 +67,8 @@ const LearnPage = async () => {
             <Unit
               id={unit.id}
               order={unit.order}
-              description={unit.description}
               title={unit.title}
+              description={unit.description}
               lessons={unit.lessons}
               activeLesson={courseProgress.activeLesson}
               activeLessonPercentage={lessonPercentage}

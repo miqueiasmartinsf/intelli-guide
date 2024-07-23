@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 
+import { ExitModal } from '@/components/modals/exit-modal'
+import { HeartsModal } from '@/components/modals/hearts-modal'
+import { PracticeModal } from '@/components/modals/practice-modal'
 import { Toaster } from '@/components/ui/sonner'
 import { auth } from '@/services/auth'
 
@@ -26,6 +29,9 @@ export default async function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <Toaster />
+          <ExitModal />
+          <HeartsModal />
+          <PracticeModal />
           {children}
         </body>
       </html>

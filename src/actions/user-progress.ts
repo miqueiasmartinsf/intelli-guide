@@ -67,7 +67,7 @@ export const reduceHearts = async (challengeId: number) => {
   const user = session?.user
   const userId = user?.id
 
-  if (userId) {
+  if (!userId) {
     throw new Error('Unauthorized')
   }
 

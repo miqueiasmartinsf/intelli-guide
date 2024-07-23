@@ -27,8 +27,6 @@ export const LessonButton = ({
     current,
     percentage,
 }: Props) => {
-    console.log('LessonButton.tsx id:', id)
-    console.log('LessonButton.tsx current:', current)
     const cycleLength = 8
     const cycleIndex = index % cycleLength
 
