@@ -1,5 +1,8 @@
+'use server'
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
+
+import { getUserProgress } from '../user'
 
 export const getCourseProgress = async () => {
   try {
@@ -11,34 +14,31 @@ export const getCourseProgress = async () => {
       return null
     }
 
-    const userProgress = await db.userProgress.findUnique({
-      where: { userId },
-      include: {
-        activeCourse: true,
-      },
-    })
+    const userProgress = await getUserProgress()
+
+    console.log('getCourseProgress userProgress:', userProgress)
 
     if (!userProgress?.activeCourseId) {
       return null
     }
 
-    const unitsInActiveCourse = await db.unit.findMany({
+    const unitsInActiveCourse = await db.units.findMany({
       where: {
-        coursesId: userProgress.activeCourseId,
+        courseId: userProgress.activeCourseId,
       },
       orderBy: {
         order: 'asc',
       },
       include: {
-        Lessons: {
+        lessons: {
           orderBy: {
             order: 'asc',
           },
           include: {
-            Unit: true,
-            Challenge: {
+            unit: true,
+            challenges: {
               include: {
-                ChallengeProgress: {
+                challenge_progress: {
                   where: {
                     userId,
                   },
@@ -50,18 +50,24 @@ export const getCourseProgress = async () => {
       },
     })
 
+    console.log('getCourseProgress unitsInActiveCourse:', unitsInActiveCourse)
+
     const firstUncompletedLesson = unitsInActiveCourse
-      .flatMap((unit) => unit.Lessons)
+      .flatMap((unit) => unit.lessons)
       .find((lesson) =>
-        lesson.Challenge.some(
+        lesson.challenges.some(
           (challenge) =>
-            !challenge.ChallengeProgress ||
-            challenge.ChallengeProgress.length === 0 || // ou ==
-            challenge.ChallengeProgress.some(
+            !challenge.challenge_progress ||
+            challenge.challenge_progress.length === 0 || // ou ==
+            challenge.challenge_progress.some(
               (progress) => progress.completed === false, // ou ==
             ),
         ),
       )
+    console.log(
+      'getCourseProgress firstUncompletedLesson:',
+      firstUncompletedLesson,
+    )
 
     return {
       activeLesson: firstUncompletedLesson,

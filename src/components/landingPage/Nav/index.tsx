@@ -3,7 +3,7 @@ import NavLink from './NavLink'
 import NavRoot from './NavRoot'
 
 export const Nav = {
-    Root: NavRoot,
-    Item: NavItem,
-    Link: NavLink,
+  Root: NavRoot,
+  Item: NavItem,
+  Link: NavLink,
 }

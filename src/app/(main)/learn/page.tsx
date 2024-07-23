@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { FeedWrapper } from '@/components/feed-wrapper'
+import { Promo } from '@/components/promo'
 import { Quests } from '@/components/quests'
 import { StickyWrapper } from '@/components/sticky-wrapper'
 import { UserProgress } from '@/components/user-progress'
@@ -13,15 +14,13 @@ import {
 } from '@/data'
 
 import { Header } from './header'
-import { ExtendedLessonWithUnit, Unit } from './unint'
+import { Unit } from './unit'
 
 const LearnPage = async () => {
   const userProgressData = getUserProgress()
   const courseProgressData = getCourseProgress()
   const lessonPercentageData = getLessonPercentage()
-
   const unitsData = getUnits()
-
   const userSubscriptionData = getUserSubscription()
 
   const [
@@ -38,6 +37,7 @@ const LearnPage = async () => {
     userSubscriptionData,
   ])
 
+  console.log('LearnPage CourseProgress:', courseProgress)
   if (!userProgress || !userProgress.activeCourse) {
     redirect('/courses')
   }
@@ -57,7 +57,7 @@ const LearnPage = async () => {
           points={userProgress.points}
           hasActiveSubscription={isPro}
         />
-        {/* !isPro && <Promo /> */}
+        {!isPro && <Promo />}
         <Quests points={userProgress.points} />
       </StickyWrapper>
 
@@ -71,9 +71,7 @@ const LearnPage = async () => {
               description={unit.description}
               title={unit.title}
               lessons={unit.lessons}
-              activeLesson={
-                courseProgress.activeLesson as unknown as ExtendedLessonWithUnit
-              }
+              activeLesson={courseProgress.activeLesson}
               activeLessonPercentage={lessonPercentage}
             />
           </div>

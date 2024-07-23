@@ -6,12 +6,12 @@ export const getCourseById = async (courseId: number) => {
       id: courseId,
     },
     include: {
-      Unit: {
+      units: {
         orderBy: {
           order: 'asc',
         },
         include: {
-          Lessons: {
+          lessons: {
             orderBy: {
               order: 'asc',
             },

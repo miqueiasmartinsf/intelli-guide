@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import ImgPoints from '@/public/points.svg'
 import { QUESTS } from '@/utils/constants'
 
 import { Button } from './ui/button'
@@ -30,7 +31,7 @@ export const Quests = ({ points }: Props) => {
               className="flex w-full items-center gap-x-3 border-t-2 pb-4"
               key={quest.title}
             >
-              <Image src="/points.svg" alt="Points" width={40} height={40} />
+              <Image src={ImgPoints} alt="Points" width={40} height={40} />
 
               <div className="flex w-full flex-col gap-y-2">
                 <p className="text-sm font-bold text-neutral-700">

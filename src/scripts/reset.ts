@@ -8,9 +8,9 @@ const main = async () => {
     await db.userSubscription.deleteMany({})
     await db.challengeProgress.deleteMany({})
     await db.challengeOption.deleteMany({})
-    await db.challenge.deleteMany({})
+    await db.challenges.deleteMany({})
     await db.lessons.deleteMany({})
-    await db.unit.deleteMany({})
+    await db.units.deleteMany({})
     await db.userProgress.deleteMany({})
     await db.courses.deleteMany({})
   } catch (error) {
