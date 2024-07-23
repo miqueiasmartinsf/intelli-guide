@@ -8,9 +8,9 @@ type ExtendedLesson = Lessons & {
     completed: boolean
 }
 
-export type ExtendedLessonWithUnit = Lessons & {
-    unit: Units
-} | undefined
+export type ExtendedLessonWithUnit = (Lessons & {
+    unit: Units;
+}) | undefined;
 
 type Props = {
     id: number

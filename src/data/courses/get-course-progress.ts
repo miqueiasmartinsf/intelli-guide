@@ -35,7 +35,7 @@ export const getCourseProgress = async () => {
             order: 'asc',
           },
           include: {
-            unit: true,
+            units: true,
             challenges: {
               include: {
                 challenge_progress: {
@@ -53,14 +53,14 @@ export const getCourseProgress = async () => {
     console.log('getCourseProgress unitsInActiveCourse:', unitsInActiveCourse)
 
     const firstUncompletedLesson = unitsInActiveCourse
-      .flatMap((unit) => unit.lessons)
+      .flatMap((unit) => unit.lessons.map((lesson) => ({ ...lesson, unit })))
       .find((lesson) =>
         lesson.challenges.some(
           (challenge) =>
             !challenge.challenge_progress ||
-            challenge.challenge_progress.length === 0 || // ou ==
+            challenge.challenge_progress.length === 0 ||
             challenge.challenge_progress.some(
-              (progress) => progress.completed === false, // ou ==
+              (progress) => progress.completed === false,
             ),
         ),
       )
