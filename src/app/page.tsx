@@ -15,7 +15,7 @@ export default function Home() {
                     <Link href={"/"}>
                         <img
                             src="/intelli-guide.png"
-                            className="max-w-[350px] max-2xl:w-[250px]"
+                            className="max-w-[300px] max-2xl:w-[250px] max-sm:w-[150px]"
                             alt=""
                         />
                     </Link>
@@ -24,7 +24,7 @@ export default function Home() {
                             <li>
                                 <Link
                                     href={"/#"}
-                                    className="nav-link text-xl max-2xl:text-base"
+                                    className="nav-link text-lg max-2xl:text-base"
                                 >
                                     Início
                                 </Link>
@@ -32,7 +32,7 @@ export default function Home() {
                             <li>
                                 <Link
                                     href={"/#"}
-                                    className="nav-link text-xl max-2xl:text-base"
+                                    className="nav-link text-lg max-2xl:text-base"
                                 >
                                     Contato
                                 </Link>
@@ -40,7 +40,7 @@ export default function Home() {
                             <li>
                                 <Link
                                     href={"/#"}
-                                    className="nav-link text-xl max-2xl:text-base"
+                                    className="nav-link text-lg max-2xl:text-base"
                                 >
                                     Sobre
                                 </Link>
@@ -48,14 +48,14 @@ export default function Home() {
                             <li>
                                 <Link
                                     href={"/auth/login"}
-                                    className="nav-link text-xl max-2xl:text-base"
+                                    className="nav-link text-lg max-2xl:text-base"
                                 >
                                     Entrar
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/auth/register"}>
-                                    <Button className="px-6 py-6 text-xl max-2xl:p-4 max-2xl:text-base">
+                                    <Button className="p-4 text-lg max-2xl:p-4 max-2xl:text-base">
                                         Cadastrar
                                     </Button>
                                 </Link>
@@ -69,7 +69,7 @@ export default function Home() {
                         <div
                             className={
                                 menuAppearence
-                                    ? "h-1 w-10 translate-y-3 rotate-[-225deg] rounded-sm bg-black transition-all duration-300 ease-in-out"
+                                    ? "h-1 w-10 translate-y-3 rotate-[-225deg] rounded-sm bg-white transition-all duration-300 ease-in-out"
                                     : "h-1 w-10 rounded-sm bg-black transition-all duration-300 ease-in-out"
                             }
                         ></div>
@@ -83,15 +83,55 @@ export default function Home() {
                         <div
                             className={
                                 menuAppearence
-                                    ? "h-1 w-10 rotate-[225deg] rounded-sm bg-black transition-all duration-300 ease-in-out"
+                                    ? "h-1 w-10 rotate-[225deg] rounded-sm bg-white transition-all duration-300 ease-in-out"
                                     : "h-1 w-7 rounded-sm bg-black transition-all duration-300 ease-in-out"
                             }
                         ></div>
                     </div>
+                    {menuAppearence && (
+                        <div className="bg-base absolute right-0 top-0 flex h-screen w-1/2 justify-center border-l border-white bg-primary py-40">
+                            <ul className="flex flex-col gap-5 transition-all duration-300 ease-in-out">
+                                <li
+                                    className="nav-link text-white"
+                                    onClick={() => SetMenuAppearence(false)}
+                                >
+                                    <Link href="/#home">Início</Link>
+                                </li>
+                                <li
+                                    className="nav-link text-white"
+                                    onClick={() => SetMenuAppearence(false)}
+                                >
+                                    <Link href="/#about">Sobre</Link>
+                                </li>
+                                <li
+                                    className="nav-link text-white"
+                                    onClick={() => SetMenuAppearence(false)}
+                                >
+                                    <Link href="/#skills">Habilidades</Link>
+                                </li>
+                                <li
+                                    className="nav-link text-white"
+                                    onClick={() => SetMenuAppearence(false)}
+                                >
+                                    <Link href="/#projects">Projetos</Link>
+                                </li>
+                                <li className="nav-link text-white">
+                                    <Link href="/contact">
+                                        <Button
+                                            variant={"outline"}
+                                            className="text-primary"
+                                        >
+                                            Contato
+                                        </Button>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </header>
                 <div className="flex h-full items-center py-36">
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
-                        <h2 className="w-11/12 text-7xl max-2xl:text-5xl">
+                        <h2 className="w-11/12 text-6xl max-2xl:text-5xl">
                             Desafie sua mente, aprenda e divirta-se!
                         </h2>
                         <p className="mt-8 w-11/12 text-xl max-2xl:text-base">
@@ -102,13 +142,13 @@ export default function Home() {
                             de aprendizado!
                         </p>
                         <Button
-                            className="mt-8 px-14 py-6 text-2xl max-2xl:p-4 max-2xl:text-base"
+                            className="mt-8 px-10 py-4 text-lg max-2xl:p-4 max-2xl:text-base"
                             size={"lg"}
                         >
                             Começar agora!
                         </Button>
                     </div>
-                    <div className="max-lg flex h-full w-5/12 flex-col items-end justify-center max-lg:hidden">
+                    <div className="max-lg flex h-full w-5/12 flex-col items-end justify-center max-lg:hidden max-lg:items-start">
                         <img
                             src="/Questions-bro.svg"
                             className="max-w-[500px] max-2xl:w-80"
@@ -122,12 +162,12 @@ export default function Home() {
                     <div className="flex h-full w-5/12 flex-col items-start justify-center max-lg:w-full">
                         <img
                             src="/interrogation.svg"
-                            className="max-w-[500px] max-2xl:w-96"
+                            className="max-w-[500px] max-2xl:w-96 max-lg:w-72"
                             alt=""
                         />
                     </div>
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
-                        <h2 className="w-11/12 text-7xl text-white max-2xl:text-5xl">
+                        <h2 className="w-11/12 text-6xl text-white max-2xl:text-5xl">
                             Descubra Quanto Você Sabe sobre Diversos Temas!{" "}
                         </h2>
                         <p className="mt-8 w-11/12 text-xl text-white max-2xl:text-base">
@@ -139,7 +179,7 @@ export default function Home() {
                         </p>
                         <Button
                             variant={"outline"}
-                            className="mt-8 px-14 py-6 text-2xl max-2xl:p-4 max-2xl:text-base"
+                            className="mt-8 px-10 py-4 text-lg max-2xl:p-4 max-2xl:text-base"
                             size={"lg"}
                         >
                             Começar agora!
@@ -150,7 +190,7 @@ export default function Home() {
             <section className="px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
-                        <h2 className="w-11/12 text-7xl max-2xl:text-5xl">
+                        <h2 className="w-11/12 text-6xl max-2xl:text-5xl">
                             Explore Nossos Quizzes em Diversos Temas!
                         </h2>
                         <p className="mt-8 w-11/12 text-xl max-2xl:text-base">
@@ -162,16 +202,16 @@ export default function Home() {
                             para expandir seu repertório de conhecimentos.
                         </p>
                         <Button
-                            className="mt-8 px-14 py-6 text-2xl max-2xl:p-4 max-2xl:text-base"
+                            className="mt-8 px-10 py-4 text-lg max-2xl:p-4 max-2xl:text-base"
                             size={"lg"}
                         >
                             Começar agora!
                         </Button>
                     </div>
-                    <div className="flex h-full w-5/12 flex-col items-end justify-center max-lg:w-full">
+                    <div className="flex h-full w-5/12 flex-col items-end justify-center max-lg:w-full max-lg:items-start">
                         <img
                             src="/problem-solving.svg"
-                            className="max-w-[500px] max-2xl:w-96"
+                            className="max-w-[500px] max-2xl:w-96 max-lg:w-72"
                             alt=""
                         />
                     </div>
