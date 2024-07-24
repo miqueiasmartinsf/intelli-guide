@@ -83,10 +83,10 @@ export const LoginForm = () => {
                 {showTwoFactor && (
                     <>
                         <InputWithLabel
-                            id="twoFactor"
+                            id="code"
                             label="Two Factor Code"
                             placeholder="123456"
-                            type="text"
+                            type="number"
                             className="mb-4"
                             register={register}
                             error={errors.code?.message}
