@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Card } from "./card";
 import { useRouter } from "next/navigation";
@@ -8,10 +8,9 @@ import { toast } from "sonner";
 import { Courses } from "@prisma/client";
 
 type Props = {
-    courses: Courses[]
-    activeCourseId?: number
+    courses: Courses[];
+    activeCourseId?: number;
 };
-
 
 export const List = ({ courses, activeCourseId }: Props) => {
     const router = useRouter();
@@ -24,19 +23,18 @@ export const List = ({ courses, activeCourseId }: Props) => {
         }
 
         startTransition(() => {
-            upsertUserProgress(id)
-                .catch((error) => {
-                    if (error.message) {
-                        toast.error(error.message);
-                    } else {
-                        toast.error("something went wrong");
-                    }
-                });
+            upsertUserProgress(id).catch((error) => {
+                if (error.message) {
+                    toast.error(error.message);
+                } else {
+                    toast.error("something went wrong");
+                }
+            });
         });
     };
 
     return (
-        <div className="pt-6 grid grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-4">
+        <div className="grid grid-cols-2 gap-4 pt-6 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))]">
             {courses.map((course) => (
                 <Card
                     key={course.id}

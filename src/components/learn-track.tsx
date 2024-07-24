@@ -17,6 +17,21 @@ const data = [
         content:
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
+    {
+        title: "Futebol #3",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    },
+    {
+        title: "Futebol #3",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    },
+    {
+        title: "Futebol #3",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+    },
 ];
 
 export function LearnTrack() {

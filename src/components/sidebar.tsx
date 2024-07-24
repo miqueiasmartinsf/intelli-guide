@@ -23,7 +23,7 @@ type Props = {
 const navigation = [
     { href: "/dashboard", key: "example-1", label: "Início", icon: House },
     {
-        href: "/dashboard/courses",
+        href: "/dashboard/categories",
         label: "Quiz",
         icon: Dices,
     },
@@ -58,13 +58,13 @@ export const Sidebar = ({ className }: Props) => {
                 className,
             )}
         >
-            <Link href="/learn">
+            <Link href="/">
                 <div className="flex items-center gap-x-3 pb-7 pl-4 pt-8">
                     <Image
                         src={ImgIntelliGuide}
                         height={250}
                         width={250}
-                        alt="Mascot"
+                        alt="IntelliGuide logo"
                     />
                 </div>
             </Link>

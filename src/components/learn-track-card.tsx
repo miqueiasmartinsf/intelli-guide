@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "./ui/button";
+
 type LearnTrackCardProps = {
     title: string;
     content: string;
@@ -12,13 +14,16 @@ export function LearnTrackCard({ title, content, index }: LearnTrackCardProps) {
             {index % 2 === 0 ? (
                 <>
                     <div className="col-span-4 h-full w-full">
-                        <div className="h-full w-full rounded-md bg-primary p-2 md:pl-4">
-                            <h1 className="py-2 text-xl font-medium text-white">
-                                {title}
-                            </h1>
-                            <p className="text-xs text-gray-100 sm:text-sm">
-                                {content}
-                            </p>
+                        <div className="h-full w-full rounded-2xl border-2 shadow-lg">
+                            <div className="rounded-t-md bg-primary px-2">
+                                <h1 className="py-2 text-xl font-medium text-white">
+                                    {title}
+                                </h1>
+                            </div>
+                            <div className="px-2 py-6">
+                                <p className="text-xs sm:text-sm">{content}</p>
+                                <Button className="mt-4">Começar</Button>
+                            </div>
                         </div>
                     </div>
                     <div className="relative col-span-1 flex h-full w-full items-center justify-center">
@@ -39,13 +44,16 @@ export function LearnTrackCard({ title, content, index }: LearnTrackCardProps) {
                         </div>
                     </div>
                     <div className="col-span-4 h-full w-full">
-                        <div className="h-full w-full rounded-md bg-primary p-2 md:pl-4">
-                            <h1 className="py-2 text-xl font-medium text-white">
-                                {title}
-                            </h1>
-                            <p className="text-xs text-gray-100 sm:text-sm">
-                                {content}
-                            </p>
+                        <div className="h-full w-full rounded-2xl border-2 shadow-lg">
+                            <div className="rounded-t-md bg-primary px-2">
+                                <h1 className="py-2 text-xl font-medium text-white">
+                                    {title}
+                                </h1>
+                            </div>
+                            <div className="px-2 py-6">
+                                <p className="text-xs sm:text-sm">{content}</p>
+                                <Button className="mt-4">Começar</Button>
+                            </div>
                         </div>
                     </div>
                 </>
