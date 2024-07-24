@@ -7,6 +7,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { settings } from './settings'
 import { FormError } from '@/components/form-error'
 import { FormSuccess } from '@/components/form-success'
 import { Button } from '@/components/ui/button'
@@ -31,8 +32,6 @@ import {
 import { Switch } from '@/components/ui/switch'
 import { useCurrentUser } from '@/hooks/use-current-user'
 import { SettingsSchema } from '@/schemas/auth'
-
-import { settings } from './settings'
 
 const SettingsPage = () => {
   const user = useCurrentUser()

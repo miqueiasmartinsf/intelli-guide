@@ -7,10 +7,11 @@ import * as z from 'zod'
 import { getUserByEmail, getUserById } from '@/data/auth/user'
 import { currentUser } from '@/lib/auth'
 import { SettingsSchema } from '@/schemas/auth'
-import { unstable_update } from '@/services/auth'
 import { db } from '@/services/database'
 import { sendVerificationEmail } from '@/services/mail'
 import { generateVerificationToken } from '@/services/token'
+
+import { unstable_update } from '../../../services/auth'
 
 export const settings = async (values: z.infer<typeof SettingsSchema>) => {
   const user = await currentUser()

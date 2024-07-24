@@ -1,26 +1,28 @@
 /* eslint-disable prettier/prettier */
-import type { Lessons, Units } from '@prisma/client'
+import type { Lessons, Units } from "@prisma/client";
 
-import { LessonButton } from './lesson-button'
-import { UnitBanner } from './unit-banner'
+import { LessonButton } from "./lesson-button";
+import { UnitBanner } from "./unit-banner";
 
 type ExtendedLesson = Lessons & {
-    completed: boolean
-}
+    completed: boolean;
+};
 
-export type ExtendedLessonWithUnit = (Lessons & {
-    unit: Units;
-}) | undefined;
+export type ExtendedLessonWithUnit =
+    | (Lessons & {
+        unit: Units;
+    })
+    | undefined;
 
 type Props = {
-    id: number
-    order: number
-    title: string
-    description: string
-    lessons: ExtendedLesson[]
-    activeLesson: ExtendedLessonWithUnit
-    activeLessonPercentage: number
-}
+    id: number;
+    order: number;
+    title: string;
+    description: string;
+    lessons: ExtendedLesson[];
+    activeLesson: ExtendedLessonWithUnit;
+    activeLessonPercentage: number;
+};
 
 export const Unit = ({
     id,
@@ -49,9 +51,9 @@ export const Unit = ({
                             locked={isLocked}
                             percentage={activeLessonPercentage}
                         />
-                    )
+                    );
                 })}
             </div>
         </>
-    )
-}
+    );
+};

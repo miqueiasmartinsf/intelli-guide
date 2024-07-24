@@ -56,7 +56,7 @@ function ProfilePage() {
                                 className="rounded-full"
                             />
                         )}
-                        {!user.image && <User color="#c9c9c9" />}
+                        {!user?.image && <User color="#c9c9c9" />}
                     </div>
                     <div className="flex gap-5">
                         <Button variant={'outline'} className="text-primary">
@@ -126,4 +126,4 @@ function ProfilePage() {
     )
 }
 
-export default ProfilePage
+export default ProfilePage;

@@ -1,2 +1,2 @@
-export { getLessonPercentage } from './get-lesson-percentage'
-export { getLesson } from './get-lesson'
+export { getLesson } from "./get-lesson";
+export { getLessonPercentage } from "./get-lesson-percentage";

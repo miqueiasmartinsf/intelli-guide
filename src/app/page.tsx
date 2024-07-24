@@ -12,7 +12,7 @@ import ImgProblemSolving from '@/public/problem-solving.svg'
 import ImgQuestionsBro from '@/public/Questions-bro.svg'
 
 export default function Home() {
-  const [menuAppearence, SetMenuAppearence] = useState<boolean>(false)
+  const [menuAppearence, SetMenuAppearence] = useState<boolean>(false);
 
   return (
     <div>

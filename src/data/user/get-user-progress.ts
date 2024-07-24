@@ -9,19 +9,19 @@ export const getUserProgress = cache(async () => {
     const user = session?.user
     const userId = user?.id
 
-    if (!userId) {
-      return null
+        if (!userId) {
+            return null;
+        }
+
+        const data = await db.userProgress.findFirst({
+            where: { userId },
+            include: {
+                activeCourse: true,
+            },
+        });
+
+        return data;
+    } catch {
+        return null;
     }
-
-    const data = await db.userProgress.findFirst({
-      where: { userId },
-      include: {
-        activeCourse: true,
-      },
-    })
-
-    return data
-  } catch {
-    return null
-  }
 })
