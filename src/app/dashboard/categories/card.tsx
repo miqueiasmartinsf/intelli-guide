@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import Image from "next/image";
+import Imgfootball from "@/public/football.svg";
 
 type Props = {
     title: string;
@@ -21,9 +23,8 @@ export const Card = ({
 }: Props) => {
     return (
         <div
-            onClick={() => onClick(id)}
             className={cn(
-                "flex h-full min-h-[217px] min-w-[200px] cursor-pointer flex-col items-center justify-between rounded-xl border-2 border-b-4 p-3 pb-6 hover:bg-black/5 active:border-b-2",
+                "h-full min-h-[400px] min-w-[250px] rounded-xl border-2 border-b-4 hover:bg-black/5 active:border-b-2",
                 disabled && "pointer-events-none opacity-50",
             )}
         >
@@ -34,16 +35,24 @@ export const Card = ({
                     </div>
                 )}
             </div>
-            <Image
-                src={imageSrc}
-                alt={title}
-                height={70}
-                width={93.33}
-                className="rounded-lg border object-cover drop-shadow-md"
-            />
-            <p className="mt-3 text-center font-bold text-neutral-700">
-                {title}
-            </p>
+            <div className="relative mx-auto w-full rounded-t-xl bg-white">
+                <Image
+                    src={Imgfootball}
+                    alt={title}
+                    className="w-full max-w-[250px] rounded-lg rounded-t-xl object-cover"
+                />
+            </div>
+            <div className="mt-2 h-1/2 w-full gap-2 rounded-b-xl p-4">
+                <h2 className="mt-2 font-bold text-neutral-700">{title}</h2>
+
+                <p className="">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+
+                <Button className="mt-8 w-full" onClick={() => onClick(id)}>
+                    Começar
+                </Button>
+            </div>
         </div>
     );
 };

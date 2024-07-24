@@ -5,14 +5,14 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { upsertUserProgress } from "@/actions/user-progress";
 import { toast } from "sonner";
-import { Courses } from "@prisma/client";
+import { Category } from "@prisma/client";
 
 type Props = {
-    courses: Courses[];
+    categories: Category[];
     activeCourseId?: number;
 };
 
-export const List = ({ courses, activeCourseId }: Props) => {
+export const List = ({ categories, activeCourseId }: Props) => {
     const router = useRouter();
     const [pending, startTransition] = useTransition();
 
@@ -34,16 +34,16 @@ export const List = ({ courses, activeCourseId }: Props) => {
     };
 
     return (
-        <div className="grid grid-cols-2 gap-4 pt-6 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))]">
-            {courses.map((course) => (
+        <div className="grid grid-cols-2 gap-4 pt-6 lg:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+            {categories.map((categorie) => (
                 <Card
-                    key={course.id}
-                    id={course.id}
-                    title={course.title}
-                    imageSrc={course.imageSrc}
+                    key={categorie.id}
+                    id={categorie.id}
+                    title={categorie.title}
+                    imageSrc={categorie.imageSrc}
                     onClick={onClick}
                     disabled={pending}
-                    active={course.id === activeCourseId}
+                    active={categorie.id === activeCourseId}
                 />
             ))}
         </div>

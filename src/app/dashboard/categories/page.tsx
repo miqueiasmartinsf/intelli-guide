@@ -15,7 +15,7 @@ const CategoryPage = async () => {
             <h1 className="text-2xl font-bold text-neutral-700">
                 Quizz Categories
             </h1>
-            <List courses={courses || []} />
+            <List categories={courses || []} />
         </div>
     );
 };

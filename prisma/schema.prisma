@@ -96,6 +96,7 @@ model TwoFactorConfirmation {
 model Category {
   id       Int    @id @default(autoincrement())
   title    String
+  description String
   imageSrc String
   quizzes        Quiz[]
   userProgress UserProgress[]

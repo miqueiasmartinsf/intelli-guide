@@ -13,10 +13,30 @@ async function main() {
     // Inserir categorias
     await db.category.createMany({
         data: [
-            { id: 1, title: "Futebol", imageSrc: "_next/static/media/es.svg" },
-            { id: 2, title: "Cinema", imageSrc: "_next/static/media/it.svg" },
-            { id: 3, title: "História", imageSrc: "_next/static/media/fr.svg" },
-            { id: 4, title: "Séries", imageSrc: "_next/static/media/hr.svg" },
+            {
+                id: 1,
+                title: "Futebol",
+                imageSrc: "_next/static/media/football.svg",
+                description: "Aprenda os fundamentos do futebol",
+            },
+            {
+                id: 2,
+                title: "Cinema",
+                imageSrc: "_next/static/media/movie.svg",
+                description: "Aprenda os fundamentos do futebol",
+            },
+            {
+                id: 3,
+                title: "História",
+                imageSrc: "_next/static/media/fr.svg",
+                description: "Aprenda os fundamentos do futebol",
+            },
+            {
+                id: 4,
+                title: "Séries",
+                imageSrc: "_next/static/media/hr.svg",
+                description: "Aprenda os fundamentos do futebol",
+            },
         ],
     });
 
