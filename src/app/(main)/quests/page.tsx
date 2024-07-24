@@ -20,7 +20,7 @@ const QuestsPage = async () => {
     userSubscriptionData,
   ])
 
-  if (!userProgress || !userProgress.activeCourse) redirect('/courses')
+  if (!userProgress || !userProgress.activeCourse) redirect('/dashboard/courses')
 
   const isPro = !!userSubscription?.isActive
 

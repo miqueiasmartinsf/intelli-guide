@@ -1,23 +1,23 @@
 /* eslint-disable prettier/prettier */
-'use client'
+"use client";
 
-import 'react-circular-progressbar/dist/styles.css'
+import "react-circular-progressbar/dist/styles.css";
 
-import { Check, Crown, Star } from 'lucide-react'
-import Link from 'next/link'
-import { CircularProgressbarWithChildren } from 'react-circular-progressbar'
+import { Check, Crown, Star } from "lucide-react";
+import Link from "next/link";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type Props = {
-    id: number
-    index: number
-    totalCount: number
-    locked?: boolean
-    current?: boolean
-    percentage: number
-}
+    id: number;
+    index: number;
+    totalCount: number;
+    locked?: boolean;
+    current?: boolean;
+    percentage: number;
+};
 
 export const LessonButton = ({
     id,
@@ -27,38 +27,36 @@ export const LessonButton = ({
     current,
     percentage,
 }: Props) => {
-    console.log('LessonButton.tsx id:', id)
-    console.log('LessonButton.tsx current:', current)
     const cycleLength = 8
     const cycleIndex = index % cycleLength
 
-    let indentationLevel
+    let indentationLevel;
 
     if (cycleIndex <= 2) {
-        indentationLevel = cycleIndex
+        indentationLevel = cycleIndex;
     } else if (cycleIndex <= 4) {
-        indentationLevel = 4 - cycleIndex
+        indentationLevel = 4 - cycleIndex;
     } else if (cycleIndex <= 6) {
-        indentationLevel = 4 - cycleIndex
+        indentationLevel = 4 - cycleIndex;
     } else {
-        indentationLevel = cycleIndex - 8
+        indentationLevel = cycleIndex - 8;
     }
 
-    const rightPosition = indentationLevel * 40
+    const rightPosition = indentationLevel * 40;
 
-    const isFirst = index === 0
-    const isLast = index === totalCount
-    const isCompleted = !current && !locked
+    const isFirst = index === 0;
+    const isLast = index === totalCount;
+    const isCompleted = !current && !locked;
 
-    const Icon = isCompleted ? Check : isLast ? Crown : Star
+    const Icon = isCompleted ? Check : isLast ? Crown : Star;
 
-    const href = isCompleted ? `/lesson/${id}` : '/lesson'
+    const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
     return (
         <Link
             href={href}
             aria-disabled={locked}
-            style={{ pointerEvents: locked ? 'none' : 'auto' }}
+            style={{ pointerEvents: locked ? "none" : "auto" }}
         >
             <div
                 className="relative"
@@ -77,25 +75,25 @@ export const LessonButton = ({
                             value={Number.isNaN(percentage) ? 0 : percentage}
                             styles={{
                                 path: {
-                                    stroke: '#4ade88',
+                                    stroke: "#4ade88",
                                 },
                                 trail: {
-                                    stroke: '#e5e7eb',
+                                    stroke: "#e5e7eb",
                                 },
                             }}
                         >
                             <Button
                                 size="rounded"
-                                variant={locked ? 'locked' : 'secondary'}
+                                variant={locked ? "locked" : "secondary"}
                                 className="h-[70px] w-[70px] border-b-8"
                             >
                                 <Icon
                                     className={cn(
-                                        'h-10 w-10',
+                                        "h-10 w-10",
                                         locked
-                                            ? 'fill-neutral-400 stroke-neutral-400 text-neutral-400'
-                                            : 'fill-primary-foreground text-primary-foreground',
-                                        isCompleted && 'fill-none stroke-[4]',
+                                            ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
+                                            : "fill-primary-foreground text-primary-foreground",
+                                        isCompleted && "fill-none stroke-[4]",
                                     )}
                                 />
                             </Button>
@@ -104,21 +102,21 @@ export const LessonButton = ({
                 ) : (
                     <Button
                         size="rounded"
-                        variant={locked ? 'locked' : 'secondary'}
+                        variant={locked ? "locked" : "secondary"}
                         className="h-[70px] w-[70px] border-b-8"
                     >
                         <Icon
                             className={cn(
-                                'h-10 w-10',
+                                "h-10 w-10",
                                 locked
-                                    ? 'fill-neutral-400 stroke-neutral-400 text-neutral-400'
-                                    : 'fill-primary-foreground text-primary-foreground',
-                                isCompleted && 'fill-none stroke-[4]',
+                                    ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
+                                    : "fill-primary-foreground text-primary-foreground",
+                                isCompleted && "fill-none stroke-[4]",
                             )}
                         />
                     </Button>
                 )}
             </div>
         </Link>
-    )
-}
+    );
+};

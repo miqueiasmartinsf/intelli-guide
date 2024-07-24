@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import Confetti from 'react-confetti'
-import { useAudio, useMount, useWindowSize } from 'react-use'
+import { useMount, useWindowSize } from 'react-use'
 import { toast } from 'sonner'
 
 import { upsertChallengeProgress } from '@/actions/challenge-progress'
@@ -22,7 +22,7 @@ import { ResultCard } from './result-card'
 
 type InitialLessonChallengeProps = Challenges & {
   completed: boolean
-  challengeOptions: ChallengeOption[]
+  challenge_options: ChallengeOption[]
 }
 
 type UserSubscriptionProps = UserSubscription & {
@@ -44,7 +44,6 @@ export const Quiz = ({
   initialLessonChallenges,
   userSubscription,
 }: Props) => {
-  console.log('Quiz initialLessonId', initialLessonId)
   const { open: openHeartsModal } = useHeartsModal()
   const { open: openPracticeModal } = usePracticeModal()
 
@@ -57,12 +56,6 @@ export const Quiz = ({
   const { width, height } = useWindowSize()
 
   const router = useRouter()
-  const [finishAudio] = useAudio({ src: './finish.mp3', autoPlay: true })
-
-  const [correctAudio, _c, correctControl] = useAudio({ src: '/correct.wav' })
-  const [incorrectAudio, _i, incorrectControl] = useAudio({
-    src: '/incorrect.wav',
-  })
 
   const [pending, startTransition] = useTransition()
 
@@ -86,7 +79,7 @@ export const Quiz = ({
   const [status, setStatus] = useState<'correct' | 'wrong' | 'none'>('none')
 
   const challenge = challenges[activeIndex]
-  const options = challenge?.challengeOptions ?? []
+  const options = challenge?.challenge_options ?? []
 
   const onNext = () => {
     setActiveIndex((current) => current + 1)
@@ -128,8 +121,6 @@ export const Quiz = ({
               openHeartsModal()
               return
             }
-
-            correctControl.play()
             setStatus('correct')
             setPercentage((prev) => prev + 100 / challenges.length)
 
@@ -147,8 +138,6 @@ export const Quiz = ({
               openHeartsModal()
               return
             }
-
-            incorrectControl.play()
             setStatus('wrong')
 
             if (!response?.error) {
@@ -164,7 +153,6 @@ export const Quiz = ({
   if (!challenge) {
     return (
       <>
-        {finishAudio}
         <Confetti
           width={width}
           height={height}
@@ -207,8 +195,6 @@ export const Quiz = ({
 
   return (
     <>
-      {incorrectAudio}
-      {correctAudio}
       <Header
         hearts={hearts}
         percentage={percentage}

@@ -11,26 +11,21 @@ export const getUserSubscription = cache(async () => {
     const user = session?.user
     const userId = user?.id
 
-    if (userId) return null
+    if (!userId) return null
 
     const data = await db.userSubscription.findFirst({
       where: { userId },
     })
 
-    console.log('getUserSubscription data', data)
-
     if (!data) return null
 
-    const isActive =
-      data.stripePriceId &&
-      new Date(data.stripeCurrentPeriodEnd).getTime() + DAY_IN_MS > Date.now()
+    const isActive = data.stripePriceId && new Date(data.stripeCurrentPeriodEnd).getTime() + DAY_IN_MS > Date.now();
 
-    console.log('isActive', isActive)
     return {
       ...data,
       isActive: !!isActive,
-    }
+    };
   } catch {
-    return null
+    return null;
   }
 })

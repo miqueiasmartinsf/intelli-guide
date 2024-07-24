@@ -24,7 +24,7 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
 }
 
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-  const resetLink = `${domain}/auth/new-password?token=${token}`
+  const resetLink = `${domain}/new-password?token=${token}`
 
   await transporter.sendMail({
     from: '"Onboarding" <wesleyribas2015@gmail.com>',
@@ -35,7 +35,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 }
 
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const confirmLink = `${domain}/auth/new-verification?token=${token}`
+  const confirmLink = `${domain}/new-verification?token=${token}`
 
   await transporter.sendMail({
     from: '"Onboarding" <wesleyribas2015@gmail.com>',

@@ -4,12 +4,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Button } from '../ui/button'
 import MenuIcon from './MenuIcon'
 
 export default function MenuHome() {
@@ -24,7 +22,7 @@ export default function MenuHome() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="hidden max-lg:flex max-lg:flex-col">
           <DropdownMenuItem className="bg-primary text-white">
-            <a href="/auth/register">Cadastrar</a>
+            <a href="/register">Cadastrar</a>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
 
@@ -44,7 +42,7 @@ export default function MenuHome() {
           <DropdownMenuSeparator />
 
           <DropdownMenuItem>
-            <a href="/auth/login">Entrar</a>
+            <a href="/login">Entrar</a>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

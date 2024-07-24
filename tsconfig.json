@@ -32,7 +32,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/auth/[...nextauth]",
     "api/auth/[...nextauth]"
   ],
   "exclude": [

@@ -5,7 +5,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { resetActions } from '@/app/auth/reset/actions'
+import { resetActions } from '@/app/(auth)/reset/actions'
 import { ResetSchema } from '@/schemas/auth'
 
 import { FormError } from '../form-error'

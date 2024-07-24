@@ -1,6 +1,8 @@
+import { cache } from 'react'
+
 import { db } from '@/services/database'
 
-export const getCourses = async () => {
+export const getCourses = cache(async () => {
   try {
     const courses = await db.courses.findMany()
 
@@ -8,4 +10,4 @@ export const getCourses = async () => {
   } catch {
     return null
   }
-}
+})

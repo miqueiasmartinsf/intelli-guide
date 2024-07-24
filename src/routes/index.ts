@@ -5,7 +5,7 @@
  */
 export const publicRoutes = [
   '/',
-  '/auth/new-verification',
+  '/new-verification',
   'api/webhooks/stripe',
 ]
 
@@ -15,22 +15,22 @@ export const publicRoutes = [
  * @type {string[]}
  */
 export const authRoutes = [
-  '/auth/login',
-  '/auth/register',
-  '/auth/error',
-  '/auth/reset',
-  '/auth/new-password',
-]
+    "/login",
+    "/register",
+    "/error",
+    "/reset",
+    "/new-password",
+];
 
 /**
  * The prefix for api authentication routes.
  * Routes that starts with this prefix are used for API authentication purposes.
  * @type {string}
  */
-export const apiAuthPrefix = '/api/auth'
+export const apiAuthPrefix = "/api/auth";
 
 /**
  * The default redirect path after a successful login.
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = '/courses'
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard/courses";

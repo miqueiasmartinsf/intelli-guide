@@ -1,27 +1,27 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 
-import { FeedWrapper } from '@/components/feed-wrapper'
-import { Promo } from '@/components/promo'
-import { Quests } from '@/components/quests'
-import { StickyWrapper } from '@/components/sticky-wrapper'
-import { UserProgress } from '@/components/user-progress'
+import { FeedWrapper } from "@/components/feed-wrapper";
+import { Promo } from "@/components/promo";
+import { Quests } from "@/components/quests";
+import { StickyWrapper } from "@/components/sticky-wrapper";
+import { UserProgress } from "@/components/user-progress";
 import {
   getCourseProgress,
   getLessonPercentage,
   getUnits,
   getUserProgress,
   getUserSubscription,
-} from '@/data'
+} from "@/data";
 
-import { Header } from './header'
-import { Unit } from './unit'
+import { Header } from "./header";
+import { Unit } from "./unit";
 
 const LearnPage = async () => {
-  const userProgressData = getUserProgress()
-  const courseProgressData = getCourseProgress()
-  const lessonPercentageData = getLessonPercentage()
-  const unitsData = getUnits()
-  const userSubscriptionData = getUserSubscription()
+  const userProgressData = getUserProgress();
+  const courseProgressData = getCourseProgress();
+  const lessonPercentageData = getLessonPercentage();
+  const unitsData = getUnits();
+  const userSubscriptionData = getUserSubscription();
 
   const [
     userProgress,
@@ -35,23 +35,17 @@ const LearnPage = async () => {
     courseProgressData,
     lessonPercentageData,
     userSubscriptionData,
-  ])
+  ]);
 
-  console.log('LearnPage CourseProgress:', courseProgress)
   if (!userProgress || !userProgress.activeCourse) {
-    redirect('/courses')
+    redirect('/dashboard/courses')
   }
 
   if (!courseProgress) {
-    redirect('/courses')
+    redirect("/dashboard/courses");
   }
 
-  const isPro = !!userSubscription?.isActive
-
-  console.log(
-    'LearnPage units.map((unit):',
-    units.map((unit) => unit),
-  )
+  const isPro = !!userSubscription?.isActive;
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
@@ -73,8 +67,8 @@ const LearnPage = async () => {
             <Unit
               id={unit.id}
               order={unit.order}
-              description={unit.description}
               title={unit.title}
+              description={unit.description}
               lessons={unit.lessons}
               activeLesson={courseProgress.activeLesson}
               activeLessonPercentage={lessonPercentage}

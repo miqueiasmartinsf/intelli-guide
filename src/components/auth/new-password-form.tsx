@@ -6,7 +6,7 @@ import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { newPasswordActions } from '@/app/auth/new-password/actions'
+import { newPasswordActions } from '@/app/(auth)/new-password/actions'
 import { NewPasswordSchema } from '@/schemas/auth'
 
 import { FormError } from '../form-error'
