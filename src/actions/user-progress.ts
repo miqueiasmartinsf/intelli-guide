@@ -43,9 +43,9 @@ export const upsertUserProgress = async (courseId: number) => {
             },
         });
 
-        revalidatePath("/courses");
-        revalidatePath("/learn");
-        redirect("/learn");
+        revalidatePath("/dashboard/courses");
+        revalidatePath("/dashboard/learn");
+        redirect("/dashboard/learn");
     } else {
         await db.userProgress.create({
             data: {
@@ -56,9 +56,9 @@ export const upsertUserProgress = async (courseId: number) => {
             },
         });
 
-        revalidatePath("/courses");
-        revalidatePath("/learn");
-        redirect("/learn");
+        revalidatePath("/dashboard/courses");
+        revalidatePath("/dashboard/learn");
+        redirect("/dashboard/learn");
     }
 };
 
@@ -117,10 +117,10 @@ export const reduceHearts = async (challengeId: number) => {
     });
 
     revalidatePath("/shop");
-    revalidatePath("/learn");
+    revalidatePath("/dashboard/learn");
     revalidatePath("quests");
     revalidatePath("quests");
-    revalidatePath("/leaderboard");
+    revalidatePath("/dashboard/leaderboard");
     revalidatePath(`/lesson/${lessonId}`);
 };
 
@@ -150,5 +150,5 @@ export const refillHearts = async () => {
     revalidatePath("/shop");
     revalidatePath("/learn");
     revalidatePath("/quests");
-    revalidatePath("leaderboard");
+    revalidatePath("/dashboard/leaderboard");
 };

@@ -38,11 +38,11 @@ const LearnPage = async () => {
   ]);
 
   if (!userProgress || !userProgress.activeCourse) {
-    redirect('/courses')
+    redirect('/dashboard/courses')
   }
 
   if (!courseProgress) {
-    redirect("/courses");
+    redirect("/dashboard/courses");
   }
 
   const isPro = !!userSubscription?.isActive;

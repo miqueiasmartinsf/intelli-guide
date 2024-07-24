@@ -1,5 +1,5 @@
 import { LearnTrack } from "@/components/learn-track";
-import { Header } from "@/app/(main)/learn/header";
+import { Header } from "@/app/dashboard/learn/header";
 
 function TrackPage() {
     return (

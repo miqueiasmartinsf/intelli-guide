@@ -1,10 +1,10 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { BeatLoader } from 'react-spinners'
 
-import { newVerificationActions } from '@/app/auth/new-verification/actions'
+import { newVerificationActions } from '@/app/(auth)/new-verification/actions'
 
 import { FormError } from '../form-error'
 import { FormSuccess } from '../form-success'
@@ -15,6 +15,7 @@ export const NewVerificationForm = () => {
   const [success, setSuccess] = useState<string | undefined>('')
 
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   const token = searchParams.get('token')
 
@@ -31,6 +32,10 @@ export const NewVerificationForm = () => {
       .then((data) => {
         setSuccess(data.success)
         setError(data.error)
+
+        if (data.success) {
+          router.push('/login')
+        }
       })
       .catch(() => {
         setError('Something went wrong!')

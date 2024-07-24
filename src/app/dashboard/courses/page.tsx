@@ -1,23 +1,18 @@
 import { List } from "./list";
 import { getUserProgress, getCourses } from "@/data";
-import { AsideWrapper } from "@/components/aside-wrapper";
 
 const CoursePage = async () => {
     const coursesData = getCourses();
     const userProgressData = getUserProgress();
 
-    const [courses, userProgress] = await Promise.all([
-        coursesData,
-        userProgressData,
-    ]);
+    const [courses, userProgress] = await Promise.all([coursesData, userProgressData]);
 
     return (
-        <div className="h-full w-full px-3">
+        <div className="h-full max-w-[912px] px-3 mx-auto">
             <h1 className="text-2xl font-bold text-neutral-700">
                 Language Courses
             </h1>
-            <List
-                courses={courses || []}
+            <List courses={courses || []}
                 activeCourseId={userProgress?.activeCourseId || 0}
             />
         </div>

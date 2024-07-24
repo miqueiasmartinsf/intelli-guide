@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
-
 type LearnTrackCardProps = {
     title: string;
     content: string;

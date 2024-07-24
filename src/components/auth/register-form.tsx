@@ -119,7 +119,7 @@ export const RegisterForm = () => {
                     asChild
                     className="mt-4 flex justify-center font-normal"
                 >
-                    <Link href="/auth/login">Already have an account</Link>
+                    <Link href="/login">Already have an account</Link>
                 </Button>
             </form>
         </div>

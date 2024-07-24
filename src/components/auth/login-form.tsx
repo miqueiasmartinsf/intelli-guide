@@ -121,7 +121,7 @@ export const LoginForm = () => {
                             asChild
                             className="mb-3 flex justify-end px-0 font-semibold"
                         >
-                            <Link href="/auth/reset">Forgot password?</Link>
+                            <Link href="/reset">Forgot password?</Link>
                         </Button>
                     </>
                 )}
@@ -151,7 +151,7 @@ export const LoginForm = () => {
                 asChild
                 className="mt-4 flex justify-center font-semibold"
             >
-                <Link href="/auth/register">Don&apos;t have an account ?</Link>
+                <Link href="/register">Don&apos;t have an account ?</Link>
             </Button>
         </div>
     );

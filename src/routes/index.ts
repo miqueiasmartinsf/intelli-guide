@@ -5,7 +5,7 @@
  */
 export const publicRoutes = [
   '/',
-  '/auth/new-verification',
+  '/new-verification',
   'api/webhooks/stripe',
 ]
 
@@ -33,4 +33,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default redirect path after a successful login.
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/courses";
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard/courses";

@@ -51,14 +51,14 @@ export default function Home() {
               </li>
               <li>
                 <Link
-                  href={'/auth/login'}
+                  href={'/login'}
                   className="nav-link text-lg max-2xl:text-base"
                 >
                   Entrar
                 </Link>
               </li>
               <li>
-                <Link href={'/auth/register'}>
+                <Link href={'/register'}>
                   <Button className="p-4 text-lg max-2xl:p-4 max-2xl:text-base">
                     Cadastrar
                   </Button>
