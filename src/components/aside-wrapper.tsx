@@ -6,7 +6,7 @@ type AsideWrapperProps = {
 
 export function AsideWrapper({ children }: AsideWrapperProps) {
     return (
-        <div className="h-screen w-[20%] max-w-[600px] gap-5 px-6 py-4">
+        <div className="h-screen w-[25%] max-w-[700px] gap-5 px-6 py-4 pt-[87px]">
             {children}
         </div>
     );
