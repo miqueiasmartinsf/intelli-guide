@@ -1,13 +1,15 @@
-import { cache } from 'react'
+import { cache } from "react";
 
-import { db } from '@/services/database'
+import { db } from "@/services/database";
 
-export const getCourses = cache(async () => {
-  try {
-    const courses = await db.courses.findMany()
+export const getCategories = cache(async () => {
+    try {
+        const categories = await db.category.findMany();
 
-    return courses
-  } catch {
-    return null
-  }
-})
+        console.log(categories);
+
+        return categories;
+    } catch {
+        return null;
+    }
+});

@@ -10,25 +10,25 @@ export function RecentlyAdded() {
             </div>
             <div className="flex items-center justify-between rounded-md border-b-2 p-2">
                 <h2 className="">Futebol</h2>
-                <Link href={""} className="text-sm text-primary">
+                <Link href={""} className="text-xs text-primary">
                     Responder
                 </Link>
             </div>
             <div className="flex items-center justify-between rounded-md border-b-2 p-2">
                 <h2 className="">Filmes</h2>
-                <Link href={""} className="text-sm text-primary">
+                <Link href={""} className="text-xs text-primary">
                     Responder
                 </Link>
             </div>
             <div className="flex items-center justify-between rounded-md border-b-2 p-2">
                 <h2 className="">Países</h2>
-                <Link href={""} className="text-sm text-primary">
+                <Link href={""} className="text-xs text-primary">
                     Responder
                 </Link>
             </div>
             <div className="flex items-center justify-between rounded-md p-2">
                 <h2 className="">Seríes</h2>
-                <Link href={""} className="text-sm text-primary">
+                <Link href={""} className="text-xs text-primary">
                     Responder
                 </Link>
             </div>

@@ -1,8 +1,8 @@
 import { List } from "./list";
-import { getUserProgress, getCourses } from "@/data";
+import { getUserProgress, getCategories } from "@/data";
 
 const CategoryPage = async () => {
-    const coursesData = getCourses();
+    const coursesData = getCategories();
     const userProgressData = getUserProgress();
 
     const [courses, userProgress] = await Promise.all([
@@ -15,10 +15,7 @@ const CategoryPage = async () => {
             <h1 className="text-2xl font-bold text-neutral-700">
                 Quizz Categories
             </h1>
-            <List
-                courses={courses || []}
-                activeCourseId={userProgress?.activeCourseId || 0}
-            />
+            <List courses={courses || []} />
         </div>
     );
 };
