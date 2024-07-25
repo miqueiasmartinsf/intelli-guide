@@ -5,7 +5,7 @@ import { db } from '@/services/database'
 
 import { getUserProgress } from '../user'
 
-export const getUnits = cache(async () => {
+export const getQuizzes = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
@@ -17,7 +17,7 @@ export const getUnits = cache(async () => {
       return []
     }
 
-    const data = await db.units.findMany({
+    const data = await db.quizzes.findMany({
       orderBy: {
         order: 'asc',
       },

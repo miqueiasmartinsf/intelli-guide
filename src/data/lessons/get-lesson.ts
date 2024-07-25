@@ -3,7 +3,7 @@ import { cache } from 'react'
 import { auth } from '@/services/auth'
 import { db } from '@/services/database'
 
-import { getCourseProgress } from '../courses'
+import { getCategoryProgress } from '../categories'
 
 export const getLesson = cache(async (id?: number) => {
   try {
@@ -15,7 +15,7 @@ export const getLesson = cache(async (id?: number) => {
       return null
     }
 
-    const courseProgress = await getCourseProgress()
+    const courseProgress = await getCategoryProgress()
 
     const lessonId = id || courseProgress?.activeLessonId
 

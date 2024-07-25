@@ -33,7 +33,7 @@ const App = () => {
       />
 
       <Resource
-        name="units"
+        name="quizzes"
         list={UnitList}
         create={UnitCreate}
         edit={UnitEdit}

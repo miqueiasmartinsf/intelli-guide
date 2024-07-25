@@ -98,13 +98,13 @@ model Categories {
   title    String
   imageSrc String
 
-  units         Units[]
+  quizzes       Quizzes[]
   user_progress UserProgress[]
 
   @@map("categories")
 }
 
-model Units {
+model Quizzes {
   id          Int    @id @default(autoincrement())
   title       String
   description String
@@ -114,7 +114,7 @@ model Units {
   categories Categories? @relation(fields: [categoryId], references: [id])
   lessons    Lessons[]
 
-  @@map("units")
+  @@map("quizzes")
 }
 
 model Lessons {
@@ -124,7 +124,7 @@ model Lessons {
   order  Int
 
   challenges Challenges[]
-  units      Units        @relation(fields: [unitId], references: [id])
+  quizzes    Quizzes      @relation(fields: [unitId], references: [id])
 
   @@map("lessons")
 }

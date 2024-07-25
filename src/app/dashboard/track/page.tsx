@@ -3,30 +3,30 @@ import { redirect } from "next/navigation";
 import { LearnTrackCard } from "@/components/learn-track-card";
 
 import {
-    getCourseProgress,
+    getCategoryProgress,
     getLessonPercentage,
-    getUnits,
+    getQuizzes,
     getUserProgress,
     getUserSubscription,
 } from "@/data";
 
 async function TrackPage() {
     const userProgressData = getUserProgress();
-    const courseProgressData = getCourseProgress();
+    const categoryProgressData = getCategoryProgress();
     const lessonPercentageData = getLessonPercentage();
-    const unitsData = getUnits();
+    const quizzesData = getQuizzes();
     const userSubscriptionData = getUserSubscription();
 
     const [
         userProgress,
-        units,
-        courseProgress,
+        quizzes,
+        categoryProgress,
         lessonPercentage,
         userSubscription,
     ] = await Promise.all([
         userProgressData,
-        unitsData,
-        courseProgressData,
+        quizzesData,
+        categoryProgressData,
         lessonPercentageData,
         userSubscriptionData,
     ]);
@@ -38,11 +38,11 @@ async function TrackPage() {
             <Header title="Futebol" />
 
             <div className="flex flex-col p-12">
-                {units.map((item, index) => {
+                {quizzes.map((item, index) => {
                     return (
                         <LearnTrackCard
                             id={item.id}
-                            courseId={item.courseId}
+                            categoryId={item.categoryId}
                             description={item.description}
                             order={item.order}
                             title={item.title}

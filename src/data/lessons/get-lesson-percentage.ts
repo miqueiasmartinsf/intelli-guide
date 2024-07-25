@@ -1,10 +1,10 @@
 import { cache } from 'react'
 
-import { getCourseProgress } from '../courses'
+import { getCategoryProgress } from '../categories'
 import { getLesson } from './get-lesson'
 
 export const getLessonPercentage = cache(async () => {
-  const courseProgress = await getCourseProgress()
+  const courseProgress = await getCategoryProgress()
 
   if (!courseProgress?.activeLessonId) {
     return 0

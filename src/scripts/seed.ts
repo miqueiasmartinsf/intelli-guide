@@ -7,7 +7,7 @@ async function main() {
     await db.challengeOption.deleteMany({});
     await db.challenges.deleteMany({});
     await db.lessons.deleteMany({});
-    await db.units.deleteMany({});
+    await db.quizzes.deleteMany({});
     await db.categories.deleteMany({});
     await db.userProgress.deleteMany({});
     await db.userSubscription.deleteMany({});
@@ -23,7 +23,7 @@ async function main() {
     });
 
     // Inserir unidades
-    await db.units.create({
+    await db.quizzes.create({
         data: {
             id: 1,
             categoryId: 1,

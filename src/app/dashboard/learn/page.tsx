@@ -6,32 +6,32 @@ import { Quests } from "@/components/quests";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import {
-    getCourseProgress,
+    getCategoryProgress,
     getLessonPercentage,
-    getUnits,
+    getQuizzes,
     getUserProgress,
     getUserSubscription,
 } from "@/data";
 
 import { Header } from "./header";
-import { Unit } from "./unit";
+import { Quiz } from "./quiz";
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
-    const courseProgressData = getCourseProgress();
+    const courseProgressData = getCategoryProgress();
     const lessonPercentageData = getLessonPercentage();
-    const unitsData = getUnits();
+    const quizzesData = getQuizzes();
     const userSubscriptionData = getUserSubscription();
 
     const [
         userProgress,
-        units,
+        quizzes,
         courseProgress,
         lessonPercentage,
         userSubscription,
     ] = await Promise.all([
         userProgressData,
-        unitsData,
+        quizzesData,
         courseProgressData,
         lessonPercentageData,
         userSubscriptionData,
@@ -62,14 +62,14 @@ const LearnPage = async () => {
 
             <FeedWrapper>
                 <Header title={userProgress.activeCategory.title} />
-                {units.map((unit) => (
-                    <div key={unit.id} className="mb-10">
-                        <Unit
-                            id={unit.id}
-                            order={unit.order}
-                            title={unit.title}
-                            description={unit.description}
-                            lessons={unit.lessons}
+                {quizzes.map((quiz) => (
+                    <div key={quiz.id} className="mb-10">
+                        <Quiz
+                            id={quiz.id}
+                            order={quiz.order}
+                            title={quiz.title}
+                            description={quiz.description}
+                            lessons={quiz.lessons}
                             activeLesson={courseProgress.activeLesson}
                             activeLessonPercentage={lessonPercentage}
                         />

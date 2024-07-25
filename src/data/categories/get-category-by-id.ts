@@ -3,7 +3,7 @@ import { cache } from 'react'
 import { db } from '@/services/database'
 
 export const getCategoryById = cache(async (courseId: number) => {
-  const data = await db.category.findFirst({
+  const data = await db.categories.findFirst({
     where: {
       id: courseId,
     },
@@ -13,7 +13,7 @@ export const getCategoryById = cache(async (courseId: number) => {
           order: 'asc',
         },
         include: {
-          questions: {
+          lessons: {
             orderBy: {
               order: 'asc',
             },
