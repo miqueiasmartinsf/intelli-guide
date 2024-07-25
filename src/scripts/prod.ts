@@ -11,14 +11,14 @@ const main = async () => {
     await db.challenges.deleteMany({})
     await db.lessons.deleteMany({})
     await db.units.deleteMany({})
-    await db.courses.deleteMany({})
+    await db.category.deleteMany({})
     await db.userSubscription.deleteMany({})
 
-    // Insere os cursos
-    const course = await db.courses.create({
+    // Insere as categorias
+    const course = await db.category.create({
       data: {
         title: 'Spanish',
-        imageSrc: '/es.svg',
+        description: 'Learn Spanish',
       },
     })
 

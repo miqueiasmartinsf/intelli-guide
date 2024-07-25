@@ -6,7 +6,7 @@ import { db } from '@/services/database'
 
 export const GET = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { categoryId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -17,8 +17,8 @@ export const GET = async (
     return new NextResponse('Unauthorized', { status: 401 })
   }
 
-  const data = await db.courses.findUnique({
-    where: { id: Number(params.courseId) },
+  const data = await db.category.findUnique({
+    where: { id: Number(params.categoryId) },
   })
 
   return NextResponse.json(data)
@@ -26,7 +26,7 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { categoryId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -38,8 +38,8 @@ export const PUT = async (
 
   const body = await req.json()
 
-  const data = await db.courses.update({
-    where: { id: Number(params.courseId) },
+  const data = await db.category.update({
+    where: { id: Number(params.categoryId) },
     data: body,
   })
 
@@ -48,7 +48,7 @@ export const PUT = async (
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { courseId: number } },
+  { params }: { params: { categoryId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -58,8 +58,8 @@ export const DELETE = async (
     return new NextResponse('Unauthorized', { status: 403 })
   }
 
-  const data = await db.courses.delete({
-    where: { id: Number(params.courseId) },
+  const data = await db.category.delete({
+    where: { id: Number(params.categoryId) },
   })
 
   return NextResponse.json(data)

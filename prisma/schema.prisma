@@ -94,10 +94,10 @@ model TwoFactorConfirmation {
 }
 
 model Category {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   description String
-  imageSrc    String
+  imageSrc    String?
 
   quizzes      Quiz[]
   userProgress UserProgress[]
@@ -124,8 +124,9 @@ model Question {
   quizId Int
   order  Int
 
-  quiz            Quiz             @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  questionOptions QuestionOption[]
+  quiz                 Quiz                   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  questionOptions      QuestionOption[]
+  UserQuestionProgress UserQuestionProgress[]
 
   @@map("question")
 }
@@ -142,15 +143,27 @@ model QuestionOption {
   @@map("question_option")
 }
 
+// Modelo novo para progresso do usuário em questões específicas
+model UserQuestionProgress {
+  id         Int     @id @default(autoincrement())
+  userId     String
+  questionId Int
+  completed  Boolean @default(false)
+
+  question Question @relation(fields: [questionId], references: [id])
+
+  @@map("user_question_progress")
+}
+
 model UserProgress {
   userId           String @id
   userName         String @default("user")
   userImageSrc     String @default("/mascot.svg")
-  activeCategoryId Int?
+  activeCategoryId Int
   hearts           Int    @default(5)
   points           Int    @default(0)
 
-  activeCategory Category? @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
+  activeCategory Category @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
 }
