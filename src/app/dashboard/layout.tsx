@@ -15,7 +15,7 @@ const MainLayout = ({ children }: Props) => {
             <Sidebar className="hidden lg:flex" />
             <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
                 <div className="flex h-full flex-wrap px-10 pt-6">
-                    <div className="w-[80%]">{children}</div>
+                    <div className="w-[75%]">{children}</div>
                     <AsideWrapper>
                         <RecentlyAdded />
                         <LeaderboardQuickView />

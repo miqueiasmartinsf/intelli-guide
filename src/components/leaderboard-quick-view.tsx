@@ -13,10 +13,7 @@ export function LeaderboardQuickView() {
                     <h1 className="font-bold">LeaderBoard</h1>
                 </div>
 
-                <Link
-                    href={"/dashboard/leaderboard"}
-                    className="text-xs text-primary"
-                >
+                <Link href={"/dashboard/leaderboard"} className="text-primary">
                     Ver mais
                 </Link>
             </div>
