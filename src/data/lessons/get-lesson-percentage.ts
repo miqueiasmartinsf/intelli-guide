@@ -4,13 +4,13 @@ import { getCategoryProgress } from '../categories'
 import { getLesson } from './get-lesson'
 
 export const getLessonPercentage = cache(async () => {
-  const courseProgress = await getCategoryProgress()
+  const categoryProgress = await getCategoryProgress()
 
-  if (!courseProgress?.activeLessonId) {
+  if (!categoryProgress?.activeLessonId) {
     return 0
   }
 
-  const lesson = await getLesson(courseProgress.activeLessonId)
+  const lesson = await getLesson(categoryProgress.activeLessonId)
 
   if (!lesson) {
     return 0

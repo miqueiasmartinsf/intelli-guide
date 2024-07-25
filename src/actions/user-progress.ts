@@ -8,7 +8,7 @@ import { auth } from "@/services/auth";
 import { db } from "@/services/database";
 import { POINTS_TO_REFILL } from "@/utils/constants";
 
-export const upsertUserProgress = async (courseId: number) => {
+export const upsertUserProgress = async (categoryId: number) => {
     const session = await auth();
     const user = session?.user;
     const userId = user?.id;
@@ -19,7 +19,7 @@ export const upsertUserProgress = async (courseId: number) => {
         throw new Error("Unauthorized user");
     }
 
-    const category = await getCategoryById(courseId);
+    const category = await getCategoryById(categoryId);
 
     if (!category) {
         console.error("Category not found");
@@ -27,8 +27,8 @@ export const upsertUserProgress = async (courseId: number) => {
     }
 
     if (!category.quizzes.length || !category.quizzes[0].lessons.length) {
-        console.error("Course is empty");
-        throw new Error("Course is empty");
+        console.error("Category is empty");
+        throw new Error("Category is empty");
     }
 
     const existingUserProgress = await getUserProgress();
@@ -37,7 +37,7 @@ export const upsertUserProgress = async (courseId: number) => {
         await db.userProgress.update({
             where: { userId },
             data: {
-                activeCategoryId: courseId,
+                activeCategoryId: categoryId,
                 userName: user?.name || "user",
                 userImageSrc: user?.image || "/mascot.svg",
             },
@@ -50,7 +50,7 @@ export const upsertUserProgress = async (courseId: number) => {
         await db.userProgress.create({
             data: {
                 userId,
-                activeCategoryId: courseId,
+                activeCategoryId: categoryId,
                 userName: user?.name || "user",
                 userImageSrc: user?.image || "/mascot.svg",
             },

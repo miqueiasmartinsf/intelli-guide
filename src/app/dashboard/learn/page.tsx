@@ -18,7 +18,7 @@ import { Quiz } from "./quiz";
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
-    const courseProgressData = getCategoryProgress();
+    const categoryProgressData = getCategoryProgress();
     const lessonPercentageData = getLessonPercentage();
     const quizzesData = getQuizzes();
     const userSubscriptionData = getUserSubscription();
@@ -26,13 +26,13 @@ const LearnPage = async () => {
     const [
         userProgress,
         quizzes,
-        courseProgress,
+        categoryProgress,
         lessonPercentage,
         userSubscription,
     ] = await Promise.all([
         userProgressData,
         quizzesData,
-        courseProgressData,
+        categoryProgressData,
         lessonPercentageData,
         userSubscriptionData,
     ]);
@@ -41,7 +41,7 @@ const LearnPage = async () => {
         redirect("/dashboard/categories");
     }
 
-    if (!courseProgress) {
+    if (!categoryProgress) {
         redirect("/dashboard/categories");
     }
 
@@ -70,7 +70,7 @@ const LearnPage = async () => {
                             title={quiz.title}
                             description={quiz.description}
                             lessons={quiz.lessons}
-                            activeLesson={courseProgress.activeLesson}
+                            activeLesson={categoryProgress.activeLesson}
                             activeLessonPercentage={lessonPercentage}
                         />
                     </div>

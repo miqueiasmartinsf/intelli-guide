@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { Play } from "lucide-react";
 
 type LearnTrackCardProps = {
-    courseId: number;
+    categoryId: number;
     description: string;
     id: number;
     lessons: any;
@@ -14,7 +14,7 @@ type LearnTrackCardProps = {
 
 export function LearnTrackCard({
     title,
-    courseId,
+    categoryId,
     description,
     id,
     lessons,
