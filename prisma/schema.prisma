@@ -93,7 +93,7 @@ model TwoFactorConfirmation {
   @@map("two_factor_confirmation")
 }
 
-model Courses {
+model Categories {
   id       Int    @id @default(autoincrement())
   title    String
   imageSrc String
@@ -101,17 +101,17 @@ model Courses {
   units         Units[]
   user_progress UserProgress[]
 
-  @@map("courses")
+  @@map("categories")
 }
 
 model Units {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  courseId    Int
+  categorieId    Int
   order       Int
 
-  courses Courses?  @relation(fields: [courseId], references: [id])
+  categories Categories?  @relation(fields: [categorieId], references: [id])
   lessons Lessons[]
 
   @@map("units")
@@ -135,13 +135,14 @@ enum ChallengeType {
 }
 
 model Challenges {
-  id       Int           @id @default(autoincrement())
-  lessonId Int
-  type     ChallengeType
-  question String
-  order    Int
+  id        Int           @id @default(autoincrement())
+  lessonId  Int
+  type      ChallengeType
+  question  String
+  order     Int
+  lessonsId Int?
 
-  lessons            Lessons?            @relation(fields: [lessonId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 
@@ -175,11 +176,11 @@ model UserProgress {
   userId         String @id
   userName       String @default("user")
   userImageSrc   String @default("/mascot.svg")
-  activeCourseId Int
+  activeCategoryId Int?
   hearts         Int    @default(5)
   points         Int    @default(0)
 
-  activeCourse Courses @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
+  activeCategorie Categories? @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
 }
