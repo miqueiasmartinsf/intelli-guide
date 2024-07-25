@@ -4,212 +4,147 @@ async function main() {
     console.log("Seeding database...");
 
     // Limpar os dados existentes
-    await db.questionOption.deleteMany({});
-    await db.question.deleteMany({});
-    await db.category.deleteMany({});
-    await db.quiz.deleteMany({});
+    await db.challengeOption.deleteMany({});
+    await db.challenges.deleteMany({});
+    await db.lessons.deleteMany({});
+    await db.units.deleteMany({});
+    await db.categories.deleteMany({});
     await db.userProgress.deleteMany({});
+    await db.userSubscription.deleteMany({});
 
-    // Inserir categorias
-    await db.category.createMany({
+    // Inserir cursos
+    await db.categories.createMany({
         data: [
-            {
-                id: 1,
-                title: "Futebol",
-                imageSrc: "_next/static/media/football.svg",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 2,
-                title: "Cinema",
-                imageSrc: "_next/static/media/movie.svg",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 3,
-                title: "História",
-                imageSrc: "_next/static/media/fr.svg",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 4,
-                title: "Séries",
-                imageSrc: "_next/static/media/hr.svg",
-                description: "Aprenda os fundamentos do futebol",
-            },
+            { id: 1, title: "Spanish", imageSrc: "_next/static/media/es.svg" },
+            { id: 2, title: "Italian", imageSrc: "_next/static/media/it.svg" },
+            { id: 3, title: "French", imageSrc: "_next/static/media/fr.svg" },
+            { id: 4, title: "Croatian", imageSrc: "_next/static/media/hr.svg" },
         ],
     });
 
-    // Inserir quizz
-    await db.quiz.create({
+    // Inserir unidades
+    await db.units.create({
         data: {
             id: 1,
-            categoryId: 1,
+            categorieId: 1,
             title: "unit 1",
-            description: "Aprenda os fundamentos do futebol",
+            description: "Learn the fundamentals of spanish",
             order: 1,
         },
     });
 
     // Inserir lições
-    await db.quiz.createMany({
+    await db.lessons.createMany({
         data: [
-            {
-                id: 1,
-                categoryId: 1,
-                order: 1,
-                title: "Nouns",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 2,
-                categoryId: 1,
-                order: 2,
-                title: "Verbs",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 3,
-                categoryId: 1,
-                order: 3,
-                title: "Verbs",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 4,
-                categoryId: 1,
-                order: 4,
-                title: "Verbs",
-                description: "Aprenda os fundamentos do futebol",
-            },
-            {
-                id: 5,
-                categoryId: 1,
-                order: 5,
-                title: "Verbs",
-                description: "Aprenda os fundamentos do futebol",
-            },
+            { id: 1, unitId: 1, order: 1, title: "Nouns" },
+            { id: 2, unitId: 1, order: 2, title: "Verbs" },
+            { id: 3, unitId: 1, order: 3, title: "Verbs" },
+            { id: 4, unitId: 1, order: 4, title: "Verbs" },
+            { id: 5, unitId: 1, order: 5, title: "Verbs" },
         ],
     });
 
     // Inserir desafios
-    await db.question.createMany({
+    await db.challenges.createMany({
         data: [
             {
                 id: 1,
-                quizId: 1,
+                lessonId: 1,
+                type: "SELECT",
                 order: 1,
-                question:
-                    "Qual jogador ganhou o maior número de Copas do Mundo?",
+                question: 'Which one of these is the "the man"?',
             },
             {
                 id: 2,
-                quizId: 1,
+                lessonId: 1,
+                type: "ASSIST",
                 order: 2,
-                question:
-                    "Qual foi o primeiro país a sediar uma Copa do Mundo da FIFA?",
+                question: '"the man"',
             },
             {
                 id: 3,
-                quizId: 1,
+                lessonId: 1,
+                type: "SELECT",
                 order: 3,
-                question:
-                    "Qual jogador ganhou o maior número de Copas do Mundo?",
+                question: 'Which one of these is the "the Robot"?',
             },
             {
                 id: 4,
-                quizId: 2,
+                lessonId: 2,
+                type: "SELECT",
                 order: 1,
-                question:
-                    "Em que ano foi fundada a FIFA (Federação Internacional de Futebol)?",
+                question: 'Which one of these is the "the man"?',
             },
             {
                 id: 5,
-                quizId: 2,
+                lessonId: 2,
+                type: "ASSIST",
                 order: 2,
-                question:
-                    "Qual clube de futebol tem mais títulos da Liga dos Campeões da UEFA?",
+                question: '"the man"',
             },
             {
                 id: 6,
-                quizId: 2,
+                lessonId: 2,
+                type: "SELECT",
                 order: 3,
-                question:
-                    "Qual clube de futebol tem mais títulos da Liga dos Campeões da UEFA?",
+                question: 'Which one of these is the "the Robot"?',
             },
         ],
     });
 
     // Inserir opções de desafios
-    await db.questionOption.createMany({
+    await db.challengeOption.createMany({
         data: [
             {
-                questionId: 1,
+                challengeId: 1,
                 imageSrc: "/man.svg",
                 correct: true,
-                text: "Charles Miller",
+                text: "el hombre",
             },
             {
-                questionId: 1,
+                challengeId: 1,
                 imageSrc: "/woman.svg",
                 correct: false,
-                text: "Ebenezer Cobb Morley",
+                text: "la mujer",
             },
             {
-                questionId: 1,
+                challengeId: 1,
                 imageSrc: "/robot.svg",
                 correct: false,
-                text: "Jules Rimet",
+                text: "el robot",
             },
             {
-                questionId: 1,
-                imageSrc: "/robot.svg",
-                correct: false,
-                text: "Pelé",
-            },
-            {
-                questionId: 2,
+                challengeId: 2,
                 correct: true,
-                text: " Brasil",
+                text: "el hombre",
             },
             {
-                questionId: 2,
+                challengeId: 2,
                 correct: false,
-                text: "Uruguai",
+                text: "la mujer",
             },
             {
-                questionId: 2,
+                challengeId: 2,
                 correct: false,
-                text: "Itália",
+                text: "el robot",
             },
             {
-                questionId: 2,
-                correct: false,
-                text: "Inglaterra",
-            },
-            {
-                questionId: 3,
+                challengeId: 3,
                 imageSrc: "/man.svg",
                 correct: false,
-                text: "1900",
+                text: "el hombre",
             },
             {
-                questionId: 3,
+                challengeId: 3,
                 imageSrc: "/woman.svg",
                 correct: false,
-                text: "1904",
+                text: "la mujer",
             },
             {
-                questionId: 3,
+                challengeId: 3,
                 imageSrc: "/robot.svg",
                 correct: true,
-                text: "1920",
-            },
-            {
-                questionId: 3,
-                imageSrc: "/robot.svg",
-                correct: true,
-                text: "1930",
+                text: "el robot",
             },
         ],
     });

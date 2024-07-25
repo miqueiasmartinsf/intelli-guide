@@ -4,9 +4,7 @@ import { db } from "@/services/database";
 
 export const getCategories = cache(async () => {
     try {
-        const categories = await db.category.findMany();
-
-        console.log(categories);
+        const categories = await db.categories.findMany();
 
         return categories;
     } catch {
