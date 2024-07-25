@@ -74,7 +74,7 @@ export const reduceHearts = async (challengeId: number) => {
     const currentUserProgress = await getUserProgress();
     const userSubscription = await getUserSubscription();
 
-    const challenge = await db.quiz.findFirst({
+    const challenge = await db.units.findFirst({
         where: { id: challengeId },
     });
 

@@ -14,13 +14,13 @@ export const getCourseProgress = cache(async () => {
 
     const userProgress = await getUserProgress()
 
-    if (!userId || !userProgress?.activeCourseId) {
+    if (!userId || !userProgress?.activeCategoryId) {
       return null
     }
 
-    const unitsInActiveCourse = await db.units.findMany({
+    const unitsInactiveCategory = await db.units.findMany({
       where: {
-        courseId: userProgress.activeCourseId,
+        categoriesId: userProgress.activeCategoryId,
       },
       orderBy: {
         order: 'asc',
@@ -46,7 +46,7 @@ export const getCourseProgress = cache(async () => {
       },
     })
 
-    const firstUncompletedLesson = unitsInActiveCourse
+    const firstUncompletedLesson = unitsInactiveCategory
       .flatMap((unit) => unit.lessons)
       .find((lesson) => {
         return lesson.challenges.some((challenge) => {

@@ -13,7 +13,7 @@ export const getUnits = cache(async () => {
 
     const userProgress = await getUserProgress()
 
-    if (!userId || !userProgress?.activeCourseId) {
+    if (!userId || !userProgress?.activeCategoryId) {
       return []
     }
 
@@ -22,7 +22,7 @@ export const getUnits = cache(async () => {
         order: 'asc',
       },
       where: {
-        courseId: userProgress.activeCourseId,
+        categoryId: userProgress.activeCategoryId,
       },
       include: {
         lessons: {

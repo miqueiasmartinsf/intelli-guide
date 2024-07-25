@@ -4,10 +4,10 @@ import ImgPoints from "@/public/points.svg";
 import ImgHeart from "@/public/heart.svg";
 import { Button } from "@/components/ui/button";
 import { InfinityIcon } from "lucide-react";
-import { Category } from "@prisma/client";
+import { Categories } from "@prisma/client";
 
 type Props = {
-    activeCategory: Category
+    activeCategory: Categories
     hearts: number;
     points: number;
     hasActiveSubscription: boolean;
@@ -17,7 +17,7 @@ type Props = {
 export const UserProgress = ({ activeCategory, points, hearts, hasActiveSubscription }: Props) => {
     return (
         <div className="flex items-center justify-between gap-x-2 w-full">
-            <Link href="/dashboard/courses">
+            <Link href="/dashboard/categories">
                 <Button variant="guost">
                     <Image
                         src={activeCategory.imageSrc}

@@ -108,10 +108,10 @@ model Units {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  categorieId Int
+  categoryId  Int
   order       Int
 
-  categories Categories? @relation(fields: [categorieId], references: [id])
+  categories Categories? @relation(fields: [categoryId], references: [id])
   lessons    Lessons[]
 
   @@map("units")
@@ -176,11 +176,11 @@ model UserProgress {
   userId           String @id
   userName         String @default("user")
   userImageSrc     String @default("/mascot.svg")
-  activeCategoryId Int?
+  activeCategoryId Int
   hearts           Int    @default(5)
   points           Int    @default(0)
 
-  activeCategorie Categories? @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
+  activeCategory Categories @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
 }

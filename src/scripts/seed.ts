@@ -26,7 +26,7 @@ async function main() {
     await db.units.create({
         data: {
             id: 1,
-            categorieId: 1,
+            categoryId: 1,
             title: "unit 1",
             description: "Learn the fundamentals of spanish",
             order: 1,
