@@ -94,11 +94,12 @@ model TwoFactorConfirmation {
 }
 
 model Category {
-  id       Int    @id @default(autoincrement())
-  title    String
+  id          Int    @id @default(autoincrement())
+  title       String
   description String
-  imageSrc String
-  quizzes        Quiz[]
+  imageSrc    String
+
+  quizzes      Quiz[]
   userProgress UserProgress[]
 
   @@map("categories")
@@ -108,33 +109,33 @@ model Quiz {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  categoryId    Int
+  categoryId  Int
   order       Int
 
-  category  Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  questions Question[]
+  categories Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  questions  Question[]
 
   @@map("quiz")
 }
 
 model Question {
-  id       Int           @id @default(autoincrement())
-  quizId   Int
-  question String
-  order    Int
-  quiz  Quiz  @relation(fields: [quizId], references: [id], onDelete: Cascade)
-  questionOptions  QuestionOption[]
+  id     Int    @id @default(autoincrement())
+  title  String
+  quizId Int
+  order  Int
+
+  quiz            Quiz             @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  questionOptions QuestionOption[]
 
   @@map("question")
 }
 
 model QuestionOption {
-  id          Int     @id @default(autoincrement())
-  questionId  Int
-  text        String
-  correct     Boolean
-  imageSrc    String?
-  audioSrc    String?
+  id         Int     @id @default(autoincrement())
+  questionId Int
+  text       String
+  correct    Boolean
+  imageSrc   String?
 
   question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 
@@ -142,14 +143,25 @@ model QuestionOption {
 }
 
 model UserProgress {
-  userId         String @id
-  userName       String @default("user")
-  userImageSrc   String @default("/mascot.svg")
+  userId           String @id
+  userName         String @default("user")
+  userImageSrc     String @default("/mascot.svg")
   activeCategoryId Int?
-  hearts         Int    @default(5)
-  points         Int    @default(0)
+  hearts           Int    @default(5)
+  points           Int    @default(0)
 
   activeCategory Category? @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
+}
+
+model UserSubscription {
+  id                     Int      @id @default(autoincrement())
+  userId                 String   @unique
+  stripeCustomerId       String   @unique
+  stripeSubscriptionId   String   @unique
+  stripePriceId          String
+  stripeCurrentPeriodEnd DateTime
+
+  @@map("user_subscription")
 }
