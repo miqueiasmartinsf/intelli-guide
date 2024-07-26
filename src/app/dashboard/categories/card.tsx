@@ -19,7 +19,7 @@ export const Card = ({
     title,
     id,
     imageSrc,
-    description
+    description,
     disabled,
     onClick,
     active,
@@ -48,11 +48,11 @@ export const Card = ({
             <div className="mt-2 h-1/2 w-full gap-2 rounded-b-xl p-4">
                 <h2 className="mt-2 font-bold text-neutral-700">{title}</h2>
 
-                <p className="h-8">
+                <p className="mt-2 line-clamp-3 text-slate-500">
                     {description}
                 </p>
 
-                <Button className="mt-8 w-full" onClick={() => onClick(id)}>
+                <Button className="mt-2 w-full" onClick={() => onClick(id)}>
                     Começar
                 </Button>
             </div>

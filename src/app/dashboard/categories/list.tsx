@@ -34,6 +34,10 @@ export const List = ({ categories, activeCategoryId }: Props) => {
         });
     };
 
+    useEffect(() => {
+        console.log(categories);
+    }, []);
+
     return (
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
             {categories.map((category) => (
@@ -42,7 +46,7 @@ export const List = ({ categories, activeCategoryId }: Props) => {
                     id={category.id}
                     title={category.title}
                     imageSrc={category.imageSrc}
-                    description={category.}
+                    description={category.description}
                     onClick={onClick}
                     disabled={pending}
                     active={category.id === activeCategoryId}
