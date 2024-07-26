@@ -14,7 +14,7 @@ const CategoryPage = async () => {
     ]);
 
     return (
-        <div className="px-3">
+        <div className="h-full w-full px-3">
             <h1 className="text-2xl font-bold">Quizz Categories</h1>
             <div className="w-full pt-6">
                 <FeedWrapper>
