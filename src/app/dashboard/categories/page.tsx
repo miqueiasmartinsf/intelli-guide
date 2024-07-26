@@ -1,12 +1,12 @@
 import { List } from "./list";
-import { getUserProgress, getCourses } from "@/data";
+import { getUserProgress, getCategories } from "@/data";
 
 const CategoryPage = async () => {
-    const coursesData = getCourses();
+    const categoriesData = getCategories();
     const userProgressData = getUserProgress();
 
-    const [courses, userProgress] = await Promise.all([
-        coursesData,
+    const [categories, userProgress] = await Promise.all([
+        categoriesData,
         userProgressData,
     ]);
 
@@ -16,8 +16,8 @@ const CategoryPage = async () => {
                 Quizz Categories
             </h1>
             <List
-                courses={courses || []}
-                activeCourseId={userProgress?.activeCourseId || 0}
+                categories={categories || []}
+                activeCategoryId={userProgress?.activeCategoryId || 0}
             />
         </div>
     );

@@ -24,8 +24,8 @@ const LeaderboaardPage = async () => {
         leaderboardData,
     ]);
 
-    if (!userProgress || !userProgress.activeCourse) {
-        redirect("/dashboard/courses");
+    if (!userProgress || !userProgress.activeCategoryId) {
+        redirect("/dashboard/categories");
     }
 
     const isPro = !!userSubscription?.isActive;
@@ -34,7 +34,7 @@ const LeaderboaardPage = async () => {
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
                 <UserProgress
-                    activeCourse={userProgress.activeCourse}
+                    activeCategory={userProgress.activeCategoryId}
                     hearts={userProgress.hearts}
                     points={userProgress.points}
                     hasActiveSubscription={isPro}

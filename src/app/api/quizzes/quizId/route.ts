@@ -16,7 +16,7 @@ export const GET = async (
     return new NextResponse('Unauthorized', { status: 403 })
   }
 
-  const data = await db.units.findUnique({
+  const data = await db.quizzes.findUnique({
     where: { id: Number(params.unitId) },
   })
 
@@ -37,7 +37,7 @@ export const PUT = async (
 
   const body = await req.json()
 
-  const data = await db.units.update({
+  const data = await db.quizzes.update({
     where: { id: Number(params.unitId) },
     data: body,
   })
@@ -57,7 +57,7 @@ export const DELETE = async (
     return new NextResponse('Unauthorized', { status: 403 })
   }
 
-  const data = await db.units.delete({
+  const data = await db.quizzes.delete({
     where: { id: Number(params.unitId) },
   })
 

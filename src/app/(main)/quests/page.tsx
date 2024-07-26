@@ -20,7 +20,7 @@ const QuestsPage = async () => {
     userSubscriptionData,
   ])
 
-  if (!userProgress || !userProgress.activeCourse) redirect('/dashboard/courses')
+  if (!userProgress || !userProgress.activeCategoryId) redirect('/dashboard/categories')
 
   const isPro = !!userSubscription?.isActive
 
@@ -28,7 +28,7 @@ const QuestsPage = async () => {
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress
-          activeCourse={userProgress.activeCourse}
+          activeCategory={userProgress.activeCategoryId}
           hearts={userProgress.hearts}
           points={userProgress.points}
           hasActiveSubscription={isPro}

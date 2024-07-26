@@ -3,12 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { getCourseById, getUserProgress, getUserSubscription } from "@/data";
+import { getCategoryById, getUserProgress, getUserSubscription } from "@/data";
 import { auth } from "@/services/auth";
 import { db } from "@/services/database";
 import { POINTS_TO_REFILL } from "@/utils/constants";
 
-export const upsertUserProgress = async (courseId: number) => {
+export const upsertUserProgress = async (categoryId: number) => {
     const session = await auth();
     const user = session?.user;
     const userId = user?.id;
@@ -19,16 +19,16 @@ export const upsertUserProgress = async (courseId: number) => {
         throw new Error("Unauthorized user");
     }
 
-    const course = await getCourseById(courseId);
+    const category = await getCategoryById(categoryId);
 
-    if (!course) {
-        console.error("Course not found");
-        throw new Error("Course not found");
+    if (!category) {
+        console.error("Category not found");
+        throw new Error("Category not found");
     }
 
-    if (!course.units.length || !course.units[0].lessons.length) {
-        console.error("Course is empty");
-        throw new Error("Course is empty");
+    if (!category.quizzes.length || !category.quizzes[0].lessons.length) {
+        console.error("Category is empty");
+        throw new Error("Category is empty");
     }
 
     const existingUserProgress = await getUserProgress();
@@ -37,26 +37,26 @@ export const upsertUserProgress = async (courseId: number) => {
         await db.userProgress.update({
             where: { userId },
             data: {
-                activeCourseId: courseId,
+                activeCategoryId: categoryId,
                 userName: user?.name || "user",
                 userImageSrc: user?.image || "/mascot.svg",
             },
         });
 
-        revalidatePath("/dashboard/courses");
+        revalidatePath("/dashboard/categories");
         revalidatePath("/dashboard/learn");
         redirect("/dashboard/learn");
     } else {
         await db.userProgress.create({
             data: {
                 userId,
-                activeCourseId: courseId,
+                activeCategoryId: categoryId,
                 userName: user?.name || "user",
                 userImageSrc: user?.image || "/mascot.svg",
             },
         });
 
-        revalidatePath("/dashboard/courses");
+        revalidatePath("/dashboard/categories");
         revalidatePath("/dashboard/learn");
         redirect("/dashboard/learn");
     }
@@ -67,14 +67,14 @@ export const reduceHearts = async (challengeId: number) => {
     const user = session?.user;
     const userId = user?.id;
 
-  if (!userId) {
-    throw new Error('Unauthorized')
-  }
+    if (!userId) {
+        throw new Error("Unauthorized");
+    }
 
     const currentUserProgress = await getUserProgress();
     const userSubscription = await getUserSubscription();
 
-    const challenge = await db.challenges.findFirst({
+    const challenge = await db.quizzes.findFirst({
         where: { id: challengeId },
     });
 
@@ -82,7 +82,7 @@ export const reduceHearts = async (challengeId: number) => {
         throw new Error("Challenge not found");
     }
 
-    const lessonId = challenge.lessonId;
+    const lessonId = challenge.categoryId;
 
     const existingChallengeProgress = await db.challengeProgress.findFirst({
         where: {

@@ -10,45 +10,45 @@ const main = async () => {
     await db.challengeOption.deleteMany({})
     await db.challenges.deleteMany({})
     await db.lessons.deleteMany({})
-    await db.units.deleteMany({})
-    await db.courses.deleteMany({})
+    await db.quizzes.deleteMany({})
+    await db.categories.deleteMany({})
     await db.userSubscription.deleteMany({})
 
-    // Insere os cursos
-    const course = await db.courses.create({
+    // Insere as categorias
+    const category = await db.categories.create({
       data: {
         title: 'Spanish',
-        imageSrc: '/es.svg',
+        imageSrc: '/spanish.svg',
       },
     })
 
     // Insere as unidades para o curso criado
-    await db.units.createMany({
+    await db.quizzes.createMany({
       data: [
         {
-          courseId: course.id,
+          categoryId: category.id,
           title: 'Unit 1',
-          description: `Learn the basics of ${course.title}`,
+          description: `Learn the basics of ${category.title}`,
           order: 1,
         },
         {
-          courseId: course.id,
+          categoryId: category.id,
           title: 'Unit 2',
-          description: `Learn intermediate ${course.title}`,
+          description: `Learn intermediate ${category.title}`,
           order: 2,
         },
       ],
     })
 
     // Recupera as unidades inseridas
-    const units = await db.units.findMany({
+    const quizzes = await db.quizzes.findMany({
       where: {
-        courseId: course.id,
+        categoryId: category.id,
       },
     })
 
     // Para cada unidade, insere as lições
-    for (const unit of units) {
+    for (const unit of quizzes) {
       await db.lessons.createMany({
         data: [
           { unitId: unit.id, title: 'Nouns', order: 1 },

@@ -93,28 +93,28 @@ model TwoFactorConfirmation {
   @@map("two_factor_confirmation")
 }
 
-model Courses {
+model Categories {
   id       Int    @id @default(autoincrement())
   title    String
   imageSrc String
 
-  units         Units[]
+  quizzes       Quizzes[]
   user_progress UserProgress[]
 
-  @@map("courses")
+  @@map("categories")
 }
 
-model Units {
+model Quizzes {
   id          Int    @id @default(autoincrement())
   title       String
   description String
-  courseId    Int
+  categoryId  Int
   order       Int
 
-  courses Courses?  @relation(fields: [courseId], references: [id])
-  lessons Lessons[]
+  categories Categories? @relation(fields: [categoryId], references: [id])
+  lessons    Lessons[]
 
-  @@map("units")
+  @@map("quizzes")
 }
 
 model Lessons {
@@ -124,7 +124,7 @@ model Lessons {
   order  Int
 
   challenges Challenges[]
-  units      Units        @relation(fields: [unitId], references: [id])
+  quizzes    Quizzes      @relation(fields: [unitId], references: [id])
 
   @@map("lessons")
 }
@@ -135,13 +135,14 @@ enum ChallengeType {
 }
 
 model Challenges {
-  id       Int           @id @default(autoincrement())
-  lessonId Int
-  type     ChallengeType
-  question String
-  order    Int
+  id        Int           @id @default(autoincrement())
+  lessonId  Int
+  type      ChallengeType
+  question  String
+  order     Int
+  lessonsId Int?
 
-  lessons            Lessons?            @relation(fields: [lessonId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 
@@ -172,14 +173,14 @@ model ChallengeProgress {
 }
 
 model UserProgress {
-  userId         String @id
-  userName       String @default("user")
-  userImageSrc   String @default("/mascot.svg")
-  activeCourseId Int
-  hearts         Int    @default(5)
-  points         Int    @default(0)
+  userId           String @id
+  userName         String @default("user")
+  userImageSrc     String @default("/mascot.svg")
+  activeCategoryId Int
+  hearts           Int    @default(5)
+  points           Int    @default(0)
 
-  activeCourse Courses @relation(fields: [activeCourseId], references: [id], onDelete: Cascade)
+  activeCategory Categories @relation(fields: [activeCategoryId], references: [id], onDelete: Cascade)
 
   @@map("user_progress")
 }

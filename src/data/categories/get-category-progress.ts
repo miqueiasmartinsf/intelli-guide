@@ -6,7 +6,7 @@ import { db } from '@/services/database'
 
 import { getUserProgress } from '../user'
 
-export const getCourseProgress = cache(async () => {
+export const getCategoryProgress = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
@@ -14,13 +14,13 @@ export const getCourseProgress = cache(async () => {
 
     const userProgress = await getUserProgress()
 
-    if (!userId || !userProgress?.activeCourseId) {
+    if (!userId || !userProgress?.activeCategoryId) {
       return null
     }
 
-    const unitsInActiveCourse = await db.units.findMany({
+    const quizzesInactiveCategory = await db.quizzes.findMany({
       where: {
-        courseId: userProgress.activeCourseId,
+        categoryId: userProgress.activeCategoryId,
       },
       orderBy: {
         order: 'asc',
@@ -31,7 +31,7 @@ export const getCourseProgress = cache(async () => {
             order: 'asc',
           },
           include: {
-            units: true,
+            quizzes: true,
             challenges: {
               include: {
                 challenge_progress: {
@@ -46,7 +46,7 @@ export const getCourseProgress = cache(async () => {
       },
     })
 
-    const firstUncompletedLesson = unitsInActiveCourse
+    const firstUncompletedLesson = quizzesInactiveCategory
       .flatMap((unit) => unit.lessons)
       .find((lesson) => {
         return lesson.challenges.some((challenge) => {

@@ -5,7 +5,7 @@ import { db } from '@/services/database'
 
 import { getUserProgress } from '../user'
 
-export const getUnits = cache(async () => {
+export const getQuizzes = cache(async () => {
   try {
     const session = await auth()
     const user = session?.user
@@ -13,16 +13,16 @@ export const getUnits = cache(async () => {
 
     const userProgress = await getUserProgress()
 
-    if (!userId || !userProgress?.activeCourseId) {
+    if (!userId || !userProgress?.activeCategoryId) {
       return []
     }
 
-    const data = await db.units.findMany({
+    const data = await db.quizzes.findMany({
       orderBy: {
         order: 'asc',
       },
       where: {
-        courseId: userProgress.activeCourseId,
+        categoryId: userProgress.activeCategoryId,
       },
       include: {
         lessons: {

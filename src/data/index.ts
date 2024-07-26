@@ -1,5 +1,5 @@
 export * from "./auth";
-export * from "./courses";
+export * from "./categories";
 export * from "./user";
-export * from "./units";
+export * from "./quizzes";
 export * from "./lessons";

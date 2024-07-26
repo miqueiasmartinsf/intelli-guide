@@ -2,13 +2,13 @@ import { cache } from 'react'
 
 import { db } from '@/services/database'
 
-export const getCourseById = cache(async (courseId: number) => {
-  const data = await db.courses.findFirst({
+export const getCategoryById = cache(async (categoryId: number) => {
+  const data = await db.categories.findFirst({
     where: {
-      id: courseId,
+      id: categoryId,
     },
     include: {
-      units: {
+      quizzes: {
         orderBy: {
           order: 'asc',
         },
