@@ -13,6 +13,7 @@ export const getCategoryProgress = cache(async () => {
     const userId = user?.id
 
     const userProgress = await getUserProgress()
+    console.log("getCategoryProgress -> userProgress", userProgress)
 
     if (!userId || !userProgress?.activeCategoryId) {
       return null
@@ -46,20 +47,37 @@ export const getCategoryProgress = cache(async () => {
       },
     })
 
-    const firstUncompletedLesson = quizzesInactiveCategory
-      .flatMap((unit) => unit.lessons)
-      .find((lesson) => {
-        return lesson.challenges.some((challenge) => {
-          return (
-            !challenge.challenge_progress ||
-            challenge.challenge_progress.length === 0 ||
-            challenge.challenge_progress.some(
-              (progress) => progress.completed === false,
-            )
-          )
-        })
-      })
+    console.log("getCategoryProgress -> quizzesInactiveCategory", quizzesInactiveCategory)
 
+    const lessons = quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
+    console.log("getCategoryProgress -> lessons", lessons)
+
+    const firstUncompletedLesson = lessons.find((lesson) => {
+      console.log("getCategoryProgress firstUncompletedLesson-> lesson", lesson)
+      if (!lesson.challenges) {
+        console.log("Lesson WesleyR:", lesson)
+        console.log("Lesson without challenges:", lesson)
+        console.log("Lesson without challenges:", lesson)
+        return false
+      }
+      return lesson.challenges.some((challenge) => {
+        console.log("getCategoryProgress firstUncompletedLesson -> challenge", challenge)
+        
+        if (!challenge.challenge_progress) {
+          console.log("Challenge WesleyR:", challenge)
+          console.log("Challenge without progress:", challenge)
+          return true
+        }
+        return (
+          challenge.challenge_progress.length === 0 ||
+          challenge.challenge_progress.some(
+            (progress) => progress.completed === false,
+          )
+        )
+      })
+    })
+
+    console.log("getCategoryProgress -> firstUncompletedLesson", firstUncompletedLesson)
     return {
       activeLesson: firstUncompletedLesson,
       activeLessonId: firstUncompletedLesson?.id,

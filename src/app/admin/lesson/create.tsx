@@ -13,7 +13,7 @@ export const LessonCreate = () => {
       <SimpleForm>
         <TextInput source="title" validate={[required()]} label="Title" />
 
-        <ReferenceInput source="unitId" reference="quizzes" />
+        <ReferenceInput source="quizId" reference="quizzes" />
 
         <NumberInput source="order" validate={[required()]} label="order" />
       </SimpleForm>

@@ -20,7 +20,8 @@ const QuestsPage = async () => {
     userSubscriptionData,
   ])
 
-  if (!userProgress || !userProgress.activeCategoryId) redirect('/dashboard/categories')
+  if (!userProgress || !userProgress.activeCategoryId)
+    redirect('/dashboard/categories')
 
   const isPro = !!userSubscription?.isActive
 

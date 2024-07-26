@@ -47,8 +47,8 @@ export const getQuizzes = cache(async () => {
       },
     })
 
-    const normalizedData = data.map((unit) => {
-      const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
+    const normalizedData = data.map((quiz) => {
+      const lessonsWithCompletedStatus = quiz.lessons.map((lesson) => {
         if (lesson.challenges.length === 0) {
           return { ...lesson, completed: false }
         }
@@ -62,7 +62,7 @@ export const getQuizzes = cache(async () => {
 
         return { ...lesson, completed: allCompletedChallenges }
       })
-      return { ...unit, lessons: lessonsWithCompletedStatus }
+      return { ...quiz, lessons: lessonsWithCompletedStatus }
     })
 
     return normalizedData

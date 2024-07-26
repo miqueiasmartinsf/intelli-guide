@@ -120,11 +120,11 @@ model Quizzes {
 model Lessons {
   id     Int    @id @default(autoincrement())
   title  String
-  unitId Int
+  quizId Int
   order  Int
 
   challenges Challenges[]
-  quizzes    Quizzes      @relation(fields: [unitId], references: [id])
+  quizzes    Quizzes      @relation(fields: [quizId], references: [id])
 
   @@map("lessons")
 }
