@@ -94,10 +94,10 @@ model TwoFactorConfirmation {
 }
 
 model Categories {
-  id       Int    @id @default(autoincrement())
-  title    String
-  imageSrc String
-  description String
+  id            Int            @id @default(autoincrement())
+  title         String
+  imageSrc      String
+  description   String
   quizzes       Quizzes[]
   user_progress UserProgress[]
 
@@ -135,14 +135,13 @@ enum ChallengeType {
 }
 
 model Challenges {
-  id        Int           @id @default(autoincrement())
-  lessonId  Int
-  type      ChallengeType
-  question  String
-  order     Int
-  lessonsId Int?
+  id       Int           @id @default(autoincrement())
+  lessonId Int
+  type     ChallengeType
+  question String
+  order    Int
 
-  lessons            Lessons?            @relation(fields: [lessonsId], references: [id], onDelete: Cascade)
+  lessons            Lessons?            @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 

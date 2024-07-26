@@ -49,26 +49,29 @@ export const getCategoryProgress = cache(async () => {
 
     console.log("getCategoryProgress -> quizzesInactiveCategory", quizzesInactiveCategory)
 
-    const lessons = quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
-    console.log("getCategoryProgress -> lessons", lessons)
+    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons))
+    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons).find((lesson) => {
+     lesson
+    }))
+    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find challenges", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
+    .find((lesson) => {
+      lesson.challenges
+    }
+    ))
+    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find challenges some", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
+    .find((lesson) => {
+      lesson.challenges.some((challenge) => {
+        challenge
+      })
+    }
+    ))
 
-    const firstUncompletedLesson = lessons.find((lesson) => {
-      console.log("getCategoryProgress firstUncompletedLesson-> lesson", lesson)
-      if (!lesson.challenges) {
-        console.log("Lesson WesleyR:", lesson)
-        console.log("Lesson without challenges:", lesson)
-        console.log("Lesson without challenges:", lesson)
-        return false
-      }
+    const firstUncompletedLesson = quizzesInactiveCategory
+    .flatMap((quiz) => quiz.lessons)
+    .find((lesson) => {
       return lesson.challenges.some((challenge) => {
-        console.log("getCategoryProgress firstUncompletedLesson -> challenge", challenge)
-        
-        if (!challenge.challenge_progress) {
-          console.log("Challenge WesleyR:", challenge)
-          console.log("Challenge without progress:", challenge)
-          return true
-        }
         return (
+          !challenge.challenge_progress ||
           challenge.challenge_progress.length === 0 ||
           challenge.challenge_progress.some(
             (progress) => progress.completed === false,
@@ -77,11 +80,10 @@ export const getCategoryProgress = cache(async () => {
       })
     })
 
-    console.log("getCategoryProgress -> firstUncompletedLesson", firstUncompletedLesson)
-    return {
-      activeLesson: firstUncompletedLesson,
-      activeLessonId: firstUncompletedLesson?.id,
-    }
+  return {
+    activeLesson: firstUncompletedLesson,
+    activeLessonId: firstUncompletedLesson?.id,
+  }
   } catch (error) {
     console.error(error)
     return null
