@@ -10,8 +10,8 @@ type ExtendedLesson = Lessons & {
 
 export type ExtendedLessonWithQuiz =
     | (Lessons & {
-        quiz: Quizzes;
-    })
+          quiz: Quizzes;
+      })
     | undefined;
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
     description: string;
     lessons: ExtendedLesson[];
     activeLesson: ExtendedLessonWithQuiz;
-    activeLessonPercentage: number
+    activeLessonPercentage: number;
 };
 
 export const Quiz = ({
@@ -39,11 +39,11 @@ export const Quiz = ({
             <QuizBanner title={title} description={description} />
             <div className="relative flex flex-col items-center">
                 {lessons.map((lesson, index) => {
-                    const isCurrent = lesson.id === activeLesson?.id;
-                    const isLocked = !lesson.completed && !isCurrent;
+                    // const isCurrent = lesson.id === activeLesson?.id;
+                    // const isLocked = !lesson.completed && !isCurrent;
 
-                    console.log("Quiz -> isCurrent", isCurrent);
-                    console.log("Quiz -> isLocked", isLocked);
+                    // console.log("Quiz -> isCurrent", isCurrent);
+                    // console.log("Quiz -> isLocked", isLocked);
 
                     return (
                         <LessonButton
@@ -51,8 +51,8 @@ export const Quiz = ({
                             id={lesson.id}
                             index={index}
                             totalCount={lessons.length - 1}
-                            current={isCurrent}
-                            locked={isLocked}
+                            // current={isCurrent}
+                            // locked={isLocked}
                             percentage={activeLessonPercentage}
                         />
                     );

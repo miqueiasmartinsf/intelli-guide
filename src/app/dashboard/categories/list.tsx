@@ -42,6 +42,7 @@ export const List = ({ categories, activeCategoryId }: Props) => {
                     id={category.id}
                     title={category.title}
                     imageSrc={category.imageSrc}
+                    description={category.}
                     onClick={onClick}
                     disabled={pending}
                     active={category.id === activeCategoryId}

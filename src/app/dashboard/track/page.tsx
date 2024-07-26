@@ -9,6 +9,7 @@ import {
     getUserProgress,
     getUserSubscription,
 } from "@/data";
+import { FeedWrapper } from "@/components/feed-wrapper";
 
 async function TrackPage() {
     const userProgressData = getUserProgress();
@@ -41,24 +42,26 @@ async function TrackPage() {
 
     return (
         <div className="min-h-screen w-full px-3">
-            <h1 className="text-2xl font-bold text-neutral-700">Lean Track</h1>
+            <div className="w-full pt-6">
+                <FeedWrapper>
+                    <Header title={userProgress.activeCategory.title} />
 
-            <Header title="Futebol" />
-
-            <div className="flex flex-col p-12">
-                {quizzes.map((item, index) => {
-                    return (
-                        <LearnTrackCard
-                            id={item.id}
-                            categoryId={item.categoryId}
-                            description={item.description}
-                            order={item.order}
-                            title={item.title}
-                            key={item.id}
-                            lessons={item.lessons}
-                        />
-                    );
-                })}
+                    <div className="flex flex-col">
+                        {quizzes.map((item) => {
+                            return (
+                                <LearnTrackCard
+                                    id={item.id}
+                                    categoryId={item.categoryId}
+                                    description={item.description}
+                                    order={item.order}
+                                    title={item.title}
+                                    key={item.id}
+                                    lessons={item.lessons}
+                                />
+                            );
+                        })}
+                    </div>
+                </FeedWrapper>
             </div>
         </div>
     );

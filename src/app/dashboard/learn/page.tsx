@@ -49,17 +49,6 @@ const LearnPage = async () => {
 
     return (
         <div className="flex flex-row-reverse gap-[48px] px-6">
-            <StickyWrapper>
-                <UserProgress
-                    activeCategory={userProgress.activeCategory}
-                    hearts={userProgress.hearts}
-                    points={userProgress.points}
-                    hasActiveSubscription={isPro}
-                />
-                {!isPro && <Promo />}
-                <Quests points={userProgress.points} />
-            </StickyWrapper>
-
             <FeedWrapper>
                 <Header title={userProgress.activeCategory.title} />
                 {quizzes.map((quiz) => (

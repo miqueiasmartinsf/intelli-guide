@@ -9,6 +9,7 @@ type Props = {
     title: string;
     id: number;
     imageSrc: string;
+    description: string;
     onClick: (id: number) => void;
     disabled?: boolean;
     active?: boolean;
@@ -18,6 +19,7 @@ export const Card = ({
     title,
     id,
     imageSrc,
+    description
     disabled,
     onClick,
     active,
@@ -31,12 +33,12 @@ export const Card = ({
         >
             <div className="min-[24px] flex w-full items-center justify-end">
                 {active && (
-                    <div className="flex items-center justify-center rounded-md bg-green-600 p-1.5">
+                    <div className="absolute z-10 flex items-center justify-center rounded-full bg-green-600 p-1.5">
                         <Check className="h-4 w-4 stroke-[4] text-white" />
                     </div>
                 )}
             </div>
-            <div className="relative mx-auto w-full rounded-t-xl bg-white">
+            <div className="relative z-0 mx-auto w-full rounded-t-xl bg-white">
                 <Image
                     src={Imgfootball}
                     alt={title}
@@ -46,8 +48,8 @@ export const Card = ({
             <div className="mt-2 h-1/2 w-full gap-2 rounded-b-xl p-4">
                 <h2 className="mt-2 font-bold text-neutral-700">{title}</h2>
 
-                <p className="">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <p className="h-8">
+                    {description}
                 </p>
 
                 <Button className="mt-8 w-full" onClick={() => onClick(id)}>
