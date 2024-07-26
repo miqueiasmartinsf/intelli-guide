@@ -97,7 +97,6 @@ model Categories {
   id       Int    @id @default(autoincrement())
   title    String
   imageSrc String
-
   quizzes       Quizzes[]
   user_progress UserProgress[]
 
