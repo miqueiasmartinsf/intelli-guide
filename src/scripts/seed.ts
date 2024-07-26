@@ -4,181 +4,97 @@ async function main() {
     console.log("Seeding database...");
 
     // Limpar os dados existentes
+    await db.categories.deleteMany({});
     await db.challengeOption.deleteMany({});
     await db.challenges.deleteMany({});
     await db.lessons.deleteMany({});
-    await db.categories.deleteMany({});
     await db.userProgress.deleteMany({});
     await db.userSubscription.deleteMany({});
     await db.quizzes.deleteMany({});
 
-    // Inserir cursos
-    await db.categories.createMany({
-        data: [
-            { id: 1, title: "Spanish", imageSrc: "_next/static/media/es.svg" },
-            { id: 2, title: "Italian", imageSrc: "_next/static/media/it.svg" },
-            { id: 3, title: "French", imageSrc: "_next/static/media/fr.svg" },
-            { id: 4, title: "Croatian", imageSrc: "_next/static/media/hr.svg" },
-        ],
+    // Criação de categorias
+    const category1 = await db.categories.create({
+        data: {
+            title: "Matemática",
+            imageSrc: "/images/math.png",
+        },
     });
 
-    // Inserir unidades
-    // await db.units.create({
-    //     data: {
-    //         id: 1,
-    //         categorieId: 1,
-    //         title: "unit 1",
-    //         description: "Learn the fundamentals of spanish",
-    //         order: 1,
-    //     },
-    // });
-
-    await db.quizzes.createMany({
-        data: [
-            {
-                categoryId: 1,
-                description: "basic quiz",
-                order: 1,
-                title: "Football Quiz",
-            },
-            {
-                categoryId: 1,
-                description: "basic quiz",
-                order: 2,
-                title: "Football Quiz",
-            },
-            {
-                categoryId: 1,
-                description: "basic quiz",
-                order: 3,
-                title: "Football Quiz",
-            },
-            {
-                categoryId: 1,
-                description: "basic quiz",
-                order: 4,
-                title: "Football Quiz",
-            },
-        ],
+    const category2 = await db.categories.create({
+        data: {
+            title: "História",
+            imageSrc: "/images/history.png",
+        },
     });
 
-    // Inserir lições
-    await db.lessons.createMany({
-        data: [
-            { id: 1, quizId: 1, order: 1, title: "Nouns" },
-            { id: 2, quizId: 1, order: 2, title: "Verbs" },
-            { id: 3, quizId: 1, order: 3, title: "Verbs" },
-            { id: 4, quizId: 1, order: 4, title: "Verbs" },
-            { id: 5, quizId: 1, order: 5, title: "Verbs" },
-        ],
+    // Criação de quizzes
+    const quiz1 = await db.quizzes.create({
+        data: {
+            title: "Quiz de Álgebra",
+            description: "Teste seus conhecimentos em álgebra.",
+            categoryId: category1.id,
+            order: 1,
+        },
     });
 
-    // Inserir desafios
-    await db.challenges.createMany({
-        data: [
-            {
-                id: 1,
-                lessonId: 1,
-                type: "SELECT",
-                order: 1,
-                question: 'Which one of these is the "the man"?',
-            },
-            {
-                id: 2,
-                lessonId: 1,
-                type: "ASSIST",
-                order: 2,
-                question: '"the man"',
-            },
-            {
-                id: 3,
-                lessonId: 1,
-                type: "SELECT",
-                order: 3,
-                question: 'Which one of these is the "the Robot"?',
-            },
-            {
-                id: 4,
-                lessonId: 2,
-                type: "SELECT",
-                order: 1,
-                question: 'Which one of these is the "the man"?',
-            },
-            {
-                id: 5,
-                lessonId: 2,
-                type: "ASSIST",
-                order: 2,
-                question: '"the man"',
-            },
-            {
-                id: 6,
-                lessonId: 2,
-                type: "SELECT",
-                order: 3,
-                question: 'Which one of these is the "the Robot"?',
-            },
-        ],
+    const quiz2 = await db.quizzes.create({
+        data: {
+            title: "Quiz de História Geral",
+            description: "Teste seus conhecimentos em história geral.",
+            categoryId: category2.id,
+            order: 1,
+        },
     });
 
-    // Inserir opções de desafios
+    // Criação de lições
+    const lesson1 = await db.lessons.create({
+        data: {
+            title: "Lição de Equações",
+            quizId: quiz1.id,
+            order: 1,
+        },
+    });
+
+    const lesson2 = await db.lessons.create({
+        data: {
+            title: "Lição de Revoluções",
+            quizId: quiz2.id,
+            order: 1,
+        },
+    });
+
+    // Criação de desafios
+    const challenge1 = await db.challenges.create({
+        data: {
+            lessonId: lesson1.id,
+            type: "SELECT",
+            question: "Qual é a solução de x + 2 = 4?",
+            order: 1,
+        },
+    });
+
+    const challenge2 = await db.challenges.create({
+        data: {
+            lessonId: lesson2.id,
+            type: "SELECT",
+            question: "Em que ano começou a Revolução Francesa?",
+            order: 1,
+        },
+    });
+
+    // Criação de opções de desafios
     await db.challengeOption.createMany({
         data: [
-            {
-                challengeId: 1,
-                imageSrc: "/man.svg",
-                correct: true,
-                text: "el hombre",
-            },
-            {
-                challengeId: 1,
-                imageSrc: "/woman.svg",
-                correct: false,
-                text: "la mujer",
-            },
-            {
-                challengeId: 1,
-                imageSrc: "/robot.svg",
-                correct: false,
-                text: "el robot",
-            },
-            {
-                challengeId: 2,
-                correct: true,
-                text: "el hombre",
-            },
-            {
-                challengeId: 2,
-                correct: false,
-                text: "la mujer",
-            },
-            {
-                challengeId: 2,
-                correct: false,
-                text: "el robot",
-            },
-            {
-                challengeId: 3,
-                imageSrc: "/man.svg",
-                correct: false,
-                text: "el hombre",
-            },
-            {
-                challengeId: 3,
-                imageSrc: "/woman.svg",
-                correct: false,
-                text: "la mujer",
-            },
-            {
-                challengeId: 3,
-                imageSrc: "/robot.svg",
-                correct: true,
-                text: "el robot",
-            },
+            { challengeId: challenge1.id, text: "x = 1", correct: false },
+            { challengeId: challenge1.id, text: "x = 2", correct: true },
+            { challengeId: challenge1.id, text: "x = 3", correct: false },
+            { challengeId: challenge2.id, text: "1789", correct: true },
+            { challengeId: challenge2.id, text: "1776", correct: false },
+            { challengeId: challenge2.id, text: "1804", correct: false },
         ],
     });
 
-    console.log("Seeding finished.");
+    console.log("Seed data created successfully!");
 }
 
 main()

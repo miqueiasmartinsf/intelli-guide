@@ -110,7 +110,7 @@ model Quizzes {
   categoryId  Int
   order       Int
 
-  categories Categories? @relation(fields: [categoryId], references: [id])
+  categories Categories? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   lessons    Lessons[]
 
   @@map("quizzes")
@@ -123,7 +123,7 @@ model Lessons {
   order  Int
 
   challenges Challenges[]
-  quizzes    Quizzes      @relation(fields: [quizId], references: [id])
+  quizzes    Quizzes      @relation(fields: [quizId], references: [id], onDelete: Cascade)
 
   @@map("lessons")
 }
@@ -141,7 +141,7 @@ model Challenges {
   order     Int
   lessonsId Int?
 
-  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonsId], references: [id], onDelete: Cascade)
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 
@@ -155,7 +155,7 @@ model ChallengeOption {
   correct     Boolean
   imageSrc    String?
 
-  challenge Challenges @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
   @@map("challenge_option")
 }
@@ -166,7 +166,7 @@ model ChallengeProgress {
   challengeId Int
   completed   Boolean @default(false)
 
-  challenge Challenges @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
   @@map("challenge_progress")
 }
