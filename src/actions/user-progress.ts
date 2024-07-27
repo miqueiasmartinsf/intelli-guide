@@ -78,7 +78,7 @@ export const reduceHearts = async (challengeId: number) => {
 
     console.log("challengeId", challengeId);
 
-    const challenge = await db.quizzes.findFirst({
+    const challenge = await db.challenges.findFirst({
         where: { id: challengeId },
     });
 
@@ -88,7 +88,7 @@ export const reduceHearts = async (challengeId: number) => {
         throw new Error("Challenge not found");
     }
 
-    const lessonId = challenge.categoryId;
+    const lessonId = challenge.lessonId;
 
     const existingChallengeProgress = await db.challengeProgress.findFirst({
         where: {

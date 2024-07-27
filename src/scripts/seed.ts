@@ -13,6 +13,7 @@ async function main() {
     // Criação de categorias
     const category1 = await db.categories.create({
         data: {
+            id: 1,
             title: "Matemática",
             imageSrc: "https://cdn.pixabay.com/photo/2023/01/04/06/25/maths-7695957_1280.jpg",
             description:
@@ -22,6 +23,7 @@ async function main() {
 
     const category2 = await db.categories.create({
         data: {
+            id: 2,
             title: "História",
             imageSrc: "https://cdn.pixabay.com/photo/2024/04/11/18/33/time-8690350_960_720.png",
             description:
@@ -31,6 +33,7 @@ async function main() {
 
     const category3 = await db.categories.create({
         data: {
+            id: 3,
             title: "Ciência",
             imageSrc: "https://cdn.pixabay.com/photo/2024/07/15/06/52/dna-8895873_960_720.png",
             description:
@@ -40,6 +43,7 @@ async function main() {
 
     const category4 = await db.categories.create({
         data: {
+            id: 4,
             title: "Geografia",
             imageSrc: "https://cdn.pixabay.com/photo/2024/07/01/11/41/ai-generated-8865049_960_720.jpg",
             description:
@@ -49,6 +53,7 @@ async function main() {
 
     const category5 = await db.categories.create({
         data: {
+            id: 5,
             title: "Literatura",
             imageSrc: "https://cdn.pixabay.com/photo/2024/06/28/05/57/book-8858593_1280.jpg",
             description:
@@ -58,6 +63,7 @@ async function main() {
 
     const programmingCategory = await db.categories.create({
         data: {
+            id: 6,
             title: "Programação",
             imageSrc: "https://cdn.pixabay.com/photo/2024/01/05/18/47/technology-8490011_1280.png", // Substitua por uma URL de imagem válida
             description:
@@ -67,6 +73,7 @@ async function main() {
     // Criação de quizzes
     const quiz1 = await db.quizzes.create({
         data: {
+            id: 1,
             title: "Quiz de Álgebra",
             description: "Teste seus conhecimentos em álgebra.",
             categoryId: category1.id,
@@ -76,6 +83,7 @@ async function main() {
 
     const quiz2 = await db.quizzes.create({
         data: {
+            id: 2,
             title: "Quiz de História Geral",
             description: "Teste seus conhecimentos em história geral.",
             categoryId: category2.id,
@@ -85,6 +93,7 @@ async function main() {
 
     const quiz3 = await db.quizzes.create({
         data: {
+            id: 3,
             title: "Quiz de Física",
             description: "Teste seus conhecimentos em física.",
             categoryId: category3.id,
@@ -94,6 +103,7 @@ async function main() {
 
     const quiz4 = await db.quizzes.create({
         data: {
+            id: 4,
             title: "Quiz de Geografia Física",
             description: "Teste seus conhecimentos em geografia física.",
             categoryId: category4.id,
@@ -103,6 +113,7 @@ async function main() {
 
     const quiz5 = await db.quizzes.create({
         data: {
+            id: 5, 
             title: "Quiz de Literatura Clássica",
             description: "Teste seus conhecimentos em literatura clássica.",
             categoryId: category5.id,
@@ -112,6 +123,7 @@ async function main() {
 
     const quizProgrammingJs = await db.quizzes.create({
         data: {
+            id: 6,
             title: "Quiz de JavaScript",
             description: "Teste seus conhecimentos em JavaScript.",
             categoryId: programmingCategory.id,
@@ -121,6 +133,7 @@ async function main() {
 
     const quizProgrammingPy = await db.quizzes.create({
         data: {
+            id: 7,
             title: "Quiz de Python",
             description: "Teste seus conhecimentos em Python.",
             categoryId: programmingCategory.id,
@@ -131,6 +144,7 @@ async function main() {
     // Criação de lições
     const lesson1 = await db.lessons.create({
         data: {
+            id: 1,
             title: "Lição de Equações",
             quizId: quiz1.id,
             order: 1,
@@ -139,6 +153,7 @@ async function main() {
 
     const lesson2 = await db.lessons.create({
         data: {
+            id: 2,
             title: "Lição de Revoluções",
             quizId: quiz2.id,
             order: 1,
@@ -147,6 +162,7 @@ async function main() {
 
     const lesson3 = await db.lessons.create({
         data: {
+            id: 3,
             title: "Lição de Leis da Física",
             quizId: quiz3.id,
             order: 1,
@@ -155,6 +171,7 @@ async function main() {
 
     const lesson4 = await db.lessons.create({
         data: {
+            id: 4,
             title: "Lição de Formação dos Continentes",
             quizId: quiz4.id,
             order: 1,
@@ -163,6 +180,7 @@ async function main() {
 
     const lesson5 = await db.lessons.create({
         data: {
+            id: 5,
             title: "Lição sobre Homero",
             quizId: quiz5.id,
             order: 1,
@@ -171,6 +189,7 @@ async function main() {
 
     const lessonProgrammingJs1 = await db.lessons.create({
         data: {
+            id: 6,
             title: "Lição de Funções em JavaScript",
             quizId: quizProgrammingJs.id,
             order: 1,
@@ -178,6 +197,7 @@ async function main() {
     });
     const lessonProgrammingJs2 = await db.lessons.create({
         data: {
+            id: 7,
             title: "Lição de Arrays em JavaScript",
             quizId: quizProgrammingJs.id,
             order: 2,
@@ -186,6 +206,7 @@ async function main() {
     
     const lessonProgrammingJs3 = await db.lessons.create({
         data: {
+            id: 8,
             title: "Lição de Objetos em JavaScript",
             quizId: quizProgrammingJs.id,
             order: 3,
@@ -194,6 +215,7 @@ async function main() {
 
     const lessonProgrammingPy = await db.lessons.create({
         data: {
+            id: 9,
             title: "Lição de Estruturas de Dados em Python",
             quizId: quizProgrammingPy.id,
             order: 1,
@@ -203,6 +225,7 @@ async function main() {
     // Criação de desafios
     const challenge1 = await db.challenges.create({
         data: {
+            id: 1,
             lessonId: lesson1.id,
             type: "SELECT",
             question: "Qual é a solução de x + 2 = 4?",
@@ -212,6 +235,7 @@ async function main() {
 
     const challenge2 = await db.challenges.create({
         data: {
+            id: 2,
             lessonId: lesson2.id,
             type: "SELECT",
             question: "Em que ano começou a Revolução Francesa?",
@@ -221,6 +245,7 @@ async function main() {
 
     const challenge3 = await db.challenges.create({
         data: {
+            id: 3,
             lessonId: lesson3.id,
             type: "SELECT",
             question: "Qual é a fórmula da segunda lei de Newton?",
@@ -230,6 +255,7 @@ async function main() {
 
     const challenge4 = await db.challenges.create({
         data: {
+            id: 4,
             lessonId: lesson4.id,
             type: "SELECT",
             question: "Qual é a maior placa tectônica?",
@@ -239,6 +265,7 @@ async function main() {
 
     const challenge5 = await db.challenges.create({
         data: {
+            id: 5,
             lessonId: lesson5.id,
             type: "SELECT",
             question: "Qual é a obra mais famosa de Homero?",
@@ -248,6 +275,7 @@ async function main() {
 
     const challengeProgrammingJs1 = await db.challenges.create({
         data: {
+            id: 6,
             lessonId: lessonProgrammingJs1.id,
             type: "SELECT",
             question: "O que é retornado por console.log(typeof 'hello')?",
@@ -257,6 +285,7 @@ async function main() {
     
     const challengeProgrammingJs2 = await db.challenges.create({
         data: {
+            id: 7,
             lessonId: lessonProgrammingJs1.id,
             type: "SELECT",
             question: "Qual é o valor de 2 + '2' em JavaScript?",
@@ -266,6 +295,7 @@ async function main() {
     
     const challengeProgrammingJs3 = await db.challenges.create({
         data: {
+            id: 8,
             lessonId: lessonProgrammingJs1.id,
             type: "SELECT",
             question: "Qual é a saída de console.log(1 == '1')?",
@@ -276,6 +306,7 @@ async function main() {
     // Desafios para a lição de Arrays em JavaScript
     const challengeProgrammingJs4 = await db.challenges.create({
         data: {
+            id: 9,
             lessonId: lessonProgrammingJs2.id,
             type: "SELECT",
             question: "Qual método adiciona um ou mais elementos ao final de um array?",
@@ -285,6 +316,7 @@ async function main() {
 
     const challengeProgrammingJs5 = await db.challenges.create({
         data: {
+            id: 10,
             lessonId: lessonProgrammingJs2.id,
             type: "SELECT",
             question: "Qual método remove o último elemento de um array?",
@@ -295,6 +327,7 @@ async function main() {
     // Desafios para a lição de Objetos em JavaScript
     const challengeProgrammingJs6 = await db.challenges.create({
         data: {
+            id: 11,
             lessonId: lessonProgrammingJs3.id,
             type: "SELECT",
             question: "Como você acessa o valor da propriedade 'nome' de um objeto 'pessoa'?",
@@ -304,6 +337,7 @@ async function main() {
 
     const challengeProgrammingJs7 = await db.challenges.create({
         data: {
+            id: 12,
             lessonId: lessonProgrammingJs3.id,
             type: "SELECT",
             question: "Como você adiciona uma nova propriedade 'idade' ao objeto 'pessoa'?",
@@ -313,6 +347,7 @@ async function main() {
 
     const challengeProgrammingPy1 = await db.challenges.create({
         data: {
+            id: 13,
             lessonId: lessonProgrammingPy.id,
             type: "SELECT",
             question: "O que print(type(42)) retorna?",
@@ -322,6 +357,7 @@ async function main() {
     
     const challengeProgrammingPy2 = await db.challenges.create({
         data: {
+            id: 14,
             lessonId: lessonProgrammingPy.id,
             type: "SELECT",
             question: "Qual é o resultado de len('Hello')?",
@@ -331,6 +367,7 @@ async function main() {
     
     const challengeProgrammingPy3 = await db.challenges.create({
         data: {
+            id: 15,
             lessonId: lessonProgrammingPy.id,
             type: "SELECT",
             question: "Qual é o valor de 3 * 'Hi'?",
