@@ -2,32 +2,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from './ui/button'
+import { Categories } from '@prisma/client'
 
-export function AsideMenu() {
+type Props = {
+  categories: Categories[]
+}
+
+export function AsideMenu({ categories, }: Props) {
   return (
     <div className="flex h-screen w-[20%] max-w-[600px] flex-col gap-5 px-6 py-4">
       <div className="flex w-full flex-col gap-4 py-4">
         <h1 className="font-bold">Adicionados recentemente</h1>
-        <div className="rounded-md border-2 p-4">
-          <div className="flex items-center justify-between rounded-md p-2">
-            <h2 className="font-bold">Futebol</h2>
-            <Link href={''} className="text-sm text-primary">
-              Responder
-            </Link>
+        {categories.map((category) => (
+          <div className="rounded-md border-2 p-4">
+            <div className="flex items-center justify-between rounded-md p-2">
+              <h2 className="font-bold">{category.title}</h2>
+              <Link href={`${category.id}`} className="text-sm text-primary">
+                Responder
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center justify-between rounded-md p-2">
-            <h2 className="font-bold">Filmes</h2>
-            <Link href={''} className="text-sm text-primary">
-              Responder
-            </Link>
-          </div>
-          <div className="flex items-center justify-between rounded-md p-2">
-            <h2 className="font-bold">Países</h2>
-            <Link href={''} className="text-sm text-primary">
-              Responder
-            </Link>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="mt-8">
         <Link href={'/dashboard/leaderboard'}>
