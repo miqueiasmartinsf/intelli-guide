@@ -55,21 +55,25 @@ const LearnPage = async () => {
     const isPro = !!userSubscription?.isActive;
 
     return (
-        <div>
+        <div className="h-full w-full px-3">
             <Header title={userProgress.activeCategory.title} />
-            {quizzes.map((quiz) => (
-                <div key={quiz.id} className="mb-10">
-                    <Quiz
-                        id={quiz.id}
-                        order={quiz.order}
-                        title={quiz.title}
-                        description={quiz.description}
-                        lessons={quiz.lessons}
-                        activeLesson={categoryProgress.activeLesson}
-                        activeLessonPercentage={lessonPercentage}
-                    />
-                </div>
-            ))}
+            <div className="w-full pt-6">
+                <FeedWrapper>
+                    {quizzes.map((quiz) => (
+                        <div key={quiz.id} className="mb-10">
+                            <Quiz
+                                id={quiz.id}
+                                order={quiz.order}
+                                title={quiz.title}
+                                description={quiz.description}
+                                lessons={quiz.lessons}
+                                activeLesson={categoryProgress.activeLesson}
+                                activeLessonPercentage={lessonPercentage}
+                            />
+                        </div>
+                    ))}{" "}
+                </FeedWrapper>
+            </div>
         </div>
     );
 };

@@ -27,8 +27,8 @@ export const LessonButton = ({
     current,
     percentage,
 }: Props) => {
-    const cycleLength = 8
-    const cycleIndex = index % cycleLength
+    const cycleLength = 8;
+    const cycleIndex = index % cycleLength;
 
     let indentationLevel;
 
@@ -68,7 +68,7 @@ export const LessonButton = ({
                 {current ? (
                     <div className="relative h-[102px] w-[102px]">
                         <div className="absolute -top-6 left-2.5 z-10 animate-bounce rounded-xl border-2 bg-white px-3 py-2.5 font-bold uppercase tracking-wide text-green-500">
-                            Start
+                            começar
                             <div className="absolute -bottom-2 left-1/2 h-0 -translate-x-1/2 transform border-x-8 border-t-8 border-x-transparent" />
                         </div>
                         <CircularProgressbarWithChildren
@@ -78,21 +78,21 @@ export const LessonButton = ({
                                     stroke: "#4ade88",
                                 },
                                 trail: {
-                                    stroke: "#e5e7eb",
+                                    stroke: "#159E52",
                                 },
                             }}
                         >
                             <Button
                                 size="rounded"
                                 variant={locked ? "locked" : "secondary"}
-                                className="h-[70px] w-[70px] border-b-8"
+                                className="h-[70px] w-[70px]"
                             >
                                 <Icon
                                     className={cn(
                                         "h-10 w-10",
                                         locked
                                             ? "fill-neutral-400 stroke-neutral-400 text-neutral-400"
-                                            : "fill-primary-foreground text-primary-foreground",
+                                            : "fill-primary text-primary",
                                         isCompleted && "fill-none stroke-[4]",
                                     )}
                                 />
@@ -103,7 +103,7 @@ export const LessonButton = ({
                     <Button
                         size="rounded"
                         variant={locked ? "locked" : "secondary"}
-                        className="h-[70px] w-[70px] border-b-8"
+                        className="h-[70px] w-[70px]"
                     >
                         <Icon
                             className={cn(

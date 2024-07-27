@@ -24,7 +24,7 @@ const MainLayout = ({ children }: Props) => {
             <Sidebar className="hidden lg:flex" />
             <main className="h-full pt-[50px] lg:pl-[256px] lg:pt-0">
                 <div className="flex h-full pt-6">
-                    <div className="w-full px-10">{children}</div>{" "}
+                    <div className="w-full px-10 max-sm:px-4">{children}</div>{" "}
                 </div>
             </main>
         </>
