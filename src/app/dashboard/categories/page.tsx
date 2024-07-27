@@ -1,6 +1,12 @@
 import { getCategories, getUserProgress } from "@/data";
 
 import { List } from "./list";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Categories',
+    description: 'Explore uma variedade de categorias e teste seus conhecimentos com quizzes desafiadores no IntelliGuide. Acompanhe seu progresso e suba no ranking!',
+}
 
 const CategoryPage = async () => {
     const categoriesData = getCategories();

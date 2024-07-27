@@ -15,6 +15,13 @@ import {
 
 import { Header } from "./header";
 import { Quiz } from "./quiz";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Learn',
+    description: 'Descubra e participe de diversas fases de quizzes no IntelliGuide. Melhore seus conhecimentos, acompanhe seu progresso e desafie-se com quizzes emocionantes e educativos.',
+}
+
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
