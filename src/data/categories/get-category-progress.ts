@@ -13,7 +13,6 @@ export const getCategoryProgress = cache(async () => {
     const userId = user?.id
 
     const userProgress = await getUserProgress()
-    console.log("getCategoryProgress -> userProgress", userProgress)
 
     if (!userId || !userProgress?.activeCategoryId) {
       return null
@@ -46,25 +45,6 @@ export const getCategoryProgress = cache(async () => {
         },
       },
     })
-
-    console.log("getCategoryProgress -> quizzesInactiveCategory", quizzesInactiveCategory)
-
-    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons))
-    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons).find((lesson) => {
-     lesson
-    }))
-    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find challenges", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
-    .find((lesson) => {
-      lesson.challenges
-    }
-    ))
-    console.log("firstUncompletedLesson -> quizzesInactiveCategory flatMap find challenges some", quizzesInactiveCategory.flatMap((quiz) => quiz.lessons)
-    .find((lesson) => {
-      lesson.challenges.some((challenge) => {
-        challenge
-      })
-    }
-    ))
 
     const firstUncompletedLesson = quizzesInactiveCategory
     .flatMap((quiz) => quiz.lessons)

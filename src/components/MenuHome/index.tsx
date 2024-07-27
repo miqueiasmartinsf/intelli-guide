@@ -12,7 +12,6 @@ import MenuIcon from './MenuIcon'
 
 export default function MenuHome() {
   const [menuAppearance, SetMenuAppearance] = useState<boolean>(false)
-  console.log(menuAppearance)
 
   return (
     <div className="hidden max-lg:flex">

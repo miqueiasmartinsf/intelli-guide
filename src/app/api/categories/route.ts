@@ -13,7 +13,7 @@ export const GET = async () => {
     return new NextResponse('Unauthorized', { status: 401 })
   }
 
-  const data = await db.category.findMany()
+  const data = await db.categories.findMany()
   return NextResponse.json(data)
 }
 
@@ -27,7 +27,7 @@ export const POST = async (req: Request) => {
   }
 
   const body = await req.json()
-  const data = await db.category.create({
+  const data = await db.categories.create({
     data: body,
   })
 

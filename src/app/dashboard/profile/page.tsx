@@ -30,7 +30,6 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 
 function ProfilePage() {
     const user = useCurrentUser();
-    console.log("useCurrentUser", user);
 
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();

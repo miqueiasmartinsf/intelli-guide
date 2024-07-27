@@ -33,7 +33,6 @@ export const Quiz = ({
     activeLesson,
     activeLessonPercentage,
 }: Props) => {
-    console.log("Quiz -> activeLesson", activeLesson);
     return (
         <>
             <QuizBanner title={title} description={description} />
@@ -41,9 +40,6 @@ export const Quiz = ({
                 {lessons.map((lesson, index) => {
                     const isCurrent = lesson.id === activeLesson?.id;
                     const isLocked = !lesson.completed && !isCurrent;
-
-                    console.log("Quiz -> isCurrent", isCurrent);
-                    console.log("Quiz -> isLocked", isLocked);
 
                     return (
                         <LessonButton

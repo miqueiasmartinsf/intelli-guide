@@ -17,13 +17,11 @@ export const profileActions = async (
     values: z.infer<typeof updateUserSchema>,
 ) => {
     const user = await currentUser();
-    console.log("profileActions user", user);
     if (!user) {
         return { error: "Unauthorized" };
     }
 
     const dbUser = await getUserById(user.id);
-    console.log("profileActions dbUser", dbUser);
     if (!dbUser) {
         return { error: "Unauthorized" };
     }
@@ -52,16 +50,11 @@ export const profileActions = async (
     }
 
     if (values.password && values.newPassword && dbUser.password) {
-        console.log("values password", values.password);
-        console.log("values newPassword", values.newPassword);
-        console.log("dbUser password", dbUser.password);
-
         const passwordsMatch = await bcrypt.compare(
             values.password,
             dbUser.password,
         );
 
-        console.log("passwordsMatch", passwordsMatch);
         if (!passwordsMatch) {
             return { error: "Incorrect password!" };
         }
@@ -77,8 +70,6 @@ export const profileActions = async (
             ...values,
         },
     });
-
-    console.log("updatedUser", updatedUser);
 
     unstable_update({
         user: {

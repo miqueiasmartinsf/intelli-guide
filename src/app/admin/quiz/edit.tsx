@@ -7,7 +7,7 @@ import {
   TextInput,
 } from 'react-admin'
 
-export const UnitEdit = () => {
+export const QuizEdit = () => {
   return (
     <Edit>
       <SimpleForm>

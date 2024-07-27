@@ -15,9 +15,9 @@ import { ChallengeOptionList } from "./challengeOption/list";
 import { LessonCreate } from "./lesson/create";
 import { LessonEdit } from "./lesson/edit";
 import { LessonList } from "./lesson/list";
-import { UnitCreate } from "./unit/create";
-import { UnitEdit } from "./unit/edit";
-import { UnitList } from "./unit/list";
+import { QuizCreate } from "./quiz/create";
+import { QuizEdit } from "./quiz/edit";
+import { QuizList } from "./quiz/list";
 
 const dataProvider = simpleRestProvider("/api");
 
@@ -34,9 +34,9 @@ const App = () => {
 
             <Resource
                 name="quizzes"
-                list={UnitList}
-                create={UnitCreate}
-                edit={UnitEdit}
+                list={QuizList}
+                create={QuizCreate}
+                edit={QuizEdit}
                 recordRepresentation="title"
             />
 

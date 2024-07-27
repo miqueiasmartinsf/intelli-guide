@@ -69,8 +69,6 @@ export const getQuizzes = cache(async () => {
             return { ...quiz, lessons: lessonsWithCompletedStatus };
         });
 
-        console.log(normalizedData);
-
         return normalizedData;
     } catch (error) {
         console.error(error);

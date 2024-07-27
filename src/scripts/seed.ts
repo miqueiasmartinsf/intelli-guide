@@ -14,7 +14,7 @@ async function main() {
     const category1 = await db.categories.create({
         data: {
             title: "Matemática",
-            imageSrc: "/images/math.png",
+            imageSrc: "https://cdn.pixabay.com/photo/2023/01/04/06/25/maths-7695957_1280.jpg",
             description:
                 "Mergulhe no mundo dos números e resolva desafios intrigantes com nossa categoria de Matemática.",
         },
@@ -23,7 +23,7 @@ async function main() {
     const category2 = await db.categories.create({
         data: {
             title: "História",
-            imageSrc: "/images/history.png",
+            imageSrc: "https://cdn.pixabay.com/photo/2024/04/11/18/33/time-8690350_960_720.png",
             description:
                 "Explore os eventos mais fascinantes do passado e teste seu conhecimento na nossa categoria de História.",
         },
@@ -32,7 +32,7 @@ async function main() {
     const category3 = await db.categories.create({
         data: {
             title: "Ciência",
-            imageSrc: "/images/science.png",
+            imageSrc: "https://cdn.pixabay.com/photo/2024/07/15/06/52/dna-8895873_960_720.png",
             description:
                 "Descubra os mistérios do universo e desafie sua mente com nossa categoria de Ciência.",
         },
@@ -41,7 +41,7 @@ async function main() {
     const category4 = await db.categories.create({
         data: {
             title: "Geografia",
-            imageSrc: "/images/geography.png",
+            imageSrc: "https://cdn.pixabay.com/photo/2024/07/01/11/41/ai-generated-8865049_960_720.jpg",
             description:
                 "Aventure-se pelos continentes e mares enquanto testa seus conhecimentos em Geografia.",
         },
@@ -50,12 +50,20 @@ async function main() {
     const category5 = await db.categories.create({
         data: {
             title: "Literatura",
-            imageSrc: "/images/literature.png",
+            imageSrc: "https://cdn.pixabay.com/photo/2024/06/28/05/57/book-8858593_1280.jpg",
             description:
                 "Viaje através dos clássicos literários e prove que você é um verdadeiro conhecedor na nossa categoria de Literatura.",
         },
     });
 
+    const programmingCategory = await db.categories.create({
+        data: {
+            title: "Programação",
+            imageSrc: "https://cdn.pixabay.com/photo/2024/01/05/18/47/technology-8490011_1280.png", // Substitua por uma URL de imagem válida
+            description:
+                "Desafie suas habilidades de codificação e resolva problemas complexos com nossa categoria de Programação.",
+        },
+    });
     // Criação de quizzes
     const quiz1 = await db.quizzes.create({
         data: {
@@ -102,6 +110,24 @@ async function main() {
         },
     });
 
+    const quizProgrammingJs = await db.quizzes.create({
+        data: {
+            title: "Quiz de JavaScript",
+            description: "Teste seus conhecimentos em JavaScript.",
+            categoryId: programmingCategory.id,
+            order: 1,
+        },
+    });
+
+    const quizProgrammingPy = await db.quizzes.create({
+        data: {
+            title: "Quiz de Python",
+            description: "Teste seus conhecimentos em Python.",
+            categoryId: programmingCategory.id,
+            order: 2,
+        },
+    });
+
     // Criação de lições
     const lesson1 = await db.lessons.create({
         data: {
@@ -139,6 +165,37 @@ async function main() {
         data: {
             title: "Lição sobre Homero",
             quizId: quiz5.id,
+            order: 1,
+        },
+    });
+
+    const lessonProgrammingJs1 = await db.lessons.create({
+        data: {
+            title: "Lição de Funções em JavaScript",
+            quizId: quizProgrammingJs.id,
+            order: 1,
+        },
+    });
+    const lessonProgrammingJs2 = await db.lessons.create({
+        data: {
+            title: "Lição de Arrays em JavaScript",
+            quizId: quizProgrammingJs.id,
+            order: 2,
+        },
+    });
+    
+    const lessonProgrammingJs3 = await db.lessons.create({
+        data: {
+            title: "Lição de Objetos em JavaScript",
+            quizId: quizProgrammingJs.id,
+            order: 3,
+        },
+    });
+
+    const lessonProgrammingPy = await db.lessons.create({
+        data: {
+            title: "Lição de Estruturas de Dados em Python",
+            quizId: quizProgrammingPy.id,
             order: 1,
         },
     });
@@ -189,40 +246,157 @@ async function main() {
         },
     });
 
+    const challengeProgrammingJs1 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs1.id,
+            type: "SELECT",
+            question: "O que é retornado por console.log(typeof 'hello')?",
+            order: 1,
+        }
+    });
+    
+    const challengeProgrammingJs2 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs1.id,
+            type: "SELECT",
+            question: "Qual é o valor de 2 + '2' em JavaScript?",
+            order: 2,
+        }
+    });
+    
+    const challengeProgrammingJs3 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs1.id,
+            type: "SELECT",
+            question: "Qual é a saída de console.log(1 == '1')?",
+            order: 3,
+        }
+    });
+
+    // Desafios para a lição de Arrays em JavaScript
+    const challengeProgrammingJs4 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs2.id,
+            type: "SELECT",
+            question: "Qual método adiciona um ou mais elementos ao final de um array?",
+            order: 1,
+        }
+    });
+
+    const challengeProgrammingJs5 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs2.id,
+            type: "SELECT",
+            question: "Qual método remove o último elemento de um array?",
+            order: 2,
+        }
+    });
+
+    // Desafios para a lição de Objetos em JavaScript
+    const challengeProgrammingJs6 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs3.id,
+            type: "SELECT",
+            question: "Como você acessa o valor da propriedade 'nome' de um objeto 'pessoa'?",
+            order: 1,
+        }
+    });
+
+    const challengeProgrammingJs7 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingJs3.id,
+            type: "SELECT",
+            question: "Como você adiciona uma nova propriedade 'idade' ao objeto 'pessoa'?",
+            order: 2,
+        }
+    });
+
+    const challengeProgrammingPy1 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingPy.id,
+            type: "SELECT",
+            question: "O que print(type(42)) retorna?",
+            order: 1,
+        }
+    });
+    
+    const challengeProgrammingPy2 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingPy.id,
+            type: "SELECT",
+            question: "Qual é o resultado de len('Hello')?",
+            order: 2,
+        }
+    });
+    
+    const challengeProgrammingPy3 = await db.challenges.create({
+        data: {
+            lessonId: lessonProgrammingPy.id,
+            type: "SELECT",
+            question: "Qual é o valor de 3 * 'Hi'?",
+            order: 3,
+        }
+    });
+
     // Criação de opções de desafios
     await db.challengeOption.createMany({
         data: [
             { challengeId: challenge1.id, text: "x = 1", correct: false },
             { challengeId: challenge1.id, text: "x = 2", correct: true },
             { challengeId: challenge1.id, text: "x = 3", correct: false },
+
             { challengeId: challenge2.id, text: "1789", correct: true },
             { challengeId: challenge2.id, text: "1776", correct: false },
             { challengeId: challenge2.id, text: "1804", correct: false },
+            
             { challengeId: challenge3.id, text: "F = ma", correct: true },
             { challengeId: challenge3.id, text: "E = mc^2", correct: false },
             { challengeId: challenge3.id, text: "F = mv", correct: false },
-            {
-                challengeId: challenge4.id,
-                text: "Placa do Pacífico",
-                correct: true,
-            },
-            {
-                challengeId: challenge4.id,
-                text: "Placa de Nazca",
-                correct: false,
-            },
-            {
-                challengeId: challenge4.id,
-                text: "Placa Africana",
-                correct: false,
-            },
+            
+            { challengeId: challenge4.id, text: "Placa do Pacífico", correct: true },
+            { challengeId: challenge4.id, text: "Placa de Nazca", correct: false },
+            { challengeId: challenge4.id, text: "Placa Africana", correct: false },
+
             { challengeId: challenge5.id, text: "Ilíada", correct: true },
             { challengeId: challenge5.id, text: "Eneida", correct: false },
-            {
-                challengeId: challenge5.id,
-                text: "Metamorfoses",
-                correct: false,
-            },
+            { challengeId: challenge5.id, text: "Metamorfoses", correct: false, },
+
+            // JavaScript Respostas para a lição de Funções em JavaScript
+            { challengeId: challengeProgrammingJs1.id, text: "string", correct: true },
+            { challengeId: challengeProgrammingJs1.id, text: "object", correct: false },
+            { challengeId: challengeProgrammingJs1.id, text: "undefined", correct: false },
+            { challengeId: challengeProgrammingJs2.id, text: "22", correct: true },
+            { challengeId: challengeProgrammingJs2.id, text: "4", correct: false },
+            { challengeId: challengeProgrammingJs2.id, text: "undefined", correct: false },
+            { challengeId: challengeProgrammingJs3.id, text: "true", correct: true },
+            { challengeId: challengeProgrammingJs3.id, text: "false", correct: false },
+            { challengeId: challengeProgrammingJs3.id, text: "undefined", correct: false },
+              // Respostas para a lição de Arrays em JavaScript
+            { challengeId: challengeProgrammingJs4.id, text: "push", correct: true },
+            { challengeId: challengeProgrammingJs4.id, text: "pop", correct: false },
+            { challengeId: challengeProgrammingJs4.id, text: "shift", correct: false },
+            { challengeId: challengeProgrammingJs5.id, text: "pop", correct: true },
+            { challengeId: challengeProgrammingJs5.id, text: "push", correct: false },
+            { challengeId: challengeProgrammingJs5.id, text: "unshift", correct: false },
+            
+            // Respostas para a lição de Objetos em JavaScript
+            { challengeId: challengeProgrammingJs6.id, text: "pessoa.nome", correct: true },
+            { challengeId: challengeProgrammingJs6.id, text: "pessoa['nome']", correct: true },
+            { challengeId: challengeProgrammingJs6.id, text: "pessoa->nome", correct: false },
+            { challengeId: challengeProgrammingJs7.id, text: "pessoa.idade = 30", correct: true },
+            { challengeId: challengeProgrammingJs7.id, text: "pessoa['idade'] = 30", correct: true },
+            { challengeId: challengeProgrammingJs7.id, text: "pessoa.add('idade', 30)", correct: false },
+
+            // Python
+            { challengeId: challengeProgrammingPy1.id, text: "<class 'int'>", correct: true },
+            { challengeId: challengeProgrammingPy1.id, text: "<class 'float'>", correct: false },
+            { challengeId: challengeProgrammingPy1.id, text: "<class 'str'>", correct: false },
+            { challengeId: challengeProgrammingPy2.id, text: "5", correct: true },
+            { challengeId: challengeProgrammingPy2.id, text: "4", correct: false },
+            { challengeId: challengeProgrammingPy2.id, text: "6", correct: false },
+            { challengeId: challengeProgrammingPy3.id, text: "HiHiHi", correct: true },
+            { challengeId: challengeProgrammingPy3.id, text: "Hi3", correct: false },
+            { challengeId: challengeProgrammingPy3.id, text: "3Hi", correct: false },
         ],
     });
 

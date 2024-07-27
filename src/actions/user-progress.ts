@@ -23,8 +23,6 @@ export const upsertUserProgress = async (categoryId: number) => {
 
     const lessons = category?.quizzes[0].lessons[0].title;
 
-    console.log(lessons);
-
     if (!category) {
         console.error("Category not found");
         throw new Error("Category not found");
@@ -78,9 +76,13 @@ export const reduceHearts = async (challengeId: number) => {
     const currentUserProgress = await getUserProgress();
     const userSubscription = await getUserSubscription();
 
+    console.log("challengeId", challengeId);
+
     const challenge = await db.quizzes.findFirst({
         where: { id: challengeId },
     });
+
+    console.log("challenge", challenge);
 
     if (!challenge) {
         throw new Error("Challenge not found");
