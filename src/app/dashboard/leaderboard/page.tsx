@@ -2,6 +2,12 @@ import { LeaderBoardCard } from "@/components/leaderboard-card";
 import { getUserProgress, getUserSubscription } from "@/data";
 
 import { getTopTenUsers } from "./actions";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Leaderboard',
+    description: 'Confira o ranking dos melhores participantes no IntelliGuide! Veja quem está no topo, acompanhe seu progresso e desafie-se a alcançar as primeiras posições.',
+}
 
 async function LeaderboardPage() {
     const userProgressData = getUserProgress();

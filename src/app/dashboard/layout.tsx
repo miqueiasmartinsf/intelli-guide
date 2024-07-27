@@ -1,9 +1,16 @@
-import { AsideWrapper } from "@/components/aside-wrapper";
 import { FeedWrapper } from "@/components/feed-wrapper";
-import { LeaderboardQuickView } from "@/components/leaderboard-quick-view";
 import { MobileHeader } from "@/components/mobile-header";
-import { RecentlyAdded } from "@/components/recently-added";
 import { Sidebar } from "@/components/sidebar";
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: {
+        default: 'Dashboard',
+        template: '%s | IntelliGuide',
+    },
+    description: 'Bem-vindo ao Dashboard do IntelliGuide! Explore diversas categorias, desafie-se com quizzes envolventes e acompanhe seu progresso em tempo real. Melhore suas habilidades e suba no ranking!',
+}
 
 type Props = {
     children: React.ReactNode;
