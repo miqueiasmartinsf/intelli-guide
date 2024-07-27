@@ -28,16 +28,21 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: 'lh3.googleusercontent.com',
-                pathname: '**',
+                protocol: "https",
+                hostname: "lh3.googleusercontent.com",
+                pathname: "**",
             },
             {
-                protocol: 'https',
-                hostname: 'cdn.pixabay.com',
-                pathname: '**',
+                protocol: "https",
+                hostname: "cdn.pixabay.com",
+                pathname: "**",
+            },
+            {
+                protocol: "https",
+                hostname: "i.ibb.co",
+                pathname: "**",
             },
         ],
     },
-}
-export default nextConfig
+};
+export default nextConfig;

@@ -38,15 +38,13 @@ export const Card = ({
                     </div>
                 )}
             </div>
-            <div className="relative z-0 mx-auto w-full rounded-t-xl bg-white h-[165px] overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:h-[220px]">
+            <div className="relative z-0 mx-auto w-full overflow-hidden rounded-t-xl bg-white">
                 <Image
                     src={imageSrc}
+                    height={200}
+                    width={200}
                     alt={title}
-                    layout="responsive"
-                    width={160}
-                    height={160}
-                    objectFit="cover"
-                    className="object-center transition-all duration-300 hover:brightness-110 hover:contrast-125"
+                    className="mx-auto max-w-[250px] rounded-lg rounded-t-xl object-cover"
                 />
             </div>
             <div className="mt-2 h-1/2 w-full gap-2 rounded-b-xl p-4">
