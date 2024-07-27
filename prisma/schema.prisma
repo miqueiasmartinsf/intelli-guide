@@ -94,10 +94,13 @@ model TwoFactorConfirmation {
 }
 
 model Categories {
-  id            Int            @id @default(autoincrement())
-  title         String
-  imageSrc      String
-  description   String
+  id          Int    @id @default(autoincrement())
+  title       String
+  imageSrc    String
+  description String
+
+  created_at    DateTime       @default(now())
+  updated_at    DateTime       @updatedAt
   quizzes       Quizzes[]
   user_progress UserProgress[]
 
