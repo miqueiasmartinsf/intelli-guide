@@ -1,7 +1,8 @@
 "use client";
 
-import { Button } from "./ui/button";
 import { Play } from "lucide-react";
+
+import { Button } from "./ui/button";
 
 type LearnTrackCardProps = {
     categoryId: number;
@@ -22,7 +23,7 @@ export function LearnTrackCard({
 }: LearnTrackCardProps) {
     return (
         <div className="mx-auto grid w-full max-w-7xl grid-cols-9 px-2">
-            {order % 2 === 0 ? (
+            {order % 2 !== 0 ? (
                 <>
                     <div className="col-span-4 h-full w-full">
                         <div className="h-full w-full rounded-2xl border-2 shadow-lg">

@@ -19,13 +19,15 @@ export const getUserSubscription = cache(async () => {
 
     if (!data) return null
 
-    const isActive = data.stripePriceId && new Date(data.stripeCurrentPeriodEnd).getTime() + DAY_IN_MS > Date.now();
+    const isActive =
+      data.stripePriceId &&
+      new Date(data.stripeCurrentPeriodEnd).getTime() + DAY_IN_MS > Date.now()
 
     return {
       ...data,
       isActive: !!isActive,
-    };
+    }
   } catch {
-    return null;
+    return null
   }
 })

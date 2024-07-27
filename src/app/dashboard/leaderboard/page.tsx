@@ -1,6 +1,7 @@
 import { LeaderBoardCard } from "@/components/leaderboard-card";
-import { getTopTenUsers } from "./actions";
 import { getUserProgress, getUserSubscription } from "@/data";
+
+import { getTopTenUsers } from "./actions";
 const LEADER_BOARD_MOCK = [
     { name: "Wallace Medeiros", points: 500 },
     { name: "Daniel Prado", points: 350 },
@@ -24,18 +25,20 @@ async function LeaderboardPage() {
         <div className="h-full w-full px-3">
             <h1 className="text-2xl font-bold text-neutral-700">Leaderboard</h1>
 
-            <div className="0 mt-8 flex flex-col justify-center">
-                {leaderboad.map((user, index) => {
-                    return (
-                        <LeaderBoardCard
-                            name={user.userName}
-                            points={user.points}
-                            position={index + 1}
-                            key={index}
-                            profileImg={user.userImageSrc}
-                        />
-                    );
-                })}
+            <div className="w-full pt-6">
+                <div className="flex flex-col justify-center rounded-lg border-x-2 border-t-2">
+                    {leaderboad.map((user, index) => {
+                        return (
+                            <LeaderBoardCard
+                                name={user.userName}
+                                points={user.points}
+                                position={index + 1}
+                                key={index}
+                                profileImg={user.userImageSrc}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

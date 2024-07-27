@@ -6,7 +6,7 @@ import { db } from '@/services/database'
 
 export const GET = async (
   req: Request,
-  { params }: { params: { unitId: number } },
+  { params }: { params: { quizId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -17,7 +17,7 @@ export const GET = async (
   }
 
   const data = await db.quizzes.findUnique({
-    where: { id: Number(params.unitId) },
+    where: { id: Number(params.quizId) },
   })
 
   return NextResponse.json(data)
@@ -25,7 +25,7 @@ export const GET = async (
 
 export const PUT = async (
   req: Request,
-  { params }: { params: { unitId: number } },
+  { params }: { params: { quizId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -38,7 +38,7 @@ export const PUT = async (
   const body = await req.json()
 
   const data = await db.quizzes.update({
-    where: { id: Number(params.unitId) },
+    where: { id: Number(params.quizId) },
     data: body,
   })
 
@@ -47,7 +47,7 @@ export const PUT = async (
 
 export const DELETE = async (
   req: Request,
-  { params }: { params: { unitId: number } },
+  { params }: { params: { quizId: number } },
 ) => {
   const session = await auth()
   const user = session?.user
@@ -58,7 +58,7 @@ export const DELETE = async (
   }
 
   const data = await db.quizzes.delete({
-    where: { id: Number(params.unitId) },
+    where: { id: Number(params.quizId) },
   })
 
   return NextResponse.json(data)

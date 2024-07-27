@@ -1,20 +1,20 @@
+import {
+    Award,
+    Dices,
+    HelpCircle,
+    House,
+    ShoppingBagIcon,
+    User,
+} from "lucide-react";
 import Image from "next/image";
-import ImgIntelliGuide from "@/public/intelli-guide.png";
-
 import Link from "next/link";
 import React from "react";
+
 import { cn } from "@/lib/utils";
+import ImgIntelliGuide from "@/public/intelli-guide.png";
 
 import { UserButton } from "./auth/user-button";
 import { SidebarItem } from "./sidebar-item";
-import {
-    House,
-    ShoppingBagIcon,
-    HelpCircle,
-    User,
-    Award,
-    Dices,
-} from "lucide-react";
 
 type Props = {
     className?: string;

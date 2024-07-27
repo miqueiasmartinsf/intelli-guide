@@ -94,10 +94,10 @@ model TwoFactorConfirmation {
 }
 
 model Categories {
-  id       Int    @id @default(autoincrement())
-  title    String
-  imageSrc String
-
+  id            Int            @id @default(autoincrement())
+  title         String
+  imageSrc      String
+  description   String
   quizzes       Quizzes[]
   user_progress UserProgress[]
 
@@ -111,7 +111,7 @@ model Quizzes {
   categoryId  Int
   order       Int
 
-  categories Categories? @relation(fields: [categoryId], references: [id])
+  categories Categories? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   lessons    Lessons[]
 
   @@map("quizzes")
@@ -120,11 +120,11 @@ model Quizzes {
 model Lessons {
   id     Int    @id @default(autoincrement())
   title  String
-  unitId Int
+  quizId Int
   order  Int
 
   challenges Challenges[]
-  quizzes    Quizzes      @relation(fields: [unitId], references: [id])
+  quizzes    Quizzes      @relation(fields: [quizId], references: [id], onDelete: Cascade)
 
   @@map("lessons")
 }
@@ -135,14 +135,13 @@ enum ChallengeType {
 }
 
 model Challenges {
-  id        Int           @id @default(autoincrement())
-  lessonId  Int
-  type      ChallengeType
-  question  String
-  order     Int
-  lessonsId Int?
+  id       Int           @id @default(autoincrement())
+  lessonId Int
+  type     ChallengeType
+  question String
+  order    Int
 
-  lessons            Lessons?            @relation(fields: [lessonsId], references: [id])
+  lessons            Lessons?            @relation(fields: [lessonId], references: [id], onDelete: Cascade)
   challenge_options  ChallengeOption[]
   challenge_progress ChallengeProgress[]
 
@@ -156,7 +155,7 @@ model ChallengeOption {
   correct     Boolean
   imageSrc    String?
 
-  challenge Challenges @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
   @@map("challenge_option")
 }
@@ -167,7 +166,7 @@ model ChallengeProgress {
   challengeId Int
   completed   Boolean @default(false)
 
-  challenge Challenges @relation(fields: [challengeId], references: [id])
+  challenge Challenges @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
   @@map("challenge_progress")
 }

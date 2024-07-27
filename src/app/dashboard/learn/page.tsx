@@ -48,34 +48,21 @@ const LearnPage = async () => {
     const isPro = !!userSubscription?.isActive;
 
     return (
-        <div className="flex flex-row-reverse gap-[48px] px-6">
-            <StickyWrapper>
-                <UserProgress
-                    activeCategory={userProgress.activeCategory}
-                    hearts={userProgress.hearts}
-                    points={userProgress.points}
-                    hasActiveSubscription={isPro}
-                />
-                {!isPro && <Promo />}
-                <Quests points={userProgress.points} />
-            </StickyWrapper>
-
-            <FeedWrapper>
-                <Header title={userProgress.activeCategory.title} />
-                {quizzes.map((quiz) => (
-                    <div key={quiz.id} className="mb-10">
-                        <Quiz
-                            id={quiz.id}
-                            order={quiz.order}
-                            title={quiz.title}
-                            description={quiz.description}
-                            lessons={quiz.lessons}
-                            activeLesson={categoryProgress.activeLesson}
-                            activeLessonPercentage={lessonPercentage}
-                        />
-                    </div>
-                ))}
-            </FeedWrapper>
+        <div >
+            <Header title={userProgress.activeCategory.title} />
+            {quizzes.map((quiz) => (
+                <div key={quiz.id} className="mb-10">
+                    <Quiz
+                        id={quiz.id}
+                        order={quiz.order}
+                        title={quiz.title}
+                        description={quiz.description}
+                        lessons={quiz.lessons}
+                        activeLesson={categoryProgress.activeLesson}
+                        activeLessonPercentage={lessonPercentage}
+                    />
+                </div>
+            ))}
         </div>
     );
 };

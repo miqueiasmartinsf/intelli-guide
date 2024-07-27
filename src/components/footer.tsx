@@ -1,5 +1,6 @@
 import Image from "next/image";
-import ImgIntelliGuide from "@/public/intelli-guide.png";
+
+import ImgIntelliGuide from "@/public/intelli-guide-green.png";
 
 export function Footer() {
     return (

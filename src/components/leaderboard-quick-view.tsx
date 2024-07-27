@@ -1,12 +1,12 @@
-import Link from "next/link";
+import { Crown } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import ImgLeaderboard from "@/public/leaderboard.svg";
-import { Crown } from "lucide-react";
 
 export function LeaderboardQuickView() {
     return (
-        <div className="mt-8 flex flex-col gap-4 rounded-lg border-2 p-4">
+        <div className="mt-8 flex min-w-[250px] flex-col gap-4 rounded-lg border-2 p-4">
             <div className="flex justify-between">
                 <div className="flex gap-2">
                     <Crown />

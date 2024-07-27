@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import ImgHeart from '@/public/heart.svg'
+import ImgPoints from '@/public/points.svg'
 
 import { cn } from '@/lib/utils'
 
@@ -8,7 +10,7 @@ type Props = {
 }
 
 export const ResultCard = ({ value, variant }: Props) => {
-  const imageSrc = variant === 'hearts' ? '/heart.svg' : '/points.svg'
+  const imageSrc = variant === 'hearts' ? `${ImgHeart}` : `${ImgPoints}`
 
   return (
     <div

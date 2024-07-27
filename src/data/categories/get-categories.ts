@@ -7,7 +7,8 @@ export const getCategories = cache(async () => {
         const categories = await db.categories.findMany();
 
         return categories;
-    } catch {
+    } catch (error) {
+        console.log(error);
         return null;
     }
 });

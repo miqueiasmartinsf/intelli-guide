@@ -1,7 +1,7 @@
-import { Header } from "@/app/dashboard/learn/header";
 import { redirect } from "next/navigation";
-import { LearnTrackCard } from "@/components/learn-track-card";
 
+import { Header } from "@/app/dashboard/learn/header";
+import { LearnTrackCard } from "@/components/learn-track-card";
 import {
     getCategoryProgress,
     getLessonPercentage,
@@ -31,26 +31,33 @@ async function TrackPage() {
         userSubscriptionData,
     ]);
 
+    if (!userProgress || !userProgress.activeCategory) {
+        redirect("/dashboard/categories");
+    }
+
+    if (!categoryProgress) {
+        redirect("/dashboard/categories");
+    }
+
     return (
         <div className="min-h-screen w-full px-3">
-            <h1 className="text-2xl font-bold text-neutral-700">Lean Track</h1>
-
-            <Header title="Futebol" />
-
-            <div className="flex flex-col p-12">
-                {quizzes.map((item, index) => {
-                    return (
-                        <LearnTrackCard
-                            id={item.id}
-                            categoryId={item.categoryId}
-                            description={item.description}
-                            order={item.order}
-                            title={item.title}
-                            key={item.id}
-                            lessons={item.lessons}
-                        />
-                    );
-                })}
+            <div className="w-full pt-6">
+                <Header title={userProgress.activeCategory.title} />
+                <div className="flex flex-col">
+                    {quizzes.map((item) => {
+                        return (
+                            <LearnTrackCard
+                                id={item.id}
+                                categoryId={item.categoryId}
+                                description={item.description}
+                                order={item.order}
+                                title={item.title}
+                                key={item.id}
+                                lessons={item.lessons}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

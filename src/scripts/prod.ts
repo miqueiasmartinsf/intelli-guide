@@ -27,13 +27,13 @@ const main = async () => {
       data: [
         {
           categoryId: category.id,
-          title: 'Unit 1',
+          title: 'Quiz 1',
           description: `Learn the basics of ${category.title}`,
           order: 1,
         },
         {
           categoryId: category.id,
-          title: 'Unit 2',
+          title: 'Quiz 2',
           description: `Learn intermediate ${category.title}`,
           order: 2,
         },
@@ -48,21 +48,21 @@ const main = async () => {
     })
 
     // Para cada unidade, insere as lições
-    for (const unit of quizzes) {
+    for (const quiz of quizzes) {
       await db.lessons.createMany({
         data: [
-          { unitId: unit.id, title: 'Nouns', order: 1 },
-          { unitId: unit.id, title: 'Verbs', order: 2 },
-          { unitId: unit.id, title: 'Adjectives', order: 3 },
-          { unitId: unit.id, title: 'Phrases', order: 4 },
-          { unitId: unit.id, title: 'Sentences', order: 5 },
+          { quizId: quiz.id, title: 'Nouns', order: 1 },
+          { quizId: quiz.id, title: 'Verbs', order: 2 },
+          { quizId: quiz.id, title: 'Adjectives', order: 3 },
+          { quizId: quiz.id, title: 'Phrases', order: 4 },
+          { quizId: quiz.id, title: 'Sentences', order: 5 },
         ],
       })
 
       // Recupera as lições inseridas para a unidade atual
       const lessons = await db.lessons.findMany({
         where: {
-          unitId: unit.id,
+          quizId: quiz.id,
         },
       })
 

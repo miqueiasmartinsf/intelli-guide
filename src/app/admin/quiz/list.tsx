@@ -1,6 +1,6 @@
 import { Datagrid, List, ReferenceField, TextField } from 'react-admin'
 
-export const UnitList = () => {
+export const QuizList = () => {
   return (
     <List>
       <Datagrid rowClick="edit">

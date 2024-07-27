@@ -47,23 +47,23 @@ export const getCategoryProgress = cache(async () => {
     })
 
     const firstUncompletedLesson = quizzesInactiveCategory
-      .flatMap((unit) => unit.lessons)
-      .find((lesson) => {
-        return lesson.challenges.some((challenge) => {
-          return (
-            !challenge.challenge_progress ||
-            challenge.challenge_progress.length === 0 ||
-            challenge.challenge_progress.some(
-              (progress) => progress.completed === false,
-            )
+    .flatMap((quiz) => quiz.lessons)
+    .find((lesson) => {
+      return lesson.challenges.some((challenge) => {
+        return (
+          !challenge.challenge_progress ||
+          challenge.challenge_progress.length === 0 ||
+          challenge.challenge_progress.some(
+            (progress) => progress.completed === false,
           )
-        })
+        )
       })
+    })
 
-    return {
-      activeLesson: firstUncompletedLesson,
-      activeLessonId: firstUncompletedLesson?.id,
-    }
+  return {
+    activeLesson: firstUncompletedLesson,
+    activeLessonId: firstUncompletedLesson?.id,
+  }
   } catch (error) {
     console.error(error)
     return null

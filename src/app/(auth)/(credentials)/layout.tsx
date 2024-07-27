@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import ImgIntelliGuide from '@/public/intelli-guide.png'
-import ImgQuestionBro from '@/public/Questions-bro.svg'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 import { currentUser } from '@/lib/auth'
-import Link from 'next/link'
+import ImgIntelliGuide from '@/public/intelli-guide.png'
+import ImgQuestionBro from '@/public/Questions-bro.svg'
 
 async function AuthLayout({
   children,
@@ -20,7 +20,7 @@ async function AuthLayout({
   return (
     <div className="flex h-screen">
       <div className="flex h-full w-1/2 flex-col items-center justify-center gap-16">
-        <Link href={"/"}>
+        <Link href={'/'}>
           <Image src={ImgIntelliGuide} alt="" width={320} height={56} />
         </Link>
         {children}

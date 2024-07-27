@@ -21,6 +21,8 @@ export const upsertUserProgress = async (categoryId: number) => {
 
     const category = await getCategoryById(categoryId);
 
+    const lessons = category?.quizzes[0].lessons[0].title;
+
     if (!category) {
         console.error("Category not found");
         throw new Error("Category not found");
@@ -74,15 +76,19 @@ export const reduceHearts = async (challengeId: number) => {
     const currentUserProgress = await getUserProgress();
     const userSubscription = await getUserSubscription();
 
-    const challenge = await db.quizzes.findFirst({
+    console.log("challengeId", challengeId);
+
+    const challenge = await db.challenges.findFirst({
         where: { id: challengeId },
     });
+
+    console.log("challenge", challenge);
 
     if (!challenge) {
         throw new Error("Challenge not found");
     }
 
-    const lessonId = challenge.categoryId;
+    const lessonId = challenge.lessonId;
 
     const existingChallengeProgress = await db.challengeProgress.findFirst({
         where: {
@@ -148,7 +154,7 @@ export const refillHearts = async () => {
     });
 
     revalidatePath("/shop");
-    revalidatePath("/learn");
+    revalidatePath("/dashboard/learn");
     revalidatePath("/quests");
     revalidatePath("/dashboard/leaderboard");
 };
