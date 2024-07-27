@@ -35,18 +35,18 @@ export default function Home() {
                             </li>
                             <li>
                                 <Link
-                                    href={"/#"}
+                                    href={"/#sobre"}
                                     className="nav-link text-lg max-2xl:text-base"
                                 >
-                                    Contato
+                                    Sobre
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href={"/#"}
+                                    href={"/#aprendizado"}
                                     className="nav-link text-lg max-2xl:text-base"
                                 >
-                                    Sobre
+                                    Aprendizado
                                 </Link>
                             </li>
                             <li>
@@ -99,33 +99,35 @@ export default function Home() {
                                     className="nav-link text-white"
                                     onClick={() => SetMenuAppearence(false)}
                                 >
-                                    <Link href="/#home">Início</Link>
+                                    <Link href="/#">Início</Link>
                                 </li>
                                 <li
                                     className="nav-link text-white"
                                     onClick={() => SetMenuAppearence(false)}
                                 >
-                                    <Link href="/#about">Sobre</Link>
+                                    <Link href="/#sobre">Sobre</Link>
                                 </li>
                                 <li
                                     className="nav-link text-white"
                                     onClick={() => SetMenuAppearence(false)}
                                 >
-                                    <Link href="/#skills">Habilidades</Link>
+                                    <Link href="/#aprendizado">
+                                        Aprendizado
+                                    </Link>
                                 </li>
                                 <li
                                     className="nav-link text-white"
                                     onClick={() => SetMenuAppearence(false)}
                                 >
-                                    <Link href="/#projects">Projetos</Link>
+                                    <Link href="/login">Entrar</Link>
                                 </li>
                                 <li className="nav-link text-white">
-                                    <Link href="/contact">
+                                    <Link href="/register">
                                         <Button
                                             variant={"outline"}
                                             className="text-primary"
                                         >
-                                            Contato
+                                            Cadastrar
                                         </Button>
                                     </Link>
                                 </li>
@@ -159,7 +161,10 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="flex items-center bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
+            <section
+                id="sobre"
+                className="flex items-center bg-primary px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6"
+            >
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-5/12 flex-col items-start justify-center max-lg:w-full">
                         <div className="max-w-[500px] max-2xl:w-96 max-lg:w-72">
@@ -187,7 +192,10 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6">
+            <section
+                id="aprendizado"
+                className="px-60 max-2xl:px-40 max-xl:px-20 max-md:px-10 max-sm:px-6"
+            >
                 <div className="flex h-full items-center gap-10 py-36 max-lg:flex-col">
                     <div className="flex h-full w-7/12 flex-col items-start justify-center max-lg:w-full">
                         <h2 className="w-11/12 text-6xl max-2xl:text-5xl">
