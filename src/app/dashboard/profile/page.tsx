@@ -81,10 +81,7 @@ function ProfilePage() {
                         {!user?.image && <User color="#c9c9c9" />}
                     </div>
                     <div className="flex gap-5">
-                        <Button
-                            variant={"outline"}
-                            className="text-primary"
-                        >
+                        <Button variant={"outline"} className="text-primary">
                             Alterar foto
                         </Button>
                         <Button variant={"destructive"}>Apagar foto</Button>
@@ -108,9 +105,7 @@ function ProfilePage() {
                                 label="Endereço de email"
                                 type="email"
                                 className="mb-4"
-                                placeholder={
-                                    user?.email ? user.email : "N/A"
-                                }
+                                placeholder={user?.email ? user.email : "N/A"}
                                 register={form.register}
                                 error={form.formState.errors.email?.message}
                             />
@@ -136,8 +131,8 @@ function ProfilePage() {
                                         placeholder="••••••••"
                                         register={form.register}
                                         error={
-                                            form.formState.errors
-                                                .newPassword?.message
+                                            form.formState.errors.newPassword
+                                                ?.message
                                         }
                                     />
                                     <FormField
@@ -152,16 +147,14 @@ function ProfilePage() {
                                                     </FormLabel>
                                                     <FormDescription>
                                                         Enable two factor
-                                                        authentication for
-                                                        your account
+                                                        authentication for your
+                                                        account
                                                     </FormDescription>
                                                 </div>
                                                 <FormControl>
                                                     <Switch
                                                         disabled={isPending}
-                                                        checked={
-                                                            field.value
-                                                        }
+                                                        checked={field.value}
                                                         onCheckedChange={
                                                             field.onChange
                                                         }

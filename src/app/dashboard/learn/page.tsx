@@ -18,10 +18,10 @@ import { Quiz } from "./quiz";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: 'Learn',
-    description: 'Descubra e participe de diversas fases de quizzes no IntelliGuide. Melhore seus conhecimentos, acompanhe seu progresso e desafie-se com quizzes emocionantes e educativos.',
-}
-
+    title: "Learn",
+    description:
+        "Descubra e participe de diversas fases de quizzes no IntelliGuide. Melhore seus conhecimentos, acompanhe seu progresso e desafie-se com quizzes emocionantes e educativos.",
+};
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
@@ -55,7 +55,7 @@ const LearnPage = async () => {
     const isPro = !!userSubscription?.isActive;
 
     return (
-        <div >
+        <div>
             <Header title={userProgress.activeCategory.title} />
             {quizzes.map((quiz) => (
                 <div key={quiz.id} className="mb-10">

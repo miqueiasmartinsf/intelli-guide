@@ -9,9 +9,14 @@ type LeaderboardCardProps = {
     userName: string;
     userImageSrc: string;
     points: number;
-}
+};
 
-export function LeaderboardQuickView({ points, userId, userImageSrc, userName }: LeaderboardCardProps) {
+export function LeaderboardQuickView({
+    points,
+    userId,
+    userImageSrc,
+    userName,
+}: LeaderboardCardProps) {
     return (
         <div className="mt-8 flex min-w-[250px] flex-col gap-4 rounded-lg border-2 p-4">
             <div className="flex justify-between">
@@ -24,7 +29,7 @@ export function LeaderboardQuickView({ points, userId, userImageSrc, userName }:
                     Ver mais
                 </Link>
             </div>
-            <div className="mt-4 flex items-center justify-between border-b">
+            <div className="mt-4 flex items-center justify-between border-t py-2">
                 <Image
                     src={ImgLeaderboard}
                     width={30}

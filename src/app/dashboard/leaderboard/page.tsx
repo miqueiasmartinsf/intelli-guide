@@ -3,11 +3,13 @@ import { getUserProgress, getUserSubscription } from "@/data";
 
 import { getTopTenUsers } from "./actions";
 import { Metadata } from "next";
+import { FeedWrapper } from "@/components/feed-wrapper";
 
 export const metadata: Metadata = {
-    title: 'Leaderboard',
-    description: 'Confira o ranking dos melhores participantes no IntelliGuide! Veja quem está no topo, acompanhe seu progresso e desafie-se a alcançar as primeiras posições.',
-}
+    title: "Leaderboard",
+    description:
+        "Confira o ranking dos melhores participantes no IntelliGuide! Veja quem está no topo, acompanhe seu progresso e desafie-se a alcançar as primeiras posições.",
+};
 
 async function LeaderboardPage() {
     const userProgressData = getUserProgress();
@@ -25,19 +27,21 @@ async function LeaderboardPage() {
             <h1 className="text-2xl font-bold text-neutral-700">Leaderboard</h1>
 
             <div className="w-full pt-6">
-                <div className="flex flex-col justify-center rounded-lg border-x-2 border-t-2">
-                    {leaderboard.map((user, index) => {
-                        return (
-                            <LeaderBoardCard
-                                name={user.userName}
-                                points={user.points}
-                                position={index + 1}
-                                key={index}
-                                profileImg={user.userImageSrc}
-                            />
-                        );
-                    })}
-                </div>
+                <FeedWrapper>
+                    <div className="flex flex-col justify-center rounded-lg border-x-2 border-t-2">
+                        {leaderboard.map((user, index) => {
+                            return (
+                                <LeaderBoardCard
+                                    name={user.userName}
+                                    points={user.points}
+                                    position={index + 1}
+                                    key={index}
+                                    profileImg={user.userImageSrc}
+                                />
+                            );
+                        })}
+                    </div>
+                </FeedWrapper>
             </div>
         </div>
     );
