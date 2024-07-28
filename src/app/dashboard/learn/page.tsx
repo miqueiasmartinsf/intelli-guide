@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
 import { FeedWrapper } from "@/components/feed-wrapper";
 import {
     getCategoryProgress,
@@ -25,19 +26,14 @@ const LearnPage = async () => {
     const quizzesData = getQuizzes();
     const userSubscriptionData = getUserSubscription();
 
-    const [
-        userProgress,
-        quizzes,
-        categoryProgress,
-        lessonPercentage,
-        userSubscription,
-    ] = await Promise.all([
-        userProgressData,
-        quizzesData,
-        categoryProgressData,
-        lessonPercentageData,
-        userSubscriptionData,
-    ]);
+    const [userProgress, quizzes, categoryProgress, lessonPercentage] =
+        await Promise.all([
+            userProgressData,
+            quizzesData,
+            categoryProgressData,
+            lessonPercentageData,
+            userSubscriptionData,
+        ]);
 
     if (!userProgress || !userProgress.activeCategory) {
         redirect("/dashboard/categories");
@@ -46,8 +42,6 @@ const LearnPage = async () => {
     if (!categoryProgress) {
         redirect("/dashboard/categories");
     }
-
-    const isPro = !!userSubscription?.isActive;
 
     return (
         <div className="h-full w-full px-3">

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { MobileHeader } from "@/components/mobile-header";
 import { Sidebar } from "@/components/sidebar";
 

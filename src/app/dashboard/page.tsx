@@ -1,8 +1,7 @@
 import { DashBoardCard } from "@/components/dashboard-card";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { RecentlyAdded } from "@/components/recently-added";
-import { getUserProgress } from "@/data";
-import { getCategories } from "@/data";
+import { getCategories, getUserProgress } from "@/data";
 
 const DashboardPage = async () => {
     const userProgress = await getUserProgress();
