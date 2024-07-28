@@ -4,9 +4,8 @@
         "next/core-web-vitals",
         "prettier"
     ],
-    "plugins": ["simple-import-sort", "prettier"],
+    "plugins": ["prettier"],
     "rules": {
-        "simple-import-sort/imports": "error",
         "@typescript-eslint/no-explicit-any": "off",
         "prettier/prettier": ["error", { "endOfLine": "auto" }]
     }
