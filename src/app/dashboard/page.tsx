@@ -5,11 +5,31 @@ import Link from "next/link";
 import { DashBoardCard } from "@/components/dashboard-card";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { RecentlyAdded } from "@/components/recently-added";
-import { getUserProgress } from "@/data";
 import ImgLeaderboard from "@/public/leaderboard.svg";
+import { getUserProgress } from "@/data";
+import { getTopTenUsers } from "@/app/dashboard/leaderboard/actions";
+import { getCategories } from "@/data";
 
 const DashboardPage = async () => {
     const userProgress = await getUserProgress();
+
+    const categoriesPromise = getCategories();
+    const leaderboardPromise = getTopTenUsers();
+
+    const [categoriesData, leaderboardData] = await Promise.all([
+        categoriesPromise,
+        leaderboardPromise,
+    ]);
+
+    const recentCategories = categoriesData
+        ? categoriesData
+              .sort(
+                  (a, b) =>
+                      new Date(b.created_at).getTime() -
+                      new Date(a.created_at).getTime(),
+              )
+              .slice(0, 3)
+        : [];
 
     return (
         <div className="px-3">
@@ -105,7 +125,7 @@ const DashboardPage = async () => {
                         </div>
 
                         <div className="lg:hidden">
-                            <RecentlyAdded />
+                            <RecentlyAdded categories={recentCategories} />
                         </div>
                     </div>
                 </FeedWrapper>
