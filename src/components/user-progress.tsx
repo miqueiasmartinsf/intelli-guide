@@ -2,13 +2,12 @@ import { Categories } from "@prisma/client";
 import { InfinityIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import ImgHeart from "@/public/heart.svg";
 import ImgPoints from "@/public/points.svg";
 
 type Props = {
-    activeCategory: Categories;
+    activeCategory: any;
     hearts: number;
     points: number;
     hasActiveSubscription: boolean;
