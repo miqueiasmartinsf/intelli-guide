@@ -23,14 +23,13 @@ export const createStripeUrl = async () => {
             customer: userSubscription.stripeCustomerId,
             return_url: returnUrl,
         });
-
         return { data: stripeSession.url };
     }
 
     const stripeSession = await stripe.checkout.sessions.create({
         mode: "subscription",
         payment_method_types: ["card"],
-        customer_email: user.email,
+        customer_email: user.email!,
         line_items: [
             {
                 quantity: 1,
