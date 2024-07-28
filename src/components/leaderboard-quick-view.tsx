@@ -5,17 +5,16 @@ import Link from "next/link";
 import ImgLeaderboard from "@/public/leaderboard.svg";
 
 type LeaderboardCardProps = {
-    userId: string;
-    userName: string;
-    userImageSrc: string;
-    points: number;
+    leaderboardData: {
+        points: number;
+        userId: string;
+        userImageSrc: string;
+        userName: string;
+    }[];
 };
 
 export function LeaderboardQuickView({
-    points,
-    userId,
-    userImageSrc,
-    userName,
+    leaderboardData,
 }: LeaderboardCardProps) {
     return (
         <div className="mt-8 flex min-w-[250px] flex-col gap-4 rounded-lg border-2 p-4">
@@ -29,15 +28,22 @@ export function LeaderboardQuickView({
                     Ver mais
                 </Link>
             </div>
-            <div className="mt-4 flex items-center justify-between border-t py-2">
-                <Image
-                    src={ImgLeaderboard}
-                    width={30}
-                    height={30}
-                    alt="leaderboard"
-                />
-                <h2 className="">{userName}</h2>
-                <span className="">{points}pts</span>
+            <div className="mt-4 flex flex-col py-2">
+                {leaderboardData.map((user) => {
+                    return (
+                        <div className="flex w-full justify-between border-t py-2">
+                            <Image
+                                src={ImgLeaderboard}
+                                width={30}
+                                height={30}
+                                alt="leaderboard"
+                            />
+                            <h2>{user.userName}</h2>
+
+                            <div className="">{user.points} pts</div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

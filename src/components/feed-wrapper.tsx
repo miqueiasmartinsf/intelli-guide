@@ -36,18 +36,11 @@ export async function FeedWrapper({ children }: FeedWrapperProps) {
                     {recentCategories.length > 0 && (
                         <RecentlyAdded categories={recentCategories} />
                     )}
-                    {leaderboardData.length > 0 &&
-                        leaderboardData.map((user, index) => {
-                            return (
-                                <LeaderboardQuickView
-                                    points={user.points}
-                                    userId={user.userId}
-                                    userImageSrc={user.userImageSrc}
-                                    userName={user.userName}
-                                    key={index}
-                                />
-                            );
-                        })}
+                    {leaderboardData.length > 0 && (
+                        <LeaderboardQuickView
+                            leaderboardData={leaderboardData}
+                        />
+                    )}
                 </AsideWrapper>
             </div>
         </div>
