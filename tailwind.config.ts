@@ -79,7 +79,14 @@ const config = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate"), addVariablesForColors],
+    plugins: [
+        require("tailwindcss-animate"),
+        addVariablesForColors,
+        require("@tailwindcss/aspect-ratio"),
+    ],
+    corePlugins: {
+        aspectRatio: false,
+    },
 } satisfies Config;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
