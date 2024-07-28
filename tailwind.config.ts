@@ -89,7 +89,7 @@ const config = {
     },
 } satisfies Config;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 function addVariablesForColors({ addBase, theme }: any) {
     const allColors = flattenColorPalette(theme("colors"));
     const newVars = Object.fromEntries(
