@@ -2,8 +2,6 @@ import { Categories } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "./ui/button";
-
 type Props = {
     categories: Categories[];
 };
@@ -14,7 +12,7 @@ export function AsideMenu({ categories }: Props) {
             <div className="flex w-full flex-col gap-4 py-4">
                 <h1 className="font-bold">Adicionados recentemente</h1>
                 {categories.map((category) => (
-                    <div className="rounded-md border-2 p-4">
+                    <div className="rounded-md border-2 p-4" key={category.id}>
                         <div className="flex items-center justify-between rounded-md p-2">
                             <h2 className="font-bold">{category.title}</h2>
                             <Link

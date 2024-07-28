@@ -1,4 +1,4 @@
-import { Home, IconNode, LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface AsideButtonProps {
     Icon: LucideIcon;

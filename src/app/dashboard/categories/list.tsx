@@ -1,7 +1,7 @@
 "use client";
 import { Categories } from "@prisma/client";
 import { useRouter } from "next/navigation";
-import { useEffect, useTransition } from "react";
+import { useTransition } from "react";
 import { toast } from "sonner";
 
 import { upsertUserProgress } from "@/actions/user-progress";
@@ -19,7 +19,7 @@ export const List = ({ categories, activeCategoryId }: Props) => {
 
     const onClick = (id: number) => {
         if (pending) return;
-        if (id == activeCategoryId) {
+        if (id === activeCategoryId) {
             return router.push("/dashboard/learn");
         }
 

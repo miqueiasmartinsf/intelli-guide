@@ -31,7 +31,10 @@ export function LeaderboardQuickView({
             <div className="mt-4 flex flex-col py-2">
                 {leaderboardData.map((user) => {
                     return (
-                        <div className="flex w-full justify-between border-t py-2">
+                        <div
+                            className="flex w-full justify-between border-t py-2"
+                            key={user.userId}
+                        >
                             <Image
                                 src={ImgLeaderboard}
                                 width={30}

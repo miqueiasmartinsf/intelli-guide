@@ -18,6 +18,7 @@ export function ProgressBar({ levels }: ProgressBarProps) {
 
     return (
         <div className="flex justify-center">
+            <div className="hidden">{levels}</div>
             <Progress value={progress} className="h-2 w-full" />
         </div>
     );

@@ -10,8 +10,8 @@ type ExtendedLesson = Lessons & {
 
 export type ExtendedLessonWithQuiz =
     | (Lessons & {
-        quiz: Quizzes;
-    })
+          quiz: Quizzes;
+      })
     | undefined;
 
 type Props = {
@@ -20,13 +20,11 @@ type Props = {
     title: string;
     description: string;
     lessons: ExtendedLesson[];
-    activeLesson: ExtendedLessonWithQuiz;
+    activeLesson?: ExtendedLessonWithQuiz;
     activeLessonPercentage: number;
 };
 
 export const Quiz = ({
-    id,
-    order,
     title,
     description,
     lessons,

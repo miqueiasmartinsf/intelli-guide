@@ -13,15 +13,9 @@ export const metadata: Metadata = {
 };
 
 async function LeaderboardPage() {
-    const userProgressData = getUserProgress();
-    const userSubscriptionData = getUserSubscription();
     const leaderboardData = getTopTenUsers();
 
-    const [userProgress, userSubscription, leaderboard] = await Promise.all([
-        userProgressData,
-        userSubscriptionData,
-        leaderboardData,
-    ]);
+    const [leaderboard] = await Promise.all([leaderboardData]);
 
     return (
         <div className="h-full w-full px-3">

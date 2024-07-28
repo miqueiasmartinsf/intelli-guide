@@ -22,8 +22,6 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { LoginSchema } from "@/schemas/auth";
-
 import { profileActions } from "./actions";
 import { updateUserSchema } from "./schema";
 

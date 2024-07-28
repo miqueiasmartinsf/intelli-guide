@@ -37,9 +37,12 @@ export function Quiz({ levels }: QuizProps) {
                     </p>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-5">
-                    {ANSWERS_MOCK.map((item) => {
+                    {ANSWERS_MOCK.map((item, index) => {
                         return (
-                            <div className="flex w-[350px] cursor-pointer items-center gap-5 rounded-md border-2 p-2 hover:bg-black/5">
+                            <div
+                                className="flex w-[350px] cursor-pointer items-center gap-5 rounded-md border-2 p-2 hover:bg-black/5"
+                                key={index}
+                            >
                                 <span className="rounded-full bg-primary p-2 px-3.5 font-bold text-white">
                                     {item.alternative}
                                 </span>{" "}

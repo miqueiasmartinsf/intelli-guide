@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import Imgfootball from "@/public/football.svg";
 
 type Props = {
     title: string;

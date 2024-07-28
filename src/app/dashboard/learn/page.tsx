@@ -1,11 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
-
 import { FeedWrapper } from "@/components/feed-wrapper";
-import { Promo } from "@/components/promo";
-import { Quests } from "@/components/quests";
-import { StickyWrapper } from "@/components/sticky-wrapper";
-import { UserProgress } from "@/components/user-progress";
 import {
     getCategoryProgress,
     getLessonPercentage,
@@ -67,7 +62,6 @@ const LearnPage = async () => {
                                 title={quiz.title}
                                 description={quiz.description}
                                 lessons={quiz.lessons}
-                                activeLesson={categoryProgress.activeLesson}
                                 activeLessonPercentage={lessonPercentage}
                             />
                         </div>

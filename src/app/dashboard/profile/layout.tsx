@@ -1,6 +1,4 @@
 import { Metadata } from "next";
-
-import { useCurrentUser } from "@/hooks/use-current-user";
 import { auth } from "@/services/auth";
 
 async function getUser() {
