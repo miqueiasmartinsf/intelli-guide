@@ -1,28 +1,36 @@
 import {
-  Create,
-  NumberInput,
-  ReferenceInput,
-  required,
-  SimpleForm,
-  TextInput,
-} from 'react-admin'
+    Create,
+    NumberInput,
+    ReferenceInput,
+    required,
+    SimpleForm,
+    TextInput,
+} from "react-admin";
 
 export const QuizCreate = () => {
-  return (
-    <Create>
-      <SimpleForm>
-        <TextInput source="title" validate={[required()]} label="Title" />
+    return (
+        <Create>
+            <SimpleForm>
+                <TextInput
+                    source="title"
+                    validate={[required()]}
+                    label="Title"
+                />
 
-        <TextInput
-          source="description"
-          validate={[required()]}
-          label="description"
-        />
+                <TextInput
+                    source="description"
+                    validate={[required()]}
+                    label="description"
+                />
 
-        <ReferenceInput source="categoryId" reference="categories" />
+                <ReferenceInput source="categoryId" reference="categories" />
 
-        <NumberInput source="order" validate={[required()]} label="order" />
-      </SimpleForm>
-    </Create>
-  )
-}
+                <NumberInput
+                    source="order"
+                    validate={[required()]}
+                    label="order"
+                />
+            </SimpleForm>
+        </Create>
+    );
+};

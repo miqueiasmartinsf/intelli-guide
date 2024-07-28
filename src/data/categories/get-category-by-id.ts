@@ -1,27 +1,27 @@
-import { cache } from 'react'
+import { cache } from "react";
 
-import { db } from '@/services/database'
+import { db } from "@/services/database";
 
 export const getCategoryById = cache(async (categoryId: number) => {
-  const data = await db.categories.findFirst({
-    where: {
-      id: categoryId,
-    },
-    include: {
-      quizzes: {
-        orderBy: {
-          order: 'asc',
+    const data = await db.categories.findFirst({
+        where: {
+            id: categoryId,
         },
         include: {
-          lessons: {
-            orderBy: {
-              order: 'asc',
+            quizzes: {
+                orderBy: {
+                    order: "asc",
+                },
+                include: {
+                    lessons: {
+                        orderBy: {
+                            order: "asc",
+                        },
+                    },
+                },
             },
-          },
         },
-      },
-    },
-  })
+    });
 
-  return data
-})
+    return data;
+});

@@ -1,22 +1,22 @@
-import { UserRole } from '@prisma/client'
-import dynamic from 'next/dynamic'
-import { redirect } from 'next/navigation'
+import { UserRole } from "@prisma/client";
+import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 
-import { auth } from '@/services/auth'
+import { auth } from "@/services/auth";
 
-const App = dynamic(() => import('./app'), { ssr: false })
+const App = dynamic(() => import("./app"), { ssr: false });
 
 const AdminPage = async () => {
-  const session = await auth()
-  const user = session?.user
+    const session = await auth();
+    const user = session?.user;
 
-  const isAdmin = user?.role === UserRole.ADMIN
+    const isAdmin = user?.role === UserRole.ADMIN;
 
-  if (!isAdmin) {
-    redirect('/')
-  }
+    if (!isAdmin) {
+        redirect("/");
+    }
 
-  return <App />
-}
+    return <App />;
+};
 
-export default AdminPage
+export default AdminPage;

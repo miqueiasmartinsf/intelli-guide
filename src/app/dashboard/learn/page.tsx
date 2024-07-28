@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { FeedWrapper } from "@/components/feed-wrapper";
@@ -15,7 +16,6 @@ import {
 
 import { Header } from "./header";
 import { Quiz } from "./quiz";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Learn",

@@ -1,9 +1,10 @@
+import { Metadata } from "next";
+
+import { FeedWrapper } from "@/components/feed-wrapper";
 import { LeaderBoardCard } from "@/components/leaderboard-card";
 import { getUserProgress, getUserSubscription } from "@/data";
 
 import { getTopTenUsers } from "./actions";
-import { Metadata } from "next";
-import { FeedWrapper } from "@/components/feed-wrapper";
 
 export const metadata: Metadata = {
     title: "Leaderboard",

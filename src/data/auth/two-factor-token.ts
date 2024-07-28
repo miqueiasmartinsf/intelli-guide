@@ -1,25 +1,25 @@
-import { db } from '@/services/database'
+import { db } from "@/services/database";
 
 export const getTwoFactorTokenByToken = async (token: string) => {
-  try {
-    const twoFactorToken = await db.twoFactorToken.findUnique({
-      where: { token },
-    })
+    try {
+        const twoFactorToken = await db.twoFactorToken.findUnique({
+            where: { token },
+        });
 
-    return twoFactorToken
-  } catch {
-    return null
-  }
-}
+        return twoFactorToken;
+    } catch {
+        return null;
+    }
+};
 
 export const getTwoFactorTokenByEmail = async (email: string) => {
-  try {
-    const twoFactorToken = await db.twoFactorToken.findFirst({
-      where: { email },
-    })
+    try {
+        const twoFactorToken = await db.twoFactorToken.findFirst({
+            where: { email },
+        });
 
-    return twoFactorToken
-  } catch {
-    return null
-  }
-}
+        return twoFactorToken;
+    } catch {
+        return null;
+    }
+};

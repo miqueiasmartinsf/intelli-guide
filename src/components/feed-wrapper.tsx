@@ -1,8 +1,9 @@
-import { AsideWrapper } from "./aside-wrapper";
-import { RecentlyAdded } from "./recently-added";
-import { LeaderboardQuickView } from "./leaderboard-quick-view";
-import { getCategories } from "@/data";
 import { getTopTenUsers } from "@/app/dashboard/leaderboard/actions";
+import { getCategories } from "@/data";
+
+import { AsideWrapper } from "./aside-wrapper";
+import { LeaderboardQuickView } from "./leaderboard-quick-view";
+import { RecentlyAdded } from "./recently-added";
 
 type FeedWrapperProps = {
     children: React.ReactNode;

@@ -1,22 +1,30 @@
 import {
-  Create,
-  NumberInput,
-  ReferenceInput,
-  required,
-  SimpleForm,
-  TextInput,
-} from 'react-admin'
+    Create,
+    NumberInput,
+    ReferenceInput,
+    required,
+    SimpleForm,
+    TextInput,
+} from "react-admin";
 
 export const LessonCreate = () => {
-  return (
-    <Create>
-      <SimpleForm>
-        <TextInput source="title" validate={[required()]} label="Title" />
+    return (
+        <Create>
+            <SimpleForm>
+                <TextInput
+                    source="title"
+                    validate={[required()]}
+                    label="Title"
+                />
 
-        <ReferenceInput source="quizId" reference="quizzes" />
+                <ReferenceInput source="quizId" reference="quizzes" />
 
-        <NumberInput source="order" validate={[required()]} label="order" />
-      </SimpleForm>
-    </Create>
-  )
-}
+                <NumberInput
+                    source="order"
+                    validate={[required()]}
+                    label="order"
+                />
+            </SimpleForm>
+        </Create>
+    );
+};

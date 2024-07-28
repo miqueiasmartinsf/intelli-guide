@@ -1,15 +1,23 @@
-import { Edit, required, SimpleForm, TextInput } from 'react-admin'
+import { Edit, required, SimpleForm, TextInput } from "react-admin";
 
 export const CategoryEdit = () => {
-  return (
-    <Edit>
-      <SimpleForm>
-        <TextInput source="id" validate={[required()]} label="Id" />
+    return (
+        <Edit>
+            <SimpleForm>
+                <TextInput source="id" validate={[required()]} label="Id" />
 
-        <TextInput source="title" validate={[required()]} label="Title" />
+                <TextInput
+                    source="title"
+                    validate={[required()]}
+                    label="Title"
+                />
 
-        <TextInput source="imageSrc" validate={[required()]} label="Image" />
-      </SimpleForm>
-    </Edit>
-  )
-}
+                <TextInput
+                    source="imageSrc"
+                    validate={[required()]}
+                    label="Image"
+                />
+            </SimpleForm>
+        </Edit>
+    );
+};

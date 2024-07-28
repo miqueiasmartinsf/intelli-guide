@@ -1,7 +1,7 @@
-'use server'
+"use server";
 
-import { signOut } from '../services/auth'
+import { signOut } from "../services/auth";
 
 export const logout = async () => {
-  await signOut({ redirect: true, redirectTo: '/login' })
-}
+    await signOut({ redirect: true, redirectTo: "/login" });
+};

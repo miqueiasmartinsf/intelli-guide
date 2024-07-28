@@ -1,11 +1,12 @@
-import Image from "next/image";
-import { DashBoardCard } from "@/components/dashboard-card";
-import { getUserProgress } from "@/data";
-import { RecentlyAdded } from "@/components/recently-added";
 import { Crown } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import ImgLeaderboard from "@/public/leaderboard.svg";
+
+import { DashBoardCard } from "@/components/dashboard-card";
 import { FeedWrapper } from "@/components/feed-wrapper";
+import { RecentlyAdded } from "@/components/recently-added";
+import { getUserProgress } from "@/data";
+import ImgLeaderboard from "@/public/leaderboard.svg";
 
 const DashboardPage = async () => {
     const userProgress = await getUserProgress();

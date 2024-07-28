@@ -1,1 +1,1 @@
-export { getQuizzes } from './get-quizzes'
+export { getQuizzes } from "./get-quizzes";

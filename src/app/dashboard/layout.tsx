@@ -1,8 +1,8 @@
+import { Metadata } from "next";
+
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { MobileHeader } from "@/components/mobile-header";
 import { Sidebar } from "@/components/sidebar";
-
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: {
