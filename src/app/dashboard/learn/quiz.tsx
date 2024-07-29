@@ -8,11 +8,9 @@ type ExtendedLesson = Lessons & {
     completed: boolean;
 };
 
-export type ExtendedLessonWithQuiz =
-    | (Lessons & {
-          quiz: Quizzes;
-      })
-    | undefined;
+export type ExtendedLessonWithQuiz = Lessons & {
+    quiz: Quizzes;
+} | undefined;
 
 type Props = {
     id: number;
@@ -20,7 +18,7 @@ type Props = {
     title: string;
     description: string;
     lessons: ExtendedLesson[];
-    activeLesson?: ExtendedLessonWithQuiz;
+    activeLesson: ExtendedLessonWithQuiz;
     activeLessonPercentage: number;
 };
 

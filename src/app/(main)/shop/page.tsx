@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
-import { FeedWrapper } from "@/components/feed-wrapper";
 import { Promo } from "@/components/promo";
 import { Quests } from "@/components/quests";
 import { StickyWrapper } from "@/components/sticky-wrapper";
@@ -30,7 +29,7 @@ const shopPage = async () => {
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
                 <UserProgress
-                    activeCategory={userProgress.activeCategoryId}
+                    activeCategory={userProgress.activeCategory}
                     hearts={userProgress.hearts}
                     points={userProgress.points}
                     hasActiveSubscription={isPro}
@@ -40,24 +39,22 @@ const shopPage = async () => {
                 <Quests points={userProgress.points} />
             </StickyWrapper>
 
-            <FeedWrapper>
-                <div className="flex w-full flex-col items-center">
-                    <Image src={ImgShop} alt="Shop" height={90} width={90} />
-                    <h1 className="text-xenter my-6 text-2xl font-bold text-neutral-800">
-                        Shop
-                    </h1>
+            <div className="flex w-full flex-col items-center">
+                <Image src={ImgShop} alt="Shop" height={90} width={90} />
+                <h1 className="text-xenter my-6 text-2xl font-bold text-neutral-800">
+                    Shop
+                </h1>
 
-                    <p className="mb-6 text-center text-lg text-muted-foreground">
-                        Spend your points on cool stuff.
-                    </p>
+                <p className="mb-6 text-center text-lg text-muted-foreground">
+                    Spend your points on cool stuff.
+                </p>
 
-                    <Items
-                        hearts={userProgress.hearts}
-                        points={userProgress.points}
-                        hasActiveSubscription={isPro}
-                    />
-                </div>
-            </FeedWrapper>
+                <Items
+                    hearts={userProgress.hearts}
+                    points={userProgress.points}
+                    hasActiveSubscription={isPro}
+                />
+            </div>
         </div>
     );
 };

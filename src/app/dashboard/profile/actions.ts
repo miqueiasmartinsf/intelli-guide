@@ -17,11 +17,12 @@ export const profileActions = async (
     values: z.infer<typeof updateUserSchema>,
 ) => {
     const user = await currentUser();
-    if (!user) {
+    if (!user || !user.id) {
         return { error: "Unauthorized" };
     }
 
-    const dbUser = await getUserById(user.id!);
+    const dbUser = await getUserById(user.id);
+
     if (!dbUser) {
         return { error: "Unauthorized" };
     }

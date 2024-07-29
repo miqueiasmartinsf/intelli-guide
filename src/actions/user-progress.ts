@@ -21,8 +21,6 @@ export const upsertUserProgress = async (categoryId: number) => {
 
     const category = await getCategoryById(categoryId);
 
-    // const lessons = category?.quizzes[0].lessons[0].title;
-
     if (!category) {
         console.error("Category not found");
         throw new Error("Category not found");
