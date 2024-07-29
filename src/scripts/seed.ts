@@ -4,11 +4,16 @@ async function main() {
     console.log("Seeding database...");
 
     // Limpar os dados existentes
-    await db.challengeOption.deleteMany({});
-    await db.challenges.deleteMany({});
-    await db.lessons.deleteMany({});
-    await db.quizzes.deleteMany({});
     await db.categories.deleteMany({});
+    await db.userProgress.deleteMany({});
+    await db.quizzes.deleteMany({});
+    await db.lessons.deleteMany({});
+
+    await db.challenges.deleteMany({});
+    await db.challengeOption.deleteMany({});
+    await db.challengeProgress.deleteMany({});
+
+    await db.userSubscription.deleteMany({});
 
     // Criação de categorias
     const category1 = await db.categories.create({

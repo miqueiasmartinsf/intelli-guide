@@ -1,17 +1,15 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
+import { Header } from "@/app/dashboard/learn/header";
+import { Quiz } from "@/app/dashboard/learn/quiz";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import {
     getCategoryProgress,
     getLessonPercentage,
     getQuizzes,
     getUserProgress,
-    getUserSubscription,
 } from "@/data";
-
-import { Header } from "./header";
-import { Quiz } from "./quiz";
 
 export const metadata: Metadata = {
     title: "Learn",
@@ -24,7 +22,6 @@ const LearnPage = async () => {
     const categoryProgressData = getCategoryProgress();
     const lessonPercentageData = getLessonPercentage();
     const quizzesData = getQuizzes();
-    const userSubscriptionData = getUserSubscription();
 
     const [userProgress, quizzes, categoryProgress, lessonPercentage] =
         await Promise.all([
@@ -32,7 +29,6 @@ const LearnPage = async () => {
             quizzesData,
             categoryProgressData,
             lessonPercentageData,
-            userSubscriptionData,
         ]);
 
     if (!userProgress || !userProgress.activeCategory) {
@@ -56,6 +52,9 @@ const LearnPage = async () => {
                                 title={quiz.title}
                                 description={quiz.description}
                                 lessons={quiz.lessons}
+                                activeLesson={
+                                    categoryProgress.activeLesson as any
+                                }
                                 activeLessonPercentage={lessonPercentage}
                             />
                         </div>
