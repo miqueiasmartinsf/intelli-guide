@@ -20,7 +20,7 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
         to: email, // Destinatário
         subject: "Intelli-Guide - Código de Verificação em Duas Etapas", // Assunto do E-mail
         html: `<p>Olá,</p><p>Seu código de verificação em duas etapas é <b>${token}</b>. Use este código para completar seu login com segurança.</p><p>Atenciosamente,<br/>Equipe Intelli-Guide</p>`, // Corpo do e-mail
-});
+    });
 };
 
 export const sendPasswordResetEmail = async (email: string, token: string) => {
