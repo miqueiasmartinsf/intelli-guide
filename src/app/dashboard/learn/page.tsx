@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description:
         "Descubra e participe de diversas fases de quizzes no IntelliGuide. Melhore seus conhecimentos, acompanhe seu progresso e desafie-se com quizzes emocionantes e educativos.",
 };
+export const dynamic = "force-dynamic";
 
 const LearnPage = async () => {
     const userProgressData = getUserProgress();
