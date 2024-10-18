@@ -71,3 +71,4 @@ Bem-vindo(a) ao IntelliGuide - uma plataforma de aprendizado gamificada que tran
 | ---------------------------------------------------------- | ---------------------------------------------------- |
 | <img src="https://github.com/WesleyR10.png" width="100"> | [Wesley Ribas](https://github.com/WesleyR10) |
 | <img src="https://github.com/miqueiasmartinsf.png" width="100"> | [Miquéias Martins](https://github.com/miqueiasmartinsf) |
+| <img src="https://github.com/Edu-hsf.png" width="100"> | [Eduardo Henrique](https://github.com/Edu-hsf) |
